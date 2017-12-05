@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="434.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AddNewUserController">
+   <children>
+      <Label layoutX="37.0" layoutY="57.0" text="Логин нового пользователя" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="55.0" />
+      <TextField layoutX="213.0" layoutY="51.0" AnchorPane.leftAnchor="215.0" AnchorPane.topAnchor="55.0" />
+      <ChoiceBox layoutX="238.0" layoutY="274.0" prefWidth="150.0" AnchorPane.leftAnchor="215.0" AnchorPane.topAnchor="255.0" />
+      <Label layoutX="44.0" layoutY="173.0" text="e-mail" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="215.0" />
+      <Button layoutX="107.0" layoutY="312.0" mnemonicParsing="false" onAction="#addNewUser" text="Добавить пользователя" AnchorPane.bottomAnchor="63.0" AnchorPane.rightAnchor="180.0" />
+      <Button layoutX="283.0" layoutY="312.0" mnemonicParsing="false" onAction="#closeForm" prefHeight="25.0" prefWidth="81.0" text="Закрыть" AnchorPane.bottomAnchor="63.0" AnchorPane.rightAnchor="70.0" />
+      <TextField layoutX="213.0" layoutY="83.0" AnchorPane.leftAnchor="215.0" AnchorPane.topAnchor="95.0" />
+      <Label layoutX="36.0" layoutY="87.0" prefHeight="17.0" prefWidth="59.0" text="Фамилия" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="95.0" />
+      <TextField layoutX="213.0" layoutY="123.0" AnchorPane.leftAnchor="215.0" AnchorPane.topAnchor="135.0" />
+      <Label layoutX="46.0" layoutY="112.0" />
+      <TextField layoutX="213.0" layoutY="163.0" AnchorPane.leftAnchor="215.0" AnchorPane.topAnchor="175.0" />
+      <Label layoutX="34.0" layoutY="121.0" text="Имя" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="135.0" />
+      <TextField layoutX="213.0" layoutY="203.0" AnchorPane.leftAnchor="215.0" AnchorPane.topAnchor="215.0" />
+      <Label layoutX="44.0" layoutY="149.0" text="Отчество" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="175.0" />
+      <Label layoutX="29.0" layoutY="257.0" text="Права доступа" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="255.0" />
+   </children>
+</AnchorPane>

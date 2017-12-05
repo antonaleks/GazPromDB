@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane prefHeight="302.0" prefWidth="273.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.EnterFormController">
+   <children>
+      <Pane fx:id="loginPasswordPane" layoutX="25.0" layoutY="52.0" prefHeight="199.0" prefWidth="224.0">
+         <children>
+            <Label layoutX="35.0" text="Логин:" />
+            <Label layoutX="36.0" layoutY="58.0" text="Пароль:" />
+            <TextField fx:id="loginField" layoutX="36.0" layoutY="21.0" prefHeight="25.0" prefWidth="153.0" />
+            <PasswordField fx:id="passwordField" layoutX="38.0" layoutY="81.0" />
+            <Button layoutX="79.0" layoutY="137.0" mnemonicParsing="false" onAction="#buttonEnter" prefHeight="25.0" prefWidth="68.0" text="Войти" />
+         </children>
+      </Pane>
+   </children>
+</Pane>

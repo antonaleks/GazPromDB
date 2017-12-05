@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane fx:id="mainForm" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainFormController">
+   <top>
+      <MenuBar fx:id="menuBar" BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="Добавление">
+            <items>
+              <MenuItem fx:id="createEntry" mnemonicParsing="false" onAction="#showCreateEntryForm" text="Добавить запись" />
+                  <MenuItem fx:id="addUser" mnemonicParsing="false" onAction="#showAddNewUserForm" text="Добавить пользователя" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Просмотр">
+            <items>
+              <MenuItem fx:id="entriesList" mnemonicParsing="false" onAction="#showEntriesListForm" text="Список записей" />
+                  <MenuItem fx:id="changesList" mnemonicParsing="false" onAction="#showChangesListForm" text="Список изменений" />
+                  <MenuItem fx:id="usersList" mnemonicParsing="false" onAction="#showUsersListForm" text="Список пользователей" />
+                  <MenuItem fx:id="userHistory" mnemonicParsing="false" onAction="#showUserHistoryForm" text="История пользователя" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Поиск">
+            <items>
+              <MenuItem fx:id="findEntry" mnemonicParsing="false" onAction="#showFindEntryForm" text="Поиск записи" />
+                  <MenuItem fx:id="findChanges" mnemonicParsing="false" onAction="#showFindChahgesForm" text="Поиск изменений" />
+            </items>
+          </Menu>
+            <Menu fx:id="help" mnemonicParsing="false" text="Помощь">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#showHelpForm" text="Помощь" />
+               </items></Menu>
+            <Menu fx:id="exit" mnemonicParsing="false" onAction="#exitFromDataBase" text="Выход" />
+        </menus>
+      </MenuBar>
+   </top>
+</BorderPane>
