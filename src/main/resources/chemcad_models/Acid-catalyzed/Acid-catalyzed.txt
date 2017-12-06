@@ -1,0 +1,1087 @@
+
+CHEMCAD 6.5.7                                              Page 1
+
+Simulation: Acid-catalyzed               Date: 12/06/2017  Time: 22:51:51
+
+FLOWSHEET SUMMARY
+
+Equipment   Label         Stream Numbers
+
+   1  MIXE               103 101  -3
+   2  PUMP                 3  -4
+   3  MIXE                 4   8  -5
+   5  SCDS                 7 -13  -9
+   6  CONT                11 -10
+   7  HTXR                 9 -11
+   8  EXTR                12  14 -18 -16
+   9  PUMP                13  -8
+  10  PUMP                 1  -2
+  11  HTXR                 2  -6
+  12  EREA                15  -7
+  13  MIXE                 6   5 -15
+  14  CSEP                33 -14 -17
+  16  SCDS                18 -27 -29 -20
+  21  SCDS                16 -30 -24
+  23  EREA                34 -33
+  24  MIXE                35  10 -34
+
+
+Stream Connections
+
+Stream     Equipment      Stream     Equipment      Stream     Equipment
+          From    To                From    To                From    To
+    1             10         11        7     6         27       16      
+    2       10    11         12              8         29       16      
+    3        1     2         13        5     9         30       21      
+    4        2     3         14       14     8         33       23    14
+    5        3    13         15       13    12         34       24    23
+    6       11    13         16        8    21         35             24
+    7       12     5         17       14              101              1
+    8        9     3         18        8    16        103              1
+    9        5     7         20       16            
+   10        6    24         24       21            
+
+
+CHEMCAD 6.5.7                                              Page 2
+
+Simulation: Acid-catalyzed               Date: 12/06/2017  Time: 22:51:51
+
+Calculation mode : Sequential
+Flash algorithm  : Normal
+
+Equipment Calculation Sequence
+   1   2  10  11   3  13  12   5   9   7   6  24  23  14   8  16  21
+
+Equipment Recycle Sequence
+   3  13  12   5   9
+
+
+Recycle Cut Streams
+   8
+
+
+Recycle Convergence Method:  Direct Substitution
+
+    Max. loop iterations    40
+
+Recycle Convergence Tolerance
+
+    Flow rate       1.000E-003
+    Temperature     1.000E-003
+    Pressure        1.000E-003
+    Enthalpy        1.000E-003
+    Vapor frac.     1.000E-003
+
+Recycle calculation has converged.
+
+
+Run Time Error and Warning Messages:
+
+*** Equip.  23  ***
+
+* EREA, Output stream is mixed phase.
+
+CHEMCAD 6.5.7                                              Page 3
+
+Simulation: Acid-catalyzed               Date: 12/06/2017  Time: 22:51:51
+
+Overall Mass Balance       kmol/h                    kg/h             
+                        Input       Output        Input       Output
+Glycerol                0.000        1.129        0.000      103.959
+Methanol                6.750        3.363      216.280      107.770
+Calcium Oxide           1.529        0.000       85.763        0.000
+Calcium Sulfate         0.000        1.529        0.000      208.213
+Phosphoric Acid         0.000        0.000        0.000        0.000
+TriNa Phosphate         0.000        0.000        0.000        0.000
+Triacylgycerol          1.163        0.034     1030.000       30.499
+FAME                    0.000        3.386        0.000     1004.073
+Sulfuric Acid           1.529        0.000      150.000        0.000
+Water                   4.996        6.525       90.000      117.552
+Sodium Hydroxide        0.000        0.000        0.000        0.000
+
+Total                  15.968       15.968     1572.043     1572.066
+
+
+CHEMCAD 6.5.7                                              Page 4
+
+Simulation: Acid-catalyzed               Date: 12/06/2017  Time: 22:51:51
+
+Overall Energy Balance        MJ/h
+                         Input              Output
+Feed Streams           -5156.39
+Product Streams                            -7667.64
+Total Heating           7983.46
+Total Cooling          -10495.6
+Power Added            0.908691
+Power Generated               0
+
+Total                  -7667.66            -7667.64
+
+CHEMCAD 6.5.7                                              Page 5
+
+Simulation: Acid-catalyzed               Date: 12/06/2017  Time: 22:51:51
+
+COMPONENTS
+          ID #     Name              Formula
+   1       268     Glycerol          C3H8O3       
+   2       117     Methanol          CH4O         
+   3       930     Calcium Oxide     CaO          
+   4       931     Calcium Sulfate   CaO4S        
+   5       474     Phosphoric Acid   H3O4P        
+   6       985     TriNa Phosphate   Na3O4P       
+   7      8001     Triacylgycerol                 
+   8      8002     FAME              C19H36O2     
+   9       431     Sulfuric Acid     H2O4S        
+  10        62     Water             H2O          
+  11       429     Sodium Hydroxide  NaOH         
+
+User/Pool Components Data Source
+   7      8001     Triacylgycerol   
+   8      8002     FAME             
+
+THERMODYNAMICS
+
+ K-value model     :  Modified UNIFAC
+                      IPP flag on
+                      No correction for vapor fugacity
+                      LLV Three Phase K-values
+ Enthalpy model    :  Latent Heat
+ Liquid density    :  Library  
+
+ Equip #    8  K-value   : MUNF
+ Equip #    8  local water/hydrocarbon immiscible.
+ Equip #    8  local vapor/liquid/liquid/solid option.
+ Equip #   16  K-value   : MUNF
+ Equip #   16  local water/hydrocarbon immiscible.
+ Equip #   16  local vapor/liquid/liquid/solid option.
+ Equip #   21  K-value   : MUNF
+ Equip #   21  local water/hydrocarbon immiscible.
+ Equip #   21  local vapor/liquid/liquid/solid option.
+ Std vapor rate reference temperature is 0 C.
+ Atmospheric pressure is       1.0132 bar.
+
+MUNF Group Interaction Parameters:
+Formula: Xij = Aij + Bij * T + Cij * T * T   ( T in deg K)
+Grpi      Grpj        Aij       Aji       Bij       Bji      Cij      Cji
+CH2       OH         2777.00   1606.00   -4.6740   -4.7460   0.00155   0.00092 
+CH2       CH3OH      2409.40     82.59   -3.0099   -0.4857   0.00000   0.00000 
+CH2       C=C         189.66    -95.42   -0.2723    0.0617   0.00000   0.00000 
+CH2       COO        1312.00   -314.60   -3.6430    1.2870   0.00000   0.00000 
+CH2       CCOO         98.66    632.22    1.9294   -3.3912  -0.00313   0.00393 
+CH2       H2O        1391.30    -17.25   -3.6156    0.8389   0.00114   0.00090 
+CHEMCAD 6.5.7                                              Page 6
+
+Simulation: Acid-catalyzed               Date: 12/06/2017  Time: 22:51:51
+
+OH        CH3OH       346.31  -1218.20   -2.4583    9.7928   0.00293  -0.01616 
+OH        C=C        1566.00   2649.00   -5.8090   -6.5080   0.00520   0.00482 
+OH        COO         403.80    703.40   -0.9346   -1.3830   0.00000   0.00000 
+OH        CCOO        973.80    310.40   -5.6330    1.5380   0.00769  -0.00489 
+OH        H2O        -801.90   1460.00    3.8240   -8.6730  -0.00751   0.01641 
+CH3OH     C=C         -96.30   -628.07    0.6304   10.0000  -0.00180  -0.01497 
+CH3OH     COO         308.70    678.10   -1.1750   -1.3350   0.00000   0.00000 
+CH3OH     CCOO        299.23    294.76   -1.2702    0.3745   0.00000   0.00000 
+CH3OH     H2O        -328.50   -524.30    1.0823    4.6065  -0.00220  -0.00400 
+C=C       COO        -339.80    698.50    1.2970   -2.1590   0.00000   0.00000 
+C=C       CCOO        980.74   -582.82   -2.4224    1.6732   0.00000   0.00000 
+C=C       H2O         778.30  -1301.00    0.1482    4.0720   0.00000   0.00000 
+COO       CCOO          3.92   -338.80   -1.1740    1.8370   0.00000   0.00000 
+COO       H2O         808.40    676.00   -2.9290   -0.0991   0.00000   0.00000 
+CCOO      H2O         322.30   -675.50   -1.3050    3.6090   0.00000   0.00000 
+
+* Component ID  930 does not have UNIFAC subgroups.
+* Component ID  931 does not have UNIFAC subgroups.
+* Component ID  474 does not have UNIFAC subgroups.
+* Component ID  985 does not have UNIFAC subgroups.
+* Component ID  431 does not have UNIFAC subgroups.
+* Component ID  429 does not have UNIFAC subgroups.
+
+
+CHEMCAD 6.5.7                                              Page 7
+
+Simulation: Acid-catalyzed               Date: 12/06/2017  Time: 22:51:51
+EQUIPMENT SUMMARIES 
+
+                      Mixer Summary
+
+Equip. No.                      1            3           13
+       Name                                                  
+
+Equip. No.                     24
+       Name                        
+
+
+
+                      Pump Summary
+
+Equip. No.                      2            9           10
+       Name                                                  
+Output pressure  bar         4.0000       4.0000       4.0000
+Efficiency                   1.0000       1.0000       1.0000
+Calculated power  J/h   106803.0625  461737.2188  340151.0000
+Calculated Pout  bar         4.0000       4.0000       4.0000
+Head  m                     29.7124      29.2751      33.6513
+Vol. flow rate  m3/h         0.3558       2.1972       1.1330
+Mass flow rate  kg/h       366.2800    1607.1783    1030.0000
+
+
+
+                      SCDS Rigorous Distillation Summary
+
+Equip. No.                      5           16           21
+       Name                                                  
+No. of stages                   4           10            6  
+1st feed stage                  4            2            3  
+Condenser type                  0            1            0  
+Condenser mode                  1            1            1  
+Condenser spec               2.0000       4.0000       2.0000
+Reboiler mode                   2           12            3  
+Reboiler spec.            5181.0000       0.9990     107.3000
+Reboiler comp i                 0            7            0  
+Colm press drop  bar         0.1000       0.1000       0.1000
+Est. dist. rate             43.9008                    9.6718
+ (kmol/h)
+Est. reflux rate            87.8120                   19.3436
+ (kmol/h)
+Est. T top  C               81.3544     264.0000      38.7179
+Est. T bottom  C            95.2348     462.0000     107.3000
+Est. T 2  C                 81.3566                   65.9286
+Eff. top stage               0.6000       0.6000       0.6000
+Eff. last stage              0.7000       0.7000       0.7000
+Top pressure  bar            1.9000       0.4000       0.4000
+CHEMCAD 6.5.7                                              Page 8
+
+Simulation: Acid-catalyzed               Date: 12/06/2017  Time: 22:51:51
+EQUIPMENT SUMMARIES 
+
+Calc cond duty  MJ/h     -5112.5928    -546.7136   -1218.7357
+Calc rebr duty  MJ/h      5181.0000    1031.4847    1215.8612
+Side 1 stage no.                0            1            0  
+Side 1 spec.                           1000.0000             
+Side product 1 mode             0           -3            0  
+Iterations                      0            400        200  
+Initial flag                    0            1            1  
+Calc Reflux mole           100.2906       0.8811      19.3416
+ (kmol/h)
+Calc Reflux ratio            2.0000       4.0000       2.0000
+Calc Reflux mass  kg/h    3214.3574     261.1367     442.5589
+Optimization flag               0            1            0  
+Calc. tolerance         4.0108e-005  7.5406e-008  2.2044e-006
+
+
+
+                      Controller Summary
+
+Equip. No.                      6
+       Name                        
+Mode                            1  
+Output signal                3.3717
+Stream No. adj.                35  
+Variable No. adj.               5  
+Rel Step Size                0.0050
+Tolerance                    0.0010
+Iterations                     20  
+
+ Measured variables:
+Independent Type 1              0  
+Independent ID 1               11  
+Independent Variable 1         -9  
+
+
+
+                      Heat Exchanger Summary
+
+Equip. No.                      7           11
+       Name                                     
+1st Stream T Out  C         60.0000      60.0000
+Calc Ht Duty  MJ/h        -122.8094      63.2001
+LMTD Corr Factor             1.0000       1.0000
+1st Stream Pout  bar         2.0000       4.0000
+P1 out specifed  bar         2.0000       4.0000
+
+
+
+CHEMCAD 6.5.7                                              Page 9
+
+Simulation: Acid-catalyzed               Date: 12/06/2017  Time: 22:51:51
+EQUIPMENT SUMMARIES 
+
+                      Extractor Summary
+
+Equip. No.                      8
+       Name                        
+No. of Stages:                  4  
+1st feed stage                  1  
+2nd feed stage                  4  
+P Top  bar                   1.1000
+P Drop  bar                  0.1000
+
+
+
+                      Equilibrium Reactor Summary
+
+
+*** Equip.  23 ***
+* EREA, Output stream is mixed phase.
+
+Equip. No.                     12           23
+       Name                                     
+Thermal mode                    2            2  
+Temperature  C              80.0000      80.0000
+Heat duty  MJ/h            491.9188   -3418.3398
+No of Reactions                 1            1  
+Temp Units                      3            0  
+Press Units                     5            0  
+Heat of Rxn Units               3            0  
+Molar Flow Units                1            0  
+Calc IG Ht of Rxn           -8.8454    -467.7879
+ (MJ/h)
+Edit Reaction No.               1            0  
+Calc Liq H of Rxn          399.9355   -3491.7051
+ (MJ/h)
+
+
+
+Reaction Stoichiometrics and Parameters for unit no. 12
+Reaction no.                    1
+Base component                  7  
+Frac.conversion              0.9700
+Comp                            7  
+Stoic. coeff.               -1.0000
+exp. factor                  1.0000
+Comp                            2  
+Stoic. coeff.               -3.0000
+Comp                            8  
+Stoic. coeff.                3.0000
+CHEMCAD 6.5.7                                             Page 10
+
+Simulation: Acid-catalyzed               Date: 12/06/2017  Time: 22:51:51
+EQUIPMENT SUMMARIES 
+
+Comp                            1  
+Stoic. coeff.                1.0000
+
+
+
+Reaction Stoichiometrics and Parameters for unit no. 23
+Reaction no.                    1
+Base component                  9  
+Frac.conversion              1.0000
+Comp                            9  
+Stoic. coeff.               -1.0000
+Comp                            3  
+Stoic. coeff.               -1.0000
+Comp                            4  
+Stoic. coeff.                1.0000
+Comp                           10  
+Stoic. coeff.                1.0000
+
+
+
+                      Component Separator Summary
+
+Equip. No.                     14
+       Name                        
+Pressure Out  bar            1.3000
+Top Temp Spec               60.0000
+Bottom Temp Spec            60.0000
+Split Destination               1  
+Heat duty  MJ/h            -76.4539
+Component No. 4              1.0000
+
+CHEMCAD 6.5.7                                             Page 11
+
+Simulation: Acid-catalyzed               Date: 12/06/2017  Time: 22:51:51
+STREAM PROPERTIES 
+
+Stream No.                      1             2             3             4 
+       Name                   Oil                                           
+- - Overall - -
+Molar flow kmol/h          1.1633        1.1633        8.2793        8.2793 
+Mass flow  kg/h         1030.0000     1030.0000      366.2800      366.2800 
+Temp C                    25.0000       25.1953       25.0000       25.1404 
+Pres bar                   1.0000        4.0000        1.0000        4.0000 
+Vapor mole fraction        0.0000        0.0000        0.0000        0.0000 
+Enth MJ/h                 -2889.8       -2889.5       -2813.9       -2813.7 
+Tc C                    1366.8500     1366.8500      344.0883      344.0883 
+Pc bar                     4.7000        4.7000      108.1772      108.1772 
+Std. sp gr.  wtr = 1        0.909         0.909         1.039         1.039 
+Std. sp gr.  air = 1       30.572        30.572         1.528         1.528 
+Degree API                24.2280       24.2280        4.6321        4.6321 
+Average mol wt           885.4321      885.4321       44.2406       44.2406 
+Actual dens kg/m3        909.0721      908.9377     1029.5846     1029.4269 
+Actual vol m3/h            1.1330        1.1332        0.3558        0.3558 
+Std liq  m3/h              1.1336        1.1336        0.3524        0.3524 
+Std vap 0 C m3/h          26.0732       26.0732      185.5686      185.5686 
+- - Liquid only - -
+Molar flow kmol/h          1.1633        1.1633        8.2793        8.2793 
+Mass flow  kg/h         1030.0000     1030.0000      366.2800      366.2800 
+Average mol wt           885.4321      885.4321       44.2406       44.2406 
+Actual dens kg/m3        909.0721      908.9377     1029.5846     1029.4269 
+Actual vol m3/h            1.1330        1.1332        0.3558        0.3558 
+Std liq  m3/h              1.1336        1.1336        0.3524        0.3524 
+Std vap 0 C m3/h          26.0732       26.0732      185.5686      185.5686 
+Cp J/kg-K               1688.0950     1689.2771     2075.6130     2076.2158 
+Z factor                   0.1027        0.4103        0.0026        0.0105 
+Visc Pa-sec              0.001425      0.001430      0.001081      0.001081 
+Th cond W/m-K              0.1713        0.1713        0.2250        0.2250 
+Surf. tens. N/m            0.0061        0.0061        0.0275        0.0275 
+CHEMCAD 6.5.7                                             Page 12
+
+Simulation: Acid-catalyzed               Date: 12/06/2017  Time: 22:51:51
+STREAM PROPERTIES 
+
+Stream No.                      5             6             7             8 
+       Name                                                    Methanol rec 
+- - Overall - -
+Molar flow kmol/h         58.4245        1.1633       59.5878       50.1453 
+Mass flow  kg/h         1973.4581     1030.0000     3003.4795     1607.1783 
+Temp C                    73.2485       60.0000       80.0000       81.4396 
+Pres bar                   4.0000        4.0000        4.0000        4.0000 
+Vapor mole fraction        0.0000        0.0000        0.0000        0.0000 
+Enth MJ/h                 -14549.       -2826.3       -16883.       -11735. 
+Tc C                     255.7061     1366.8500      356.3214      239.7697 
+Pc bar                    87.6142        4.7000      179.6998       81.3323 
+Std. sp gr.  wtr = 1        0.836         0.909         0.863         0.801 
+Std. sp gr.  air = 1        1.166        30.572         1.740         1.107 
+Degree API                37.7002       24.2280       32.5490       45.2365 
+Average mol wt            33.7779      885.4321       50.4043       32.0504 
+Actual dens kg/m3        774.6986      885.0320      800.1849      731.3678 
+Actual vol m3/h            2.5474        1.1638        3.7535        2.1975 
+Std liq  m3/h              2.3598        1.1336        3.4821        2.0074 
+Std vap 0 C m3/h        1309.5072       26.0732     1335.5803     1123.9386 
+- - Liquid only - -
+Molar flow kmol/h         58.4245        1.1633       59.5878       50.1453 
+Mass flow  kg/h         1973.4581     1030.0000     3003.4795     1607.1783 
+Average mol wt            33.7779      885.4321       50.4043       32.0504 
+Actual dens kg/m3        774.6986      885.0320      800.1849      731.3678 
+Actual vol m3/h            2.5474        1.1638        3.7535        2.1975 
+Std liq  m3/h              2.3598        1.1336        3.4821        2.0074 
+Std vap 0 C m3/h        1309.5072       26.0732     1335.5803     1123.9386 
+Cp J/kg-K               2789.0100     1833.4980     2610.5239     2971.3582 
+Z factor                   0.0082        0.3683        0.0121        0.0079 
+Visc Pa-sec             0.0003445      0.001368     0.0003916     0.0002966 
+Th cond W/m-K              0.1907        0.1713        0.1525        0.1840 
+Surf. tens. N/m            0.0188        0.0059        0.0212        0.0173 
+CHEMCAD 6.5.7                                             Page 13
+
+Simulation: Acid-catalyzed               Date: 12/06/2017  Time: 22:51:51
+STREAM PROPERTIES 
+
+Stream No.                      9            10            11            12 
+       Name                                                           Water 
+- - Overall - -
+Molar flow kmol/h          9.4425        9.4425        9.4425        4.9958 
+Mass flow  kg/h         1396.3013     1396.3013     1396.3013       90.0000 
+Temp C                    99.7498       60.0000       60.0000       25.0000 
+Pres bar                   2.0000        2.0000        2.0000        2.0000 
+Vapor mole fraction        0.0000        0.0000        0.0000        0.0000 
+Enth MJ/h                 -5079.2       -5202.0       -5202.0       -1427.3 
+Tc C                     504.2979      504.2979      504.2979      374.2000 
+Pc bar                    94.9076       94.9076       94.9076      221.1823 
+Std. sp gr.  wtr = 1        0.947         0.947         0.947         1.000 
+Std. sp gr.  air = 1        5.106         5.106         5.106         0.622 
+Degree API                17.9453       17.9453       17.9453       10.0000 
+Average mol wt           147.8735      147.8735      147.8735       18.0150 
+Actual dens kg/m3        878.2853      910.7390      910.7390      996.7087 
+Actual vol m3/h            1.5898        1.5332        1.5332        0.0903 
+Std liq  m3/h              1.4747        1.4747        1.4747        0.0900 
+Std vap 0 C m3/h         211.6418      211.6418      211.6418      111.9749 
+- - Liquid only - -
+Molar flow kmol/h          9.4425        9.4425        9.4425        4.9958 
+Mass flow  kg/h         1396.3011     1396.3011     1396.3011       90.0000 
+Average mol wt           147.8735      147.8735      147.8735       18.0150 
+Actual dens kg/m3        878.2853      910.7389      910.7389      996.7087 
+Actual vol m3/h            1.5898        1.5332        1.5332        0.0903 
+Std liq  m3/h              1.4747        1.4747        1.4747        0.0900 
+Std vap 0 C m3/h         211.6418      211.6418      211.6418      111.9749 
+Cp J/kg-K               2283.5396     2140.7710     2140.7710     4185.1460 
+Z factor                   0.0152        0.0166        0.0166        0.0019 
+Visc Pa-sec              0.001166      0.002359      0.002359     0.0009229 
+Th cond W/m-K              0.1128        0.1179        0.1179        0.6062 
+Surf. tens. N/m            0.0257        0.0289        0.0289        0.0721 
+CHEMCAD 6.5.7                                             Page 14
+
+Simulation: Acid-catalyzed               Date: 12/06/2017  Time: 22:51:51
+STREAM PROPERTIES 
+
+Stream No.                     13            14            15            16 
+       Name                                                                 
+- - Overall - -
+Molar flow kmol/h         50.1453        9.4425       59.5878       10.8127 
+Mass flow  kg/h         1607.1783     1273.8528     3003.4585      325.4497 
+Temp C                    81.3434       60.0000       69.8242       59.9793 
+Pres bar                   1.9000        1.3000        4.0000        1.2000 
+Vapor mole fraction        0.0000        0.0000        0.0000        0.0000 
+Enth MJ/h                 -11736.       -4441.6       -17375.       -3328.0 
+Tc C                     239.7697      492.5833      633.2026      380.6804 
+Pc bar                    81.3323      182.9656      530.1439      218.1934 
+Std. sp gr.  wtr = 1        0.801         0.897         0.860         0.985 
+Std. sp gr.  air = 1        1.107         4.658         1.740         1.039 
+Degree API                45.2365       26.2362       33.0800       12.1558 
+Average mol wt            32.0504      134.9057       50.4039       30.0988 
+Actual dens kg/m3        731.4755      862.2473      810.0771      949.9777 
+Actual vol m3/h            2.1972        1.4774        3.7076        0.3426 
+Std liq  m3/h              2.0074        1.4200        3.4934        0.3304 
+Std vap 0 C m3/h        1123.9386      211.6418     1335.5803      242.3521 
+- - Liquid only - -
+Molar flow kmol/h         50.1453        9.4425       59.5878       10.8127 
+Mass flow  kg/h         1607.1783     1273.8528     3003.4583      325.4497 
+Average mol wt            32.0504      134.9057       50.4039       30.0988 
+Actual dens kg/m3        731.4755      862.2473      810.0771      949.9777 
+Actual vol m3/h            2.1972        1.4774        3.7076        0.3426 
+Std liq  m3/h              2.0074        1.4200        3.4934        0.3304 
+Std vap 0 C m3/h        1123.9386      211.6418     1335.5803      242.3521 
+Cp J/kg-K               2969.3171     2263.5723     2455.9509     3210.3777 
+Z factor                   0.0037        0.0102        0.0163        0.0018 
+Visc Pa-sec             0.0002965      0.001483     0.0003651     0.0007532 
+Th cond W/m-K              0.1841        0.1139        0.1850        0.3225 
+Surf. tens. N/m            0.0174        0.0284        0.0137        0.0404 
+CHEMCAD 6.5.7                                             Page 15
+
+Simulation: Acid-catalyzed               Date: 12/06/2017  Time: 22:51:51
+STREAM PROPERTIES 
+
+Stream No.                     17            18            20            24 
+       Name                 CaSo4          FAME          FAME      Glycerol 
+- - Overall - -
+Molar flow kmol/h          1.5294        3.6257        3.3739        1.1419 
+Mass flow  kg/h          208.2128     1038.4032     1000.0006      104.1696 
+Temp C                    60.0000       54.0434      232.6225      107.3000 
+Pres bar                   1.3000        1.1000        0.4000        0.5000 
+Vapor mole fraction        0.0000        0.0000        0.0000        0.0000 
+Enth MJ/h                 -2280.7       -2540.9       -1964.5       -734.84 
+Tc C                    2504.6277      515.5110      493.1397      576.2722 
+Pc bar                     6.9025       32.0159       13.5771       78.0762 
+Std. sp gr.  wtr = 1        5.603         0.880         0.879         1.265 
+Std. sp gr.  air = 1        4.701         9.889        10.234         3.150 
+Degree API              -106.2454       29.2420       29.4398      -19.6026 
+Average mol wt           136.1420      286.4027      296.3902       91.2247 
+Actual dens kg/m3       5508.9756      851.0349      711.0773     1201.9912 
+Actual vol m3/h            0.0378        1.2202        1.4063        0.0867 
+Std liq  m3/h              0.0372        1.1796        1.1374        0.0824 
+Std vap 0 C m3/h          34.2790       81.2646       75.6221       25.5942 
+- - Liquid only - -
+Molar flow kmol/h          1.5294        3.6257        3.3739        1.1419 
+Mass flow  kg/h          208.2128     1038.4032     1000.0006      104.1696 
+Average mol wt           136.1420      286.4027      296.3902       91.2247 
+Actual dens kg/m3       5508.9756      851.0349      711.0773     1201.9911 
+Actual vol m3/h            0.0378        1.2202        1.4063        0.0867 
+Std liq  m3/h              0.0372        1.1796        1.1374        0.0824 
+Std vap 0 C m3/h          34.2790       81.2646       75.6221       25.5942 
+Cp J/kg-K                 65.3508     2114.0955     2674.7939     2838.9241 
+Z factor                   0.1370        0.0185        0.0049        0.0014 
+Visc Pa-sec             0.0007097      0.002661     0.0002358       0.01074 
+Th cond W/m-K              0.7948        0.0986        0.0730        0.3018 
+Surf. tens. N/m            0.0081        0.0279        0.0150        0.0563 
+CHEMCAD 6.5.7                                             Page 16
+
+Simulation: Acid-catalyzed               Date: 12/06/2017  Time: 22:51:51
+STREAM PROPERTIES 
+
+Stream No.                     27            29            30            33 
+       Name                  Vent   Unconv. Oil  MeOH and H2O               
+- - Overall - -
+Molar flow kmol/h          0.2203        0.0315        9.6708       10.9719 
+Mass flow  kg/h           10.5860       27.8165      221.2801     1482.0654 
+Temp C                   232.6225      616.9432       38.7332       80.0000 
+Pres bar                   0.4000        0.5000        0.4000        1.0000 
+Vapor mole fraction         1.000        0.0000        0.0000       0.04422 
+Enth MJ/h                 -57.481       -34.143       -2596.0       -6645.8 
+Tc C                     447.0088     1365.9525      307.3471      979.3078 
+Pc bar                   348.5852        4.7918      126.8563      269.7297 
+Std. sp gr.  wtr = 1        0.912         0.909         0.892         1.017 
+Std. sp gr.  air = 1        1.659        30.511         0.790         4.664 
+Degree API                23.7194       24.2332       27.1063        7.6241 
+Average mol wt            48.0606      883.6769       22.8813      135.0780 
+Actual dens kg/m3          0.4586      503.9374      874.2170       95.1918 
+Actual vol m3/h           23.0812        0.0552        0.2531       15.5693 
+Std liq  m3/h              0.0116        0.0306        0.2480        1.4572 
+Std vap 0 C m3/h           4.9369        0.7055      216.7579      245.9207 
+- - Vapor only - -
+Molar flow kmol/h          0.2203                                    0.4852 
+Mass flow  kg/h           10.5860                                   14.0512 
+Average mol wt            48.0606                                   28.9606 
+Actual dens kg/m3          0.4586                                    1.0004 
+Actual vol m3/h           23.0812                                   14.0456 
+Std liq  m3/h              0.0116                                    0.0171 
+Std vap 0 C m3/h           4.9369                                   10.8747 
+Cp J/kg-K               2149.9209                                 1550.1649 
+Z factor                   0.9969                                    0.9861 
+Visc Pa-sec            1.306e-005                                1.157e-005 
+Th cond W/m-K              0.0246                                    0.0211 
+- - Liquid only - -
+Molar flow kmol/h                        0.0315        9.6708       10.4867 
+Mass flow  kg/h                         27.8165      221.2801     1468.0145 
+Average mol wt                         883.6769       22.8813      139.9877 
+Actual dens kg/m3                      503.9374      874.2170      963.4764 
+Actual vol m3/h                          0.0552        0.2531        1.5237 
+Std liq  m3/h                            0.0306        0.2480        1.4401 
+Std vap 0 C m3/h                         0.7055      216.7579      235.0460 
+Cp J/kg-K                             3402.1289     3421.9714     2008.4850 
+Z factor                                 0.0185        0.0005        0.0211 
+Visc Pa-sec                           0.0005565     0.0005992      0.001022 
+Th cond W/m-K                            0.1709        0.3347        0.1153 
+Surf. tens. N/m                          0.0030        0.0379        0.0261 
+CHEMCAD 6.5.7                                             Page 17
+
+Simulation: Acid-catalyzed               Date: 12/06/2017  Time: 22:51:51
+STREAM PROPERTIES 
+
+Stream No.                     34            35           101           103 
+       Name                                 CaO       Alcohol         H2SO4 
+- - Overall - -
+Molar flow kmol/h         10.9719        1.5294        6.7499        1.5294 
+Mass flow  kg/h         1482.0641       85.7630      216.2800      150.0000 
+Temp C                    59.1379       25.0000       25.0000       25.0000 
+Pres bar                   1.0000        1.0000        1.0000        1.0000 
+Vapor mole fraction        0.0000        0.0000        0.0000        0.0000 
+Enth MJ/h                 -3227.5        1974.6       -1612.9       -1200.9 
+Tc C                     974.4040     2504.6277      239.4900      651.8500 
+Pc bar                   155.3769        6.9025       80.9700       64.0000 
+Std. sp gr.  wtr = 1        0.982         2.499         0.801         1.824 
+Std. sp gr.  air = 1        4.664         1.936         1.106         3.386 
+Degree API                12.5739      -74.8782       45.2429      -53.9232 
+Average mol wt           135.0779       56.0770       32.0420       98.0790 
+Actual dens kg/m3        945.8798     2490.3552      789.5790     1832.9098 
+Actual vol m3/h            1.5669        0.0344        0.2739        0.0818 
+Std liq  m3/h              1.5090        0.0343        0.2701        0.0822 
+Std vap 0 C m3/h         245.9207       34.2790      151.2896       34.2790 
+- - Liquid only - -
+Molar flow kmol/h         10.9719        1.5294        6.7499        1.5294 
+Mass flow  kg/h         1482.0641       85.7630      216.2800      150.0000 
+Average mol wt           135.0779       56.0770       32.0420       98.0790 
+Actual dens kg/m3        945.8798     2490.3552      789.5790     1832.9098 
+Actual vol m3/h            1.5669        0.0344        0.2739        0.0818 
+Std liq  m3/h              1.5090        0.0343        0.2701        0.0822 
+Std vap 0 C m3/h         245.9207       34.2790      151.2896       34.2790 
+Cp J/kg-K               2065.4048      877.2776     2531.6638     1418.0488 
+Z factor                   0.0218        0.1177        0.0022        0.0046 
+Visc Pa-sec              0.001904     0.0004667     0.0005380       0.02355 
+Th cond W/m-K              0.1215        0.4380        0.1999        0.3352 
+Surf. tens. N/m            0.0317        0.4919        0.0222        0.0524 
+
+CHEMCAD 6.5.7                                             Page 18
+
+Simulation: Acid-catalyzed               Date: 12/06/2017  Time: 22:51:51
+FLOW SUMMARIES: 
+
+Stream No.                    1             2             3             4
+Stream Name                 Oil                                           
+Temp  C                 25.0000*      25.1953       25.0000       25.1404 
+Pres  bar                1.0000*       4.0000        1.0000        4.0000 
+Enth  MJ/h              -2889.8       -2889.5       -2813.9       -2813.7 
+Vapor mass frac.        0.00000       0.00000       0.00000       0.00000 
+Total kmol/h             1.1633        1.1633        8.2793        8.2793 
+Total kg/h            1030.0000     1030.0000      366.2800      366.2800 
+Total std L m3/h         1.1336        1.1336        0.3524        0.3524 
+Total std V m3/h          26.07         26.07        185.57        185.57 
+Flow rates in kg/h
+Glycerol                 0.0000        0.0000        0.0000        0.0000 
+Methanol                 0.0000        0.0000      216.2800      216.2800 
+Calcium Oxide            0.0000        0.0000        0.0000        0.0000 
+Calcium Sulfate          0.0000        0.0000        0.0000        0.0000 
+Phosphoric Acid          0.0000        0.0000        0.0000        0.0000 
+TriNa Phosphate          0.0000        0.0000        0.0000        0.0000 
+Triacylgycerol        1030.0000     1030.0000        0.0000        0.0000 
+FAME                     0.0000        0.0000        0.0000        0.0000 
+Sulfuric Acid            0.0000        0.0000      150.0000      150.0000 
+Water                    0.0000        0.0000        0.0000        0.0000 
+Sodium Hydroxide         0.0000        0.0000        0.0000        0.0000 
+
+Stream No.                    5             6             7             8
+Stream Name                                                  Methanol rec 
+Temp  C                 73.2485       60.0000       80.0000       81.4396*
+Pres  bar                4.0000        4.0000        4.0000        4.0000*
+Enth  MJ/h              -14549.       -2826.3       -16883.       -11735. 
+Vapor mass frac.        0.00000       0.00000       0.00000       0.00000 
+Total kmol/h            58.4245        1.1633       59.5878       50.1453 
+Total kg/h            1973.4581     1030.0000     3003.4795     1607.1783 
+Total std L m3/h         2.3598        1.1336        3.4821        2.0074 
+Total std V m3/h        1309.51         26.07       1335.58       1123.94 
+Flow rates in kg/h
+Glycerol                 0.0134        0.0000      103.9729        0.0134 
+Methanol              1823.0122        0.0000     1714.5026     1606.7324 
+Calcium Oxide            0.0000        0.0000        0.0000        0.0000 
+Calcium Sulfate          0.0000        0.0000        0.0000        0.0000 
+Phosphoric Acid          0.0000        0.0000        0.0000        0.0000 
+TriNa Phosphate          0.0000        0.0000        0.0000        0.0000 
+Triacylgycerol           0.4133     1030.0000       30.9124        0.4133 
+FAME                     0.0147        0.0000     1004.0873        0.0147 
+Sulfuric Acid          150.0045        0.0000      150.0045        0.0045 
+Water                    0.0000        0.0000        0.0000        0.0000 
+Sodium Hydroxide         0.0000        0.0000        0.0000        0.0000 
+
+CHEMCAD 6.5.7                                             Page 19
+
+Simulation: Acid-catalyzed               Date: 12/06/2017  Time: 22:51:51
+FLOW SUMMARIES: 
+
+Stream No.                    9            10            11            12
+Stream Name                                                         Water 
+Temp  C                 99.7498       60.0000       60.0000       25.0000*
+Pres  bar                2.0000        2.0000        2.0000        2.0000*
+Enth  MJ/h              -5079.2       -5202.0       -5202.0       -1427.3 
+Vapor mass frac.        0.00000       0.00000       0.00000       0.00000 
+Total kmol/h             9.4425        9.4425        9.4425        4.9958 
+Total kg/h            1396.3011     1396.3011     1396.3011       90.0000 
+Total std L m3/h         1.4747        1.4747        1.4747        0.0900 
+Total std V m3/h         211.64        211.64        211.64        111.97 
+Flow rates in kg/h
+Glycerol               103.9594      103.9594      103.9594        0.0000 
+Methanol               107.7701      107.7701      107.7701        0.0000 
+Calcium Oxide            0.0000        0.0000        0.0000        0.0000 
+Calcium Sulfate          0.0000        0.0000        0.0000        0.0000 
+Phosphoric Acid          0.0000        0.0000        0.0000        0.0000 
+TriNa Phosphate          0.0000        0.0000        0.0000        0.0000 
+Triacylgycerol          30.4991       30.4991       30.4991        0.0000 
+FAME                  1004.0726     1004.0726     1004.0726        0.0000 
+Sulfuric Acid          150.0000      150.0000      150.0000        0.0000 
+Water                    0.0000        0.0000        0.0000       90.0000 
+Sodium Hydroxide         0.0000        0.0000        0.0000        0.0000 
+
+Stream No.                   13            14            15            16
+Stream Name                                                               
+Temp  C                 81.3434       60.0000       69.8242       59.9793 
+Pres  bar                1.9000        1.3000        4.0000        1.2000 
+Enth  MJ/h              -11736.       -4441.6       -17375.       -3328.0 
+Vapor mass frac.        0.00000       0.00000       0.00000       0.00000 
+Total kmol/h            50.1453        9.4425       59.5878       10.8127 
+Total kg/h            1607.1783     1273.8528     3003.4583      325.4497 
+Total std L m3/h         2.0074        1.4200        3.4934        0.3304 
+Total std V m3/h        1123.94        211.64       1335.58        242.35 
+Flow rates in kg/h
+Glycerol                 0.0134      103.9594        0.0134      103.9594 
+Methanol              1606.7324      107.7701     1823.0122      107.4287 
+Calcium Oxide            0.0000        0.0000        0.0000        0.0000 
+Calcium Sulfate          0.0000        0.0000        0.0000        0.0000 
+Phosphoric Acid          0.0000        0.0000        0.0000        0.0000 
+TriNa Phosphate          0.0000        0.0000        0.0000        0.0000 
+Triacylgycerol           0.4133       30.4991     1030.4132        0.0000 
+FAME                     0.0147     1004.0724        0.0147        0.0067 
+Sulfuric Acid            0.0045        0.0000      150.0045        0.0000 
+Water                    0.0000       27.5518        0.0000      114.0549 
+Sodium Hydroxide         0.0000        0.0000        0.0000        0.0000 
+
+CHEMCAD 6.5.7                                             Page 20
+
+Simulation: Acid-catalyzed               Date: 12/06/2017  Time: 22:51:51
+FLOW SUMMARIES: 
+
+Stream No.                   17            18            20            24
+Stream Name               CaSo4          FAME          FAME      Glycerol 
+Temp  C                 60.0000       54.0434      232.6225      107.3000 
+Pres  bar                1.3000        1.1000        0.4000        0.5000 
+Enth  MJ/h              -2280.7       -2540.9       -1964.5       -734.84 
+Vapor mass frac.        0.00000       0.00000       0.00000       0.00000 
+Total kmol/h             1.5294        3.6257        3.3739        1.1419 
+Total kg/h             208.2128     1038.4032     1000.0006      104.1696 
+Total std L m3/h         0.0372        1.1796        1.1374        0.0824 
+Total std V m3/h          34.28         81.26         75.62         25.59 
+Flow rates in kg/h
+Glycerol                 0.0000        0.0000        0.0000      103.9279 
+Methanol                 0.0000        0.3415        0.0285        0.0000 
+Calcium Oxide            0.0000        0.0000        0.0000        0.0000 
+Calcium Sulfate        208.2128        0.0000        0.0000        0.0000 
+Phosphoric Acid          0.0000        0.0000        0.0000        0.0000 
+TriNa Phosphate          0.0000        0.0000        0.0000        0.0000 
+Triacylgycerol           0.0000       30.4991        2.7028        0.0000 
+FAME                     0.0000     1004.0657      997.1456        0.0000 
+Sulfuric Acid            0.0000        0.0000        0.0000        0.0000 
+Water                    0.0000        3.4969        0.1238        0.2417 
+Sodium Hydroxide         0.0000        0.0000        0.0000        0.0000 
+
+Stream No.                   27            29            30            33
+Stream Name                Vent   Unconv. Oil  MeOH and H2O               
+Temp  C                232.6225      616.9432       38.7332       80.0000 
+Pres  bar                0.4000        0.5000        0.4000        1.0000 
+Enth  MJ/h              -57.481       -34.143       -2596.0       -6645.8 
+Vapor mass frac.         1.0000       0.00000       0.00000     0.0094808 
+Total kmol/h             0.2203        0.0315        9.6708       10.9719 
+Total kg/h              10.5860       27.8165      221.2801     1482.0656 
+Total std L m3/h         0.0116        0.0306        0.2480        1.4572 
+Total std V m3/h           4.94          0.71        216.76        245.92 
+Flow rates in kg/h
+Glycerol                 0.0000        0.0000        0.0316      103.9594 
+Methanol                 0.3130        0.0000      107.4286      107.7701 
+Calcium Oxide            0.0000        0.0000        0.0000        0.0000 
+Calcium Sulfate          0.0000        0.0000        0.0000      208.2128 
+Phosphoric Acid          0.0000        0.0000        0.0000        0.0000 
+TriNa Phosphate          0.0000        0.0000        0.0000        0.0000 
+Triacylgycerol           0.0076       27.7887        0.0000       30.4991 
+FAME                     6.8923        0.0278        0.0067     1004.0724 
+Sulfuric Acid            0.0000        0.0000        0.0000        0.0000 
+Water                    3.3732        0.0000      113.8132       27.5518 
+Sodium Hydroxide         0.0000        0.0000        0.0000        0.0000 
+
+CHEMCAD 6.5.7                                             Page 21
+
+Simulation: Acid-catalyzed               Date: 12/06/2017  Time: 22:51:51
+FLOW SUMMARIES: 
+
+Stream No.                   34            35           101           103
+Stream Name                               CaO       Alcohol         H2SO4 
+Temp  C                 59.1379       25.0000*      25.0000*      25.0000*
+Pres  bar                1.0000        1.0000*       1.0000*       1.0000*
+Enth  MJ/h              -3227.5        1974.6       -1612.9       -1200.9 
+Vapor mass frac.        0.00000       0.00000       0.00000       0.00000 
+Total kmol/h            10.9719        1.5294        6.7499        1.5294 
+Total kg/h            1482.0641       85.7630      216.2800      150.0000 
+Total std L m3/h         1.5090        0.0343        0.2701        0.0822 
+Total std V m3/h         245.92         34.28        151.29         34.28 
+Flow rates in kg/h
+Glycerol               103.9594        0.0000        0.0000        0.0000 
+Methanol               107.7701        0.0000      216.2800        0.0000 
+Calcium Oxide           85.7630       85.7630        0.0000        0.0000 
+Calcium Sulfate          0.0000        0.0000        0.0000        0.0000 
+Phosphoric Acid          0.0000        0.0000        0.0000        0.0000 
+TriNa Phosphate          0.0000        0.0000        0.0000        0.0000 
+Triacylgycerol          30.4991        0.0000        0.0000        0.0000 
+FAME                  1004.0726        0.0000        0.0000        0.0000 
+Sulfuric Acid          150.0000        0.0000        0.0000      150.0000 
+Water                    0.0000        0.0000        0.0000        0.0000 
+Sodium Hydroxide         0.0000        0.0000        0.0000        0.0000 
+
+CHEMCAD 6.5.7                                             Page 22
+
+Simulation: Acid-catalyzed               Date: 12/06/2017  Time: 22:51:51
+DISTILLATION PROFILE
+
+Unit type : SCDS    Unit name:     Eqp #  5
+
+                       *   Net Flows   *
+      Temp    Pres     Liquid     Vapor      Feeds      Product     Duties
+Stg     C     bar      kmol/h     kmol/h     kmol/h     kmol/h      MJ/h       
+  1   81.3     1.90     100.29                            50.15       -5113
+  2   81.4     1.90     100.26     150.44                      
+  3   82.1     1.95      96.82     150.40                      
+  4   99.7     2.00                146.97      59.59       9.44        5181
+
+
+Mole Reflux ratio        2.000
+
+Total liquid entering stage   4 at   81.132 C,      156.410 kmol/h.
+CHEMCAD 6.5.7                                             Page 23
+
+Simulation: Acid-catalyzed               Date: 12/06/2017  Time: 22:51:51
+EXTRACTOR PROFILE
+
+Unit type : EXTR    Unit name:     Eqp #  8
+
+                       *   Net Flows   *
+      Temp    Pres     Heavy      Light      Feeds      Product    Duties
+Stg     C     bar      kmol/h     kmol/h     kmol/h     kmol/h      MJ/h       
+  1   54.0     1.10       5.04                  5.00       3.63
+  2   59.0     1.13       5.13       3.67                      
+  3   59.8     1.17       5.36       3.76                      
+  4   60.0     1.20                  3.99       9.44      10.81
+
+
+
+CHEMCAD 6.5.7                                             Page 24
+
+Simulation: Acid-catalyzed               Date: 12/06/2017  Time: 22:51:51
+DISTILLATION PROFILE
+
+Unit type : SCDS    Unit name:     Eqp #  16
+
+                       *   Net Flows   *
+      Temp    Pres     Liquid     Vapor      Feeds      Product     Duties
+Stg     C     bar      kmol/h     kmol/h     kmol/h     kmol/h      MJ/h       
+  1  232.6     0.40       0.88                             0.22      -546.7
+                                                           3.37     side pr
+  2  302.4     0.40      13.59       4.48       3.63           
+  3  306.7     0.41      13.96      13.56                      
+  4  308.0     0.42      13.59      13.93                      
+  5  309.5     0.44      12.71      13.56                      
+  6  311.5     0.45      10.86      12.67                      
+  7  315.1     0.46       7.76      10.82                      
+  8  324.3     0.47       4.09       7.73                      
+  9  360.9     0.49       1.14       4.06                      
+ 10  616.9     0.50                  1.11                  0.03        1031
+
+
+Mole Reflux ratio        4.000
+
+Total liquid entering stage   2 at   93.530 C,        4.507 kmol/h.
+CHEMCAD 6.5.7                                             Page 25
+
+Simulation: Acid-catalyzed               Date: 12/06/2017  Time: 22:51:51
+DISTILLATION PROFILE
+
+Unit type : SCDS    Unit name:     Eqp #  21
+
+                       *   Net Flows   *
+      Temp    Pres     Liquid     Vapor      Feeds      Product     Duties
+Stg     C     bar      kmol/h     kmol/h     kmol/h     kmol/h      MJ/h       
+  1   38.7     0.40      19.34                             9.67       -1219
+  2   60.1     0.40      18.81      29.01                      
+  3   72.4     0.42      29.71      28.48      10.81           
+  4   78.6     0.45      30.01      28.57                      
+  5   80.0     0.47      29.45      28.87                      
+  6  107.3     0.50                 28.31                  1.14        1216
+
+
+Mole Reflux ratio        2.000
+
+Total liquid entering stage   3 at   60.060 C,       29.626 kmol/h.
+CHEMCAD 6.5.7                                             Page 26
+
+Simulation: Acid-catalyzed               Date: 12/06/2017  Time: 22:51:51
+Heating Curves Summary
+
+Eqp # 5  Unit type : SCDS  Unit name: 
+
+Condenser
+
+  NP   Temp    Pres      Del H      Vapor    Liquid  Vap mole  Vap mass
+        C      bar      MJ/h        kg/h     kg/h     frac.      frac.
+   1   81.4     1.9  5.11E+003       4822         0    1.0000    1.0000 Dew
+   2   81.4     1.9  4.60E+003       4339       482    0.9000    0.9000   
+   3   81.4     1.9  4.09E+003       3857       964    0.8000    0.8000   
+   4   81.4     1.9  3.58E+003       3375      1446    0.6999    0.7000   
+   5   81.4     1.9  3.07E+003       2893      1929    0.5999    0.6000   
+   6   81.4     1.9  2.56E+003       2411      2411    0.4999    0.5000   
+   7   81.4     1.9  2.05E+003       1929      2893    0.3999    0.4000   
+   8   81.4     1.9  1.53E+003       1447      3375    0.2999    0.3000   
+   9   81.4     1.9  1.02E+003        965      3857    0.1998    0.2000   
+  10   81.4     1.9       511.        482      4339    0.0998    0.1001   
+  11   81.3     1.9      0.000          0      4822    0.0000    0.0000 Bub
+
+
+Reboiler
+
+  NP   Temp    Pres      Del H      Vapor    Liquid  Vap mole  Vap mass
+        C      bar      MJ/h        kg/h     kg/h     frac.      frac.
+   1   81.1     2.0      0.000          0      6106    0.0000    0.0000   
+   2   83.0     2.0       31.8          0      6106    0.0000    0.0000 Bub
+   3   83.1     2.0       604.        539      5567    0.1075    0.0883   
+   4   83.3     2.0  1.18E+003       1078      5028    0.2151    0.1766   
+   5   83.5     2.0  1.75E+003       1617      4489    0.3226    0.2649   
+   6   83.7     2.0  2.32E+003       2157      3950    0.4302    0.3532   
+   7   83.9     2.0  2.89E+003       2695      3411    0.5376    0.4413   
+   8   84.4     2.0  3.46E+003       3232      2874    0.6448    0.5293   
+   9   85.0     2.0  4.04E+003       3768      2339    0.7517    0.6170   
+  10   86.7     2.0  4.61E+003       4293      1813    0.8566    0.7031   
+  11   99.7     2.0  5.18E+003       4710      1396    0.9396    0.7713   
+
+CHEMCAD 6.5.7                                             Page 27
+
+Simulation: Acid-catalyzed               Date: 12/06/2017  Time: 22:52:00
+Heating Curves Summary
+
+Eqp # 7  Unit type : HTXR  Unit name: 
+
+Stream 9
+
+  NP   Temp    Pres      Del H      Vapor    Liquid  Vap mole  Vap mass
+        C      bar      MJ/h        kg/h     kg/h     frac.      frac.
+   1   99.7     2.0      0.000          0      1396    0.0000    0.0000   
+   2   95.9     2.0       12.3          0      1396    0.0000    0.0000   
+   3   92.0     2.0       24.6          0      1396    0.0000    0.0000   
+   4   88.1     2.0       36.8          0      1396    0.0000    0.0000   
+   5   84.2     2.0       49.1          0      1396    0.0000    0.0000   
+   6   80.2     2.0       61.4          0      1396    0.0000    0.0000   
+   7   76.2     2.0       73.7          0      1396    0.0000    0.0000   
+   8   72.2     2.0       86.0          0      1396    0.0000    0.0000   
+   9   68.2     2.0       98.2          0      1396    0.0000    0.0000   
+  10   64.1     2.0       111.          0      1396    0.0000    0.0000   
+  11   60.0     2.0       123.          0      1396    0.0000    0.0000   
+
+Eqp # 11  Unit type : HTXR  Unit name: 
+
+Stream 2
+
+  NP   Temp    Pres      Del H      Vapor    Liquid  Vap mole  Vap mass
+        C      bar      MJ/h        kg/h     kg/h     frac.      frac.
+   1   25.2     4.0      0.000          0      1030    0.0000    0.0000   
+   2   28.8     4.0       6.32          0      1030    0.0000    0.0000   
+   3   32.4     4.0       12.6          0      1030    0.0000    0.0000   
+   4   35.9     4.0       19.0          0      1030    0.0000    0.0000   
+   5   39.5     4.0       25.3          0      1030    0.0000    0.0000   
+   6   43.0     4.0       31.6          0      1030    0.0000    0.0000   
+   7   46.4     4.0       37.9          0      1030    0.0000    0.0000   
+   8   49.9     4.0       44.2          0      1030    0.0000    0.0000   
+   9   53.3     4.0       50.6          0      1030    0.0000    0.0000   
+  10   56.6     4.0       56.9          0      1030    0.0000    0.0000   
+  11   60.0     4.0       63.2          0      1030    0.0000    0.0000   
+
+CHEMCAD 6.5.7                                             Page 28
+
+Simulation: Acid-catalyzed               Date: 12/06/2017  Time: 22:52:00
+Heating Curves Summary
+
+Eqp # 16  Unit type : SCDS  Unit name: 
+
+Condenser
+
+  NP   Temp    Pres      Del H      Vapor    Liquid  Vap mole  Vap mass
+        C      bar      MJ/h        kg/h     kg/h     frac.      frac.
+   1  302.4     0.4       547.       1272         0    1.0000    1.0000 Dew
+   2  303.2     0.4       492.       1034       238    0.8216    0.8127   
+   3  302.6     0.4       437.        812       460    0.6548    0.6384   
+   4  301.6     0.4       383.        595       676    0.4917    0.4681   
+   5  299.8     0.4       328.        392       880    0.3383    0.3080   
+   6  295.9     0.4       273.        220      1052    0.2085    0.1726   
+   7  288.2     0.4       219.        107      1164    0.1238    0.0844   
+   8  276.6     0.4       164.         53      1218    0.0829    0.0420   
+   9  262.9     0.4       109.         29      1243    0.0642    0.0228   
+  10  248.1     0.4       54.7         17      1255    0.0546    0.0133   
+  11  232.6     0.4      0.000         11      1261    0.0492    0.0083   
+
+
+Reboiler
+
+  NP   Temp    Pres      Del H      Vapor    Liquid  Vap mole  Vap mass
+        C      bar      MJ/h        kg/h     kg/h     frac.      frac.
+   1  360.9     0.5      0.000          0       792    0.0000    0.0000 Bub
+   2  390.8     0.5       103.         98       694    0.2226    0.1237   
+   3  423.6     0.5       206.        159       634    0.3317    0.2001   
+   4  456.3     0.5       309.        207       585    0.4010    0.2618   
+   5  487.5     0.5       413.        256       536    0.4591    0.3235   
+   6  516.6     0.5       516.        311       481    0.5181    0.3926   
+   7  542.8     0.5       619.        376       417    0.5845    0.4739   
+   8  566.0     0.5       722.        452       340    0.6617    0.5706   
+   9  586.1     0.5       825.        543       250    0.7519    0.6846   
+  10  602.9     0.5       928.        647       146    0.8557    0.8164   
+  11  616.9     0.5  1.03E+003        765        28    0.9724    0.9649   
+
+CHEMCAD 6.5.7                                             Page 29
+
+Simulation: Acid-catalyzed               Date: 12/06/2017  Time: 22:52:01
+Heating Curves Summary
+
+Eqp # 21  Unit type : SCDS  Unit name: 
+
+Condenser
+
+  NP   Temp    Pres      Del H      Vapor    Liquid  Vap mole  Vap mass
+        C      bar      MJ/h        kg/h     kg/h     frac.      frac.
+   1   60.1     0.4  1.22E+003        664         0    1.0000    1.0000 Dew
+   2   64.6     0.4  1.10E+003        610        54    0.8969    0.9186   
+   3   62.8     0.4       975.        559       105    0.7996    0.8419   
+   4   60.4     0.4       853.        509       155    0.7034    0.7660   
+   5   56.9     0.4       731.        459       205    0.6090    0.6915   
+   6   51.6     0.4       609.        411       253    0.5177    0.6191   
+   7   42.7     0.4       487.        364       300    0.4318    0.5484   
+   8   39.3     0.4       366.        282       382    0.3294    0.4253   
+   9   39.0     0.4       244.        189       475    0.2199    0.2843   
+  10   38.8     0.4       122.         94       569    0.1100    0.1423   
+  11   38.7     0.4      0.000          0       664    0.0000    0.0000 Bub
+
+
+Reboiler
+
+  NP   Temp    Pres      Del H      Vapor    Liquid  Vap mole  Vap mass
+        C      bar      MJ/h        kg/h     kg/h     frac.      frac.
+   1   80.0     0.5      0.000          0       616    0.0000    0.0000 Bub
+   2   80.2     0.5       122.         52       563    0.0987    0.0851   
+   3   80.3     0.5       243.        105       511    0.1975    0.1702   
+   4   80.4     0.5       365.        157       459    0.2963    0.2554   
+   5   80.5     0.5       486.        210       406    0.3951    0.3405   
+   6   80.7     0.5       608.        262       354    0.4940    0.4257   
+   7   80.8     0.5       730.        315       301    0.5929    0.5109   
+   8   80.9     0.5       851.        367       249    0.6918    0.5962   
+   9   81.1     0.5       973.        420       196    0.7907    0.6814   
+  10   81.4     0.5  1.09E+003        472       144    0.8896    0.7666   
+  11  107.3     0.5  1.22E+003        512       104    0.9612    0.8309   

@@ -1,0 +1,279 @@
+<?xml version="1.02" encoding="ISO-8859-1" ?>
+<AxsysSimulationCaseNeutralFile>
+    <SimulationCaseInformation>
+        <!--This element contains general information on the simulation-->
+        <SimulationName Value="CITRON" />
+        <SimulationDirectory Value="C:\subd\GazPromDB\src\main\resources\chemcad_models\CITRON\~CITRON.tmp\" />
+        <CHEMCADVersion Version="CHEMCAD 6.5.7.8139" />
+        <CHEMCAD_Schema Version="1.1" />
+    </SimulationCaseInformation>
+    <Objects Class="FluidPackage" Name="Basis-1">
+        <Attribute Name="COMPID" Unit="" DataType="Integer">
+            <Data Index="1" Value="8001" />
+            <Data Index="2" Value="8002" />
+            <Data Index="3" Value="8003" />
+        </Attribute>
+        <Attribute Name="COMPONENTNAME" Unit="" DataType="String">
+            <Data Index="1" Value="CITRONELLAL" />
+            <Data Index="2" Value="CITRONELLOL" />
+            <Data Index="3" Value="GERANIOL" />
+        </Attribute>
+        <Attribute Name="MW" Unit="" DataType="Double" Description="Molecular weight">
+            <Data Index="1" Value="154.250000" />
+            <Data Index="2" Value="156.270004" />
+            <Data Index="3" Value="154.250000" />
+        </Attribute>
+        <Attribute Name="TC" Unit="R" DataType="Double" Description="Critical temperature">
+            <Data Index="1" Value="1220.255981" />
+            <Data Index="2" Value="1217.141968" />
+            <Data Index="3" Value="1193.777954" />
+        </Attribute>
+        <Attribute Name="PC" Unit="Psia" DataType="Double" Description="Critical pressure">
+            <Data Index="1" Value="404.432281" />
+            <Data Index="2" Value="376.774506" />
+            <Data Index="3" Value="289.245483" />
+        </Attribute>
+        <Attribute Name="VC" Unit="Cubic Foot/Lbmol" DataType="Double" Description="Critical volume">
+            <Data Index="1" Value="8.465758" />
+            <Data Index="2" Value="9.010386" />
+            <Data Index="3" Value="9.691171" />
+        </Attribute>
+        <Attribute Name="TM" Unit="R" DataType="Double" Description="Melting point">
+            <Data Index="1" Value="null" />
+            <Data Index="2" Value="null" />
+            <Data Index="3" Value="null" />
+        </Attribute>
+        <Attribute Name="TB" Unit="R" DataType="Double" Description="Normal boiling point">
+            <Data Index="1" Value="861.570007" />
+            <Data Index="2" Value="898.469971" />
+            <Data Index="3" Value="903.869995" />
+        </Attribute>
+        <Attribute Name="HFORM" Unit="BTU/Lbmol" DataType="Double" Description="Heat of formation">
+            <Data Index="1" Value="0.000000" />
+            <Data Index="2" Value="0.000000" />
+            <Data Index="3" Value="0.000000" />
+        </Attribute>
+        <Attribute Name="GFORM" Unit="BTU/Lbmol" DataType="Double" Description="Gibbs energy of formation">
+            <Data Index="1" Value="0.000000" />
+            <Data Index="2" Value="0.000000" />
+            <Data Index="3" Value="0.000000" />
+        </Attribute>
+        <Attribute Name="W" Unit="" DataType="Double" Description="Accentric factor">
+            <Data Index="1" Value="0.469400" />
+            <Data Index="2" Value="0.723890" />
+            <Data Index="3" Value="0.771070" />
+        </Attribute>
+        <Attribute Name="SOL" Unit="(cal/cc)^0.5" DataType="Double" Description="Solubility parameter">
+            <Data Index="1" Value="7.500000" />
+            <Data Index="2" Value="7.500000" />
+            <Data Index="3" Value="7.500000" />
+        </Attribute>
+        <Attribute Name="DPM" Unit="debyes" DataType="Double" Description="Dipole moment">
+            <Data Index="1" Value="null" />
+            <Data Index="2" Value="null" />
+            <Data Index="3" Value="null" />
+        </Attribute>
+        <Attribute Name="TBM" Unit="R" DataType="Double" Description="Mean boiling point">
+            <Data Index="1" Value="null" />
+            <Data Index="2" Value="null" />
+            <Data Index="3" Value="null" />
+        </Attribute>
+        <Attribute Name="HVAP" Unit="BTU/Lbmol" DataType="Double" Description="Heat of vaporization at 1 atm">
+            <Data Index="1" Value="19342.132813" />
+            <Data Index="2" Value="22827.818359" />
+            <Data Index="3" Value="22483.085938" />
+        </Attribute>
+        <Attribute Name="NHV" Unit="BTU/Lbmol" DataType="Double" Description="Net heating value">
+            <Data Index="1" Value="null" />
+            <Data Index="2" Value="null" />
+            <Data Index="3" Value="null" />
+        </Attribute>
+        <Attribute Name="GHV" Unit="BTU/Lbmol" DataType="Double" Description="Gross heating value">
+            <Data Index="1" Value="null" />
+            <Data Index="2" Value="null" />
+            <Data Index="3" Value="null" />
+        </Attribute>
+        <Attribute Name="LVC" Unit="cc/mol" DataType="Double" Description="Liquid volume constant">
+            <Data Index="1" Value="null" />
+            <Data Index="2" Value="null" />
+            <Data Index="3" Value="null" />
+        </Attribute>
+        <Attribute Name="MSD" Unit="Angstroms" DataType="Double" Description="Molecular diameter">
+            <Data Index="1" Value="null" />
+            <Data Index="2" Value="null" />
+            <Data Index="3" Value="null" />
+        </Attribute>
+        <Attribute Name="WIM" Unit="" DataType="Double" Description="Modified accentric factor">
+            <Data Index="1" Value="0.469400" />
+            <Data Index="2" Value="0.723890" />
+            <Data Index="3" Value="0.771070" />
+        </Attribute>
+        <Attribute Name="UNIQUAC_Q" Unit="" DataType="Double" Description="UNIQUAC area parameter">
+            <Data Index="1" Value="null" />
+            <Data Index="2" Value="null" />
+            <Data Index="3" Value="null" />
+        </Attribute>
+        <Attribute Name="UNIQUAC_R" Unit="" DataType="Double" Description="UNIQUAC volume parameter">
+            <Data Index="1" Value="null" />
+            <Data Index="2" Value="null" />
+            <Data Index="3" Value="null" />
+        </Attribute>
+        <Attribute Name="WILSON_V" Unit="" DataType="Double" Description="Wilson molar volume">
+            <Data Index="1" Value="null" />
+            <Data Index="2" Value="null" />
+            <Data Index="3" Value="null" />
+        </Attribute>
+        <Attribute Name="STIEHL" Unit="" DataType="Double" Description="Stiehl polar factor">
+            <Data Index="1" Value="null" />
+            <Data Index="2" Value="null" />
+            <Data Index="3" Value="null" />
+        </Attribute>
+        <Attribute Name="ZRA" Unit="" DataType="Double" Description="Rackett constant">
+            <Data Index="1" Value="null" />
+            <Data Index="2" Value="null" />
+            <Data Index="3" Value="null" />
+        </Attribute>
+        <Attribute Name="POLARP" Unit="" DataType="Double" Description="Polar parameter">
+            <Data Index="1" Value="null" />
+            <Data Index="2" Value="null" />
+            <Data Index="3" Value="null" />
+        </Attribute>
+        <Attribute Name="EPSK" Unit="" DataType="Double" Description="Eps/K">
+            <Data Index="1" Value="null" />
+            <Data Index="2" Value="null" />
+            <Data Index="3" Value="null" />
+        </Attribute>
+        <Attribute Name="UOPK" Unit="" DataType="Double" Description="Watson factor">
+            <Data Index="1" Value="11.078718" />
+            <Data Index="2" Value="11.275832" />
+            <Data Index="3" Value="11.037215" />
+        </Attribute>
+        <Attribute Name="API" Unit="" DataType="Double" Description="API gravity @ 60F">
+            <Data Index="1" Value="null" />
+            <Data Index="2" Value="null" />
+            <Data Index="3" Value="20.000000" />
+        </Attribute>
+        <Attribute Name="SG60" Unit="" DataType="Double" Description="Specific gravity @ 60 F">
+            <Data Index="1" Value="0.858703" />
+            <Data Index="2" Value="0.855567" />
+            <Data Index="3" Value="0.875811" />
+        </Attribute>
+    </Objects>
+    <Objects Name="Streams" />
+    <Objects Name="Equipment">
+        <Object Name="1" UserName="" Class="BATC">
+            <Attribute Name="Position" Unit="" DataType="Integer">
+                <Data X="281" />
+                <Data Y="286" />
+            </Attribute>
+            <Attribute Name="AttachedProducts" Unit="" DataType="Integer" />
+            <Attribute Name="AttachedFeeds" Unit="" DataType="Integer" />
+            <Attribute Name="No of stages" Unit="" DataType="Double">
+                <Data Value="36.000000" />
+            </Attribute>
+            <Attribute Name="Operation steps" Unit="" DataType="Double">
+                <Data Value="2.000000" />
+            </Attribute>
+            <Attribute Name="Stage holdup" Unit="" DataType="Double">
+                <Data Value="0.000200" />
+            </Attribute>
+            <Attribute Name="Condenser holdup" Unit="" DataType="Double">
+                <Data Value="0.005700" />
+            </Attribute>
+            <Attribute Name="Cond pressure" Unit="mmHg" DataType="Double">
+                <Data Value="1.000000" />
+            </Attribute>
+            <Attribute Name="Cond pres drop" Unit="mmHg" DataType="Double">
+                <Data Value="5.000000" />
+            </Attribute>
+            <Attribute Name="Colm pres drop" Unit="mmHg" DataType="Double">
+                <Data Value="2.000000" />
+            </Attribute>
+            <Attribute Name="Method" Unit="" DataType="Double">
+                <Data Value="1.000000" />
+            </Attribute>
+            <Attribute Name="No of iterations" Unit="" DataType="Double">
+                <Data Value="100.000000" />
+            </Attribute>
+            <Attribute Name="Damping factor" Unit="" DataType="Double">
+                <Data Value="0.500000" />
+            </Attribute>
+            <Attribute Name="Current time" Unit="h" DataType="Double">
+                <Data Value="7.600000" />
+            </Attribute>
+            <Attribute Name="Op1 spec1 value" Unit="" DataType="Double">
+                <Data Value="3.000000" />
+            </Attribute>
+            <Attribute Name="Op1 spec2 value" Unit="" DataType="Double">
+                <Data Value="0.120000" />
+            </Attribute>
+            <Attribute Name="Op1 stop value" Unit="" DataType="Double">
+                <Data Value="6.600000" />
+            </Attribute>
+            <Attribute Name="Op1 elapsed time" Unit="" DataType="Double">
+                <Data Value="6.600000" />
+            </Attribute>
+            <Attribute Name="Op1 cond duty" Unit="MJ" DataType="Double">
+                <Data Value="-198.545258" />
+            </Attribute>
+            <Attribute Name="Op1 reboiler duty" Unit="MJ" DataType="Double">
+                <Data Value="191.320084" />
+            </Attribute>
+            <Attribute Name="Op1 Calc mole reflux" Unit="kmol/h" DataType="Double">
+                <Data Value="0.036000" />
+            </Attribute>
+            <Attribute Name="Op1 Calc mass reflux" Unit="kg/h" DataType="Double">
+                <Data Value="5.553010" />
+            </Attribute>
+            <Attribute Name="Op1 accum mole" Unit="kmol" DataType="Double">
+                <Data Value="0.792002" />
+            </Attribute>
+            <Attribute Name="Op1 accum mass" Unit="kg" DataType="Double">
+                <Data Value="122.166252" />
+            </Attribute>
+            <Attribute Name="Op1 bott mole" Unit="kmol" DataType="Double">
+                <Data Value="0.252094" />
+            </Attribute>
+            <Attribute Name="Op1 bott mass" Unit="kg" DataType="Double">
+                <Data Value="39.156307" />
+            </Attribute>
+            <Attribute Name="Op2 spec1 value" Unit="" DataType="Double">
+                <Data Value="3.000000" />
+            </Attribute>
+            <Attribute Name="Op2 spec2 value" Unit="" DataType="Double">
+                <Data Value="0.120000" />
+            </Attribute>
+            <Attribute Name="Op2 stop value" Unit="" DataType="Double">
+                <Data Value="1.000000" />
+            </Attribute>
+            <Attribute Name="Op2 elapsed time" Unit="" DataType="Double">
+                <Data Value="1.000000" />
+            </Attribute>
+            <Attribute Name="Op2 cond duty" Unit="MJ" DataType="Double">
+                <Data Value="-34.923145" />
+            </Attribute>
+            <Attribute Name="Op2 reboiler duty" Unit="MJ" DataType="Double">
+                <Data Value="33.359913" />
+            </Attribute>
+            <Attribute Name="Op2 Calc mole reflux" Unit="kmol/h" DataType="Double">
+                <Data Value="0.018000" />
+            </Attribute>
+            <Attribute Name="Op2 Calc mass reflux" Unit="kg/h" DataType="Double">
+                <Data Value="2.797270" />
+            </Attribute>
+            <Attribute Name="Op2 accum mole" Unit="kmol" DataType="Double">
+                <Data Value="0.120000" />
+            </Attribute>
+            <Attribute Name="Op2 accum mass" Unit="kg" DataType="Double">
+                <Data Value="18.602558" />
+            </Attribute>
+            <Attribute Name="Op2 bott mole" Unit="kmol" DataType="Double">
+                <Data Value="0.133062" />
+            </Attribute>
+            <Attribute Name="Op2 bott mass" Unit="kg" DataType="Double">
+                <Data Value="20.661463" />
+            </Attribute>
+        </Object>
+    </Objects>
+    <EventLog />
+</AxsysSimulationCaseNeutralFile>

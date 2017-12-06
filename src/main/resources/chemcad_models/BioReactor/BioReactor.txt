@@ -1,0 +1,209 @@
+
+CHEMCAD 6.5.7                                              Page 1
+
+Simulation: BioReactor                   Date: 12/06/2017  Time: 22:10:43
+
+FLOWSHEET SUMMARY
+
+Equipment   Label         Stream Numbers
+
+   1  KREA                 1  -2
+
+
+Stream Connections
+
+Stream     Equipment
+          From    To
+    1              1
+    2        1      
+
+
+CHEMCAD 6.5.7                                              Page 2
+
+Simulation: BioReactor                   Date: 12/06/2017  Time: 22:10:43
+
+Calculation mode : Sequential
+Flash algorithm  : Normal
+
+Equipment Calculation Sequence
+   1
+
+No recycle loops in the flowsheet.
+
+
+CHEMCAD 6.5.7                                              Page 3
+
+Simulation: BioReactor                   Date: 12/06/2017  Time: 22:10:43
+
+Overall Mass Balance       kmol/h                    kg/h             
+                        Input       Output        Input       Output
+Benzene                 1.280        0.220      100.000       17.186
+BioMass                28.258       37.195      696.000      916.125
+Carbon Dioxide          0.000        4.360        0.000      191.881
+DeadBioMass             5.127        6.241      126.270      153.705
+Alpha-D-Glucose         4.357        1.267      785.000      228.234
+Water               15599.501    15610.608   281025.000   281225.094
+
+Total               15638.523    15659.891   282732.250   282732.219
+
+
+CHEMCAD 6.5.7                                              Page 4
+
+Simulation: BioReactor                   Date: 12/06/2017  Time: 22:10:43
+
+Overall Energy Balance        MJ/h
+                         Input              Output
+Feed Streams      -4.46757e+006
+Product Streams                       -4.46999e+006
+Total Heating                 0
+Total Cooling          -2416.23
+Power Added                   0
+Power Generated               0
+
+Total             -4.46999e+006       -4.46999e+006
+
+CHEMCAD 6.5.7                                              Page 5
+
+Simulation: BioReactor                   Date: 12/06/2017  Time: 22:10:43
+
+COMPONENTS
+          ID #     Name              Formula
+   1        40     Benzene           C6H6         
+   2      8032     BioMass                        
+   3        49     Carbon Dioxide    CO2          
+   4      8033     DeadBioMass                    
+   5       776     Alpha-D-Glucose   C6H12O6      
+   6        62     Water             H2O          
+
+User/Pool Components Data Source
+   2      8032     BioMass          
+   4      8033     DeadBioMass      
+
+THERMODYNAMICS
+
+ K-value model     :  Raoult's Law (Ideal Vapor Pressure)
+ Enthalpy model    :  Latent Heat
+ Liquid density    :  Library  
+
+ Std vapor rate reference temperature is 0 C.
+ Atmospheric pressure is       1.0132 bar.
+
+CHEMCAD 6.5.7                                              Page 6
+
+Simulation: BioReactor                   Date: 12/06/2017  Time: 22:10:43
+EQUIPMENT SUMMARIES 
+
+                      Kinetic Reactor Summary
+
+Equip. No.                      1
+       Name                        
+Reactor type                    1  
+Thermal mode                    1  
+Pressure In  bar             1.0000
+Tout  C                     25.0000
+Q  MJ/h                  -2416.2256
+Reactor volume  liter   1.6980e+006
+Concentration Flag              2  
+Tolerance               1.0000e-006
+Conversion                   0.6321
+Key                             1  
+No. of Reactions                3  
+Molar Flow Unit                 2  
+Activ. E/H of Rxn Unit          7  
+Volume Unit                     2  
+Rate equation type              2  
+Overall IG Ht of Rxn      -553.1077
+ (MJ/h)
+Mass unit                       3  
+Overall Liq H of Rxn     -2395.1582
+ (MJ/h)
+
+
+Reaction Stoichiometrics and Parameters for unit no. 1
+
+ Reaction   1
+ RateConst =   0.0000e+000   Act.E =   0.0000e+000   Hrxn  =   0.0000e+000
+ Comp    Stoich.    Exp.factor    AdsorbFac.    AdsorbE       AdsorbExp.
+   5   -1.00e+000   0.0000e+000   0.0000e+000   0.0000e+000   0.0000e+000
+   2    4.00e-001   0.0000e+000   0.0000e+000   0.0000e+000   0.0000e+000
+   3    3.00e-001   0.0000e+000   0.0000e+000   0.0000e+000   0.0000e+000
+   6    3.00e-001   0.0000e+000   0.0000e+000   0.0000e+000   0.0000e+000
+
+ Reaction   2
+ RateConst =   0.0000e+000   Act.E =   0.0000e+000   Hrxn  =   0.0000e+000
+ Comp    Stoich.    Exp.factor    AdsorbFac.    AdsorbE       AdsorbExp.
+   1   -1.00e+000   0.0000e+000   0.0000e+000   0.0000e+000   0.0000e+000
+   2    3.00e-001   0.0000e+000   0.0000e+000   0.0000e+000   0.0000e+000
+   3    3.00e-001   0.0000e+000   0.0000e+000   0.0000e+000   0.0000e+000
+   6    4.00e-001   0.0000e+000   0.0000e+000   0.0000e+000   0.0000e+000
+
+ Reaction   3
+ RateConst =   0.0000e+000   Act.E =   0.0000e+000   Hrxn  =   0.0000e+000
+ Comp    Stoich.    Exp.factor    AdsorbFac.    AdsorbE       AdsorbExp.
+CHEMCAD 6.5.7                                              Page 7
+
+Simulation: BioReactor                   Date: 12/06/2017  Time: 22:10:43
+EQUIPMENT SUMMARIES 
+
+   2   -1.00e+000   0.0000e+000   0.0000e+000   0.0000e+000   0.0000e+000
+   4    1.00e+000   0.0000e+000   0.0000e+000   0.0000e+000   0.0000e+000
+CHEMCAD 6.5.7                                              Page 8
+
+Simulation: BioReactor                   Date: 12/06/2017  Time: 22:10:43
+STREAM PROPERTIES 
+
+Stream No.                      1             2 
+       Name                                     
+- - Overall - -
+Molar flow kmol/h      15638.5234    15659.8906 
+Mass flow  kg/h       282732.2500   282732.2188 
+Temp C                    25.0000       25.0000 
+Pres bar                   1.0000        1.0000 
+Vapor mole fraction        0.0000        0.0000 
+Enth MJ/h            -4.4676E+006  -4.4700E+006 
+Tc C                     395.7164      393.4221 
+Pc bar                   272.4799      267.2482 
+Std. sp gr.  wtr = 1        1.002         1.001 
+Std. sp gr.  air = 1        0.624         0.623 
+Degree API                 9.6642        9.9019 
+Average mol wt            18.0792       18.0545 
+Actual dens kg/m3        999.0646      997.2575 
+Actual vol liter/h    282997.0000   283509.7500 
+Std liq  liter/hr     282061.6563   282536.5313 
+Std vap 0 C liter/h  350516352.0000  350995232.0000 
+- - Liquid only - -
+Molar flow kmol/h      15638.5234    15659.8906 
+Mass flow  kg/h       282732.2500   282732.2188 
+Average mol wt            18.0792       18.0545 
+Actual dens kg/m3        999.0646      997.2575 
+Actual vol liter/hr   282997.0000   283509.7500 
+Std liq  liter/hr     282061.6563   282536.5313 
+Std vap 0 C liter/h  350516352.0000  350995232.0000 
+Cp kJ/kg-K                 4.1777        4.1851 
+Z factor                   0.0011        0.0010 
+Visc N-s/m2             0.0009948      0.001008 
+Th cond W/m-K              0.6037        0.6024 
+Surf. tens. N/m            0.0719        0.0717 
+
+CHEMCAD 6.5.7                                              Page 9
+
+Simulation: BioReactor                   Date: 12/06/2017  Time: 22:10:43
+FLOW SUMMARIES: 
+
+Stream No.                    1             2
+Stream Name                                   
+Temp  C                 25.0000*      25.0000 
+Pres  bar                1.0000*       1.0000 
+Enth  MJ/h         -4.4676E+006  -4.4700E+006 
+Vapor mass frac.        0.00000       0.00000 
+Total kmol/h         15638.5234    15659.8906 
+Total kg/h          282732.2500   282732.2188 
+Total std L liter/  282061.6563   282536.5313 
+Total std V liter/ 350516352.00  350995232.00 
+Flow rates in kg/h
+Benzene                100.0000       17.1864 
+BioMass                696.0000      916.1246 
+Carbon Dioxide           0.0000      191.8805 
+DeadBioMass            126.2700      153.7048 
+Alpha-D-Glucose        785.0000      228.2342 
+Water               281025.0000   281225.0938 

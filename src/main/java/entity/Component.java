@@ -24,7 +24,12 @@ public class Component {
     public String getFormula() {
         return formula;
     }
+
     public String getName() {
         return name;
+    }
+
+    public String toString(){
+        return this.name + "\t" + this.formula + "\t" + this.id;
     }
 }
