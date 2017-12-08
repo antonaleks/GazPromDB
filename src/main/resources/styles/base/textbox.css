@@ -1,0 +1,11 @@
+
+
+.textbox{
+    -fx-border-color: #00bfff;
+    -fx-background-color: transparent;
+    -fx-border-radius: 10;
+    -fx-text-fill: blue ;
+    -fx-border-width: 3;
+
+
+}

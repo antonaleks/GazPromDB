@@ -6,7 +6,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="442.0" prefWidth="622.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FoundChangesFormController">
+<AnchorPane prefHeight="451.0" prefWidth="622.0" stylesheets="/styles/base/base.css" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FoundChangesFormController">
    <children>
       <Label layoutX="14.0" layoutY="6.0" text="Найденные изменения:" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="6.0" />
       <TableView layoutX="15.0" layoutY="31.0" prefHeight="362.0" prefWidth="592.0" AnchorPane.bottomAnchor="49.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="31.0">
@@ -20,6 +20,6 @@
             <TableColumn prefWidth="146.0" text="Дата" />
          </columns>
       </TableView>
-      <Button layoutX="532.0" layoutY="403.0" mnemonicParsing="false" onAction="#closeForm" prefHeight="25.0" prefWidth="76.0" text="Закрыть" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
+      <Button layoutX="492.0" layoutY="420.0" mnemonicParsing="false" onAction="#closeForm" prefHeight="25.0" prefWidth="115.0" text="Закрыть" AnchorPane.bottomAnchor="6.0" AnchorPane.rightAnchor="15.0" />
    </children>
 </AnchorPane>
