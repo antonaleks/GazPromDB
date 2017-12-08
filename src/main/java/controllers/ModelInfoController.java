@@ -50,7 +50,7 @@ public class ModelInfoController extends BaseController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(
                 "/fxml/objGroup.fxml"));
         Parent root = loader.load();
-        objGroupController objGroupController = loader.getController();
+        ObjGroupController objGroupController = loader.getController();
         objGroupController.initialize(this.model);
         loadModalWindow(actionEvent, "Обзор xml файла", root);
     }
