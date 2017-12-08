@@ -49,11 +49,11 @@ public class MainFormController {
     }
 
     public void showFindEntryForm(ActionEvent actionEvent) throws IOException {
-       // showNewForm("/fxml/userHistoryForm.fxml");
+        showNewForm("/fxml/userHistoryForm.fxml");
     }
 
     public void showFindChahgesForm(ActionEvent actionEvent) throws IOException {
-        //showNewForm("/fxml/userHistoryForm.fxml");
+        showNewForm("/fxml/userHistoryForm.fxml");
     }
     @FXML
     public void showHelpForm(ActionEvent actionEvent)  {
