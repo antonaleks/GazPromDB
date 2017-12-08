@@ -1,0 +1,34 @@
+
+ #menuBar{
+
+    -fx-background-color: deepskyblue;
+
+
+}
+#mainForm{
+    -fx-background-color: white;
+   -fx-font-family: "Helvetica";
+}
+
+/*
+.menu-bar{
+    -fx-text-fill: green;
+    -fx-background-color: deepskyblue;
+}
+
+.menu-item{
+    -fx-text-fill: green;
+    -fx-background-color: white;
+    -fx-border-color:  deepskyblue;
+    -fx-border-radius: 10;
+    -fx-font-size: 40px;
+
+}
+.base-white{
+    -fx-background-color: black;
+    -fx-text-fill: green;
+}
+.white-font{
+    -fx-text-fill: green;
+
+}*/

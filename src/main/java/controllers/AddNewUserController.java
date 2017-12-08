@@ -12,6 +12,7 @@ public class AddNewUserController {
 
     public void closeForm(ActionEvent actionEvent) {
         javafx.stage.Window parentWindow = ((Node) actionEvent.getSource()).getScene().getWindow();
+
         parentWindow.hide();
     }
 }

@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="182.0" prefWidth="402.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.UserHistoryFormController">
+<AnchorPane prefHeight="182.0" prefWidth="469.0" stylesheets="/styles/base/base.css" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.UserHistoryFormController">
    <children>
-      <Button layoutX="125.0" layoutY="101.0" mnemonicParsing="false" onAction="#showFoundChangesForm" text="История пользователя" />
-      <Button layoutX="282.0" layoutY="101.0" mnemonicParsing="false" onAction="#closeForm" text="Закрыть" />
+      <Button layoutX="68.0" layoutY="101.0" mnemonicParsing="false" onAction="#showFoundChangesForm" prefHeight="25.0" prefWidth="222.0" text="История пользователя" />
+      <Button layoutX="321.0" layoutY="101.0" mnemonicParsing="false" onAction="#closeForm" prefHeight="25.0" prefWidth="94.0" text="Закрыть" />
       <Label layoutX="25.0" layoutY="36.0" text="Введите логин пользователя:" />
-      <TextField layoutX="195.0" layoutY="32.0" />
+      <TextField layoutX="255.0" layoutY="32.0" prefHeight="25.0" prefWidth="160.0" style="-fx-text-fill: deepskyblue; -fx-font-weight: bold" styleClass="textbox" />
    </children>
 </AnchorPane>
