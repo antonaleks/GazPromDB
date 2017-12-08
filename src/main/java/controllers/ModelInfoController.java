@@ -50,8 +50,17 @@ public class ModelInfoController extends BaseController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(
                 "/fxml/objGroup.fxml"));
         Parent root = loader.load();
-        objGroupController objGroupController = loader.getController();
+        ObjGroupController objGroupController = loader.getController();
         objGroupController.initialize(this.model);
         loadModalWindow(actionEvent, "Обзор xml файла", root);
+    }
+
+    public void showReport(ActionEvent actionEvent) throws IOException, SQLException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(
+                "/fxml/reportForm.fxml"));
+        Parent root = loader.load();
+        ReportController reportController = loader.getController();
+        reportController.initialize(this.model);
+        loadModalWindow(actionEvent, "Данные из txt отчета", root);
     }
 }

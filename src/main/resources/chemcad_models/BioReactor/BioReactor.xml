@@ -1,0 +1,993 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<AxsysSimulationCaseNeutralFile>
+    <SimulationCaseInformation>
+        <!--This element contains general information on the simulation-->
+        <SimulationName Value="BioReactor" />
+        <SimulationDirectory Value="C:\subd\GazPromDB\src\main\resources\chemcad_models\BioReactor\~BioReactor.tmp\" />
+        <CHEMCADVersion Version="CHEMCAD 6.5.7.8139" />
+        <CHEMCAD_Schema Version="1.1" />
+    </SimulationCaseInformation>
+    <Objects Class="FluidPackage" Name="Basis-1">
+        <Attribute Name="COMPID" Unit="" DataType="Integer">
+            <Data Index="1" Value="40" />
+            <Data Index="2" Value="8032" />
+            <Data Index="3" Value="49" />
+            <Data Index="4" Value="8033" />
+            <Data Index="5" Value="776" />
+            <Data Index="6" Value="62" />
+        </Attribute>
+        <Attribute Name="COMPONENTNAME" Unit="" DataType="String">
+            <Data Index="1" Value="Benzene" />
+            <Data Index="2" Value="BioMass" />
+            <Data Index="3" Value="Carbon Dioxide" />
+            <Data Index="4" Value="DeadBioMass" />
+            <Data Index="5" Value="Alpha-D-Glucose" />
+            <Data Index="6" Value="Water" />
+        </Attribute>
+        <Attribute Name="MW" Unit="" DataType="Double" Description="Molecular weight">
+            <Data Index="1" Value="78.113998" />
+            <Data Index="2" Value="24.629999" />
+            <Data Index="3" Value="44.009998" />
+            <Data Index="4" Value="24.629999" />
+            <Data Index="5" Value="180.158005" />
+            <Data Index="6" Value="18.014999" />
+        </Attribute>
+        <Attribute Name="TC" Unit="R" DataType="Double" Description="Critical temperature">
+            <Data Index="1" Value="1011.690002" />
+            <Data Index="2" Value="1761.396240" />
+            <Data Index="3" Value="547.559998" />
+            <Data Index="4" Value="1761.396240" />
+            <Data Index="5" Value="5000.000000" />
+            <Data Index="6" Value="1165.229980" />
+        </Attribute>
+        <Attribute Name="PC" Unit="Psia" DataType="Double" Description="Critical pressure">
+            <Data Index="1" Value="709.959473" />
+            <Data Index="2" Value="166.847733" />
+            <Data Index="3" Value="1070.599243" />
+            <Data Index="4" Value="166.847733" />
+            <Data Index="5" Value="100.112000" />
+            <Data Index="6" Value="3207.976807" />
+        </Attribute>
+        <Attribute Name="VC" Unit="Cubic Foot/Lbmol" DataType="Double" Description="Critical volume">
+            <Data Index="1" Value="4.100727" />
+            <Data Index="2" Value="19.741224" />
+            <Data Index="3" Value="1.487523" />
+            <Data Index="4" Value="19.741224" />
+            <Data Index="5" Value="15.000000" />
+            <Data Index="6" Value="1.017076" />
+        </Attribute>
+        <Attribute Name="TM" Unit="R" DataType="Double" Description="Melting point">
+            <Data Index="1" Value="501.623993" />
+            <Data Index="2" Value="null" />
+            <Data Index="3" Value="389.843994" />
+            <Data Index="4" Value="null" />
+            <Data Index="5" Value="754.469971" />
+            <Data Index="6" Value="491.670013" />
+        </Attribute>
+        <Attribute Name="TB" Unit="R" DataType="Double" Description="Normal boiling point">
+            <Data Index="1" Value="635.831970" />
+            <Data Index="2" Value="1440.000000" />
+            <Data Index="3" Value="350.406006" />
+            <Data Index="4" Value="1440.000000" />
+            <Data Index="5" Value="3000.000000" />
+            <Data Index="6" Value="671.669983" />
+        </Attribute>
+        <Attribute Name="HFORM" Unit="BTU/Lbmol" DataType="Double" Description="Heat of formation">
+            <Data Index="1" Value="35631.847656" />
+            <Data Index="2" Value="0.000000" />
+            <Data Index="3" Value="-169182.484375" />
+            <Data Index="4" Value="0.000000" />
+            <Data Index="5" Value="-547719.250000" />
+            <Data Index="6" Value="-103963.476563" />
+        </Attribute>
+        <Attribute Name="GFORM" Unit="BTU/Lbmol" DataType="Double" Description="Gibbs energy of formation">
+            <Data Index="1" Value="55717.750000" />
+            <Data Index="2" Value="0.000000" />
+            <Data Index="3" Value="-169565.109375" />
+            <Data Index="4" Value="0.000000" />
+            <Data Index="5" Value="-390970.093750" />
+            <Data Index="6" Value="-98275.625000" />
+        </Attribute>
+        <Attribute Name="W" Unit="" DataType="Double" Description="Accentric factor">
+            <Data Index="1" Value="0.210300" />
+            <Data Index="2" Value="1.026037" />
+            <Data Index="3" Value="0.231000" />
+            <Data Index="4" Value="1.026037" />
+            <Data Index="5" Value="1.500000" />
+            <Data Index="6" Value="0.348000" />
+        </Attribute>
+        <Attribute Name="SOL" Unit="(cal/cc)^0.5" DataType="Double" Description="Solubility parameter">
+            <Data Index="1" Value="9.139026" />
+            <Data Index="2" Value="20.000000" />
+            <Data Index="3" Value="7.117688" />
+            <Data Index="4" Value="20.000000" />
+            <Data Index="5" Value="7.500000" />
+            <Data Index="6" Value="23.367071" />
+        </Attribute>
+        <Attribute Name="DPM" Unit="debyes" DataType="Double" Description="Dipole moment">
+            <Data Index="1" Value="null" />
+            <Data Index="2" Value="null" />
+            <Data Index="3" Value="null" />
+            <Data Index="4" Value="null" />
+            <Data Index="5" Value="null" />
+            <Data Index="6" Value="1.849990" />
+        </Attribute>
+        <Attribute Name="TBM" Unit="R" DataType="Double" Description="Mean boiling point">
+            <Data Index="1" Value="null" />
+            <Data Index="2" Value="1440.000000" />
+            <Data Index="3" Value="null" />
+            <Data Index="4" Value="1440.000000" />
+            <Data Index="5" Value="null" />
+            <Data Index="6" Value="null" />
+        </Attribute>
+        <Attribute Name="HVAP" Unit="BTU/Lbmol" DataType="Double" Description="Heat of vaporization at 1 atm">
+            <Data Index="1" Value="13224.980469" />
+            <Data Index="2" Value="39750.464844" />
+            <Data Index="3" Value="7375.193848" />
+            <Data Index="4" Value="39750.464844" />
+            <Data Index="5" Value="18138.677734" />
+            <Data Index="6" Value="17479.207031" />
+        </Attribute>
+        <Attribute Name="NHV" Unit="BTU/Lbmol" DataType="Double" Description="Net heating value">
+            <Data Index="1" Value="17255.552734" />
+            <Data Index="2" Value="17479.832031" />
+            <Data Index="3" Value="null" />
+            <Data Index="4" Value="17479.832031" />
+            <Data Index="5" Value="6056.631836" />
+            <Data Index="6" Value="-1055.059326" />
+        </Attribute>
+        <Attribute Name="GHV" Unit="BTU/Lbmol" DataType="Double" Description="Gross heating value">
+            <Data Index="1" Value="17988.935547" />
+            <Data Index="2" Value="18427.232422" />
+            <Data Index="3" Value="null" />
+            <Data Index="4" Value="18427.232422" />
+            <Data Index="5" Value="6692.600098" />
+            <Data Index="6" Value="null" />
+        </Attribute>
+        <Attribute Name="LVC" Unit="cc/mol" DataType="Double" Description="Liquid volume constant">
+            <Data Index="1" Value="12.260000" />
+            <Data Index="2" Value="3.585449" />
+            <Data Index="3" Value="6.365000" />
+            <Data Index="4" Value="3.585449" />
+            <Data Index="5" Value="null" />
+            <Data Index="6" Value="2.552000" />
+        </Attribute>
+        <Attribute Name="MSD" Unit="Angstroms" DataType="Double" Description="Molecular diameter">
+            <Data Index="1" Value="null" />
+            <Data Index="2" Value="null" />
+            <Data Index="3" Value="null" />
+            <Data Index="4" Value="null" />
+            <Data Index="5" Value="null" />
+            <Data Index="6" Value="2.520000" />
+        </Attribute>
+        <Attribute Name="WIM" Unit="" DataType="Double" Description="Modified accentric factor">
+            <Data Index="1" Value="0.213000" />
+            <Data Index="2" Value="1.026037" />
+            <Data Index="3" Value="0.231000" />
+            <Data Index="4" Value="1.026037" />
+            <Data Index="5" Value="1.500000" />
+            <Data Index="6" Value="0.348000" />
+        </Attribute>
+        <Attribute Name="UNIQUAC_Q" Unit="" DataType="Double" Description="UNIQUAC area parameter">
+            <Data Index="1" Value="2.400000" />
+            <Data Index="2" Value="null" />
+            <Data Index="3" Value="null" />
+            <Data Index="4" Value="null" />
+            <Data Index="5" Value="null" />
+            <Data Index="6" Value="1.399700" />
+        </Attribute>
+        <Attribute Name="UNIQUAC_R" Unit="" DataType="Double" Description="UNIQUAC volume parameter">
+            <Data Index="1" Value="3.187800" />
+            <Data Index="2" Value="null" />
+            <Data Index="3" Value="null" />
+            <Data Index="4" Value="null" />
+            <Data Index="5" Value="null" />
+            <Data Index="6" Value="0.920000" />
+        </Attribute>
+        <Attribute Name="WILSON_V" Unit="" DataType="Double" Description="Wilson molar volume">
+            <Data Index="1" Value="89.410004" />
+            <Data Index="2" Value="null" />
+            <Data Index="3" Value="null" />
+            <Data Index="4" Value="null" />
+            <Data Index="5" Value="null" />
+            <Data Index="6" Value="18.069000" />
+        </Attribute>
+        <Attribute Name="STIEHL" Unit="" DataType="Double" Description="Stiehl polar factor">
+            <Data Index="1" Value="null" />
+            <Data Index="2" Value="null" />
+            <Data Index="3" Value="null" />
+            <Data Index="4" Value="null" />
+            <Data Index="5" Value="null" />
+            <Data Index="6" Value="0.023000" />
+        </Attribute>
+        <Attribute Name="ZRA" Unit="" DataType="Double" Description="Rackett constant">
+            <Data Index="1" Value="0.269600" />
+            <Data Index="2" Value="null" />
+            <Data Index="3" Value="0.274500" />
+            <Data Index="4" Value="null" />
+            <Data Index="5" Value="null" />
+            <Data Index="6" Value="null" />
+        </Attribute>
+        <Attribute Name="POLARP" Unit="" DataType="Double" Description="Polar parameter">
+            <Data Index="1" Value="null" />
+            <Data Index="2" Value="null" />
+            <Data Index="3" Value="null" />
+            <Data Index="4" Value="null" />
+            <Data Index="5" Value="null" />
+            <Data Index="6" Value="1.000000" />
+        </Attribute>
+        <Attribute Name="EPSK" Unit="" DataType="Double" Description="Eps/K">
+            <Data Index="1" Value="null" />
+            <Data Index="2" Value="null" />
+            <Data Index="3" Value="null" />
+            <Data Index="4" Value="null" />
+            <Data Index="5" Value="null" />
+            <Data Index="6" Value="775.000000" />
+        </Attribute>
+        <Attribute Name="UOPK" Unit="" DataType="Double" Description="Watson factor">
+            <Data Index="1" Value="9.730000" />
+            <Data Index="2" Value="10.754437" />
+            <Data Index="3" Value="8.523150" />
+            <Data Index="4" Value="10.754437" />
+            <Data Index="5" Value="2.573403" />
+            <Data Index="6" Value="8.755704" />
+        </Attribute>
+        <Attribute Name="API" Unit="" DataType="Double" Description="API gravity @ 60F">
+            <Data Index="1" Value="28.500000" />
+            <Data Index="2" Value="3.261911" />
+            <Data Index="3" Value="null" />
+            <Data Index="4" Value="3.261911" />
+            <Data Index="5" Value="null" />
+            <Data Index="6" Value="null" />
+        </Attribute>
+        <Attribute Name="SG60" Unit="" DataType="Double" Description="Specific gravity @ 60 F">
+            <Data Index="1" Value="0.884400" />
+            <Data Index="2" Value="1.050000" />
+            <Data Index="3" Value="0.827000" />
+            <Data Index="4" Value="1.050000" />
+            <Data Index="5" Value="5.602950" />
+            <Data Index="6" Value="1.000000" />
+        </Attribute>
+    </Objects>
+    <Objects Name="Streams">
+        <Object Class="MaterialStream" Name="1">
+            <Attribute Name="Vertices" Unit="" DataType="Integer">
+                <Data X1="189" X2="271" X3="271" X4="334" />
+                <Data Y1="426" Y2="426" Y3="426" Y4="426" />
+            </Attribute>
+            <Attribute Name="Stream Label" Unit="" DataType="String">
+                <Data Value="" />
+            </Attribute>
+            <Attribute Name="ComponentFlowrates" Unit="kg/h" DataType="Double">
+                <Data Index="1" ComponentName="Benzene" Value="100.000000" />
+                <Data Index="2" ComponentName="BioMass" Value="696.000000" />
+                <Data Index="3" ComponentName="Carbon Dioxide" Value="0.000000" />
+                <Data Index="4" ComponentName="DeadBioMass" Value="126.269997" />
+                <Data Index="5" ComponentName="Alpha-D-Glucose" Value="785.000000" />
+                <Data Index="6" ComponentName="Water" Value="281025.000000" />
+            </Attribute>
+            <Attribute Name="DestinationOper" Unit="" DataType="Integer">
+                <Data Value="1" />
+            </Attribute>
+            <Attribute Name="Temperature" Unit="C" DataType="Double">
+                <Data Value="25.000000" />
+            </Attribute>
+            <Attribute Name="Pressure" Unit="bar" DataType="Double">
+                <Data Value="1.000000" />
+            </Attribute>
+            <Attribute Name="Mole vap frac" Unit="" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="Enthalpy" Unit="MJ/h" DataType="Double">
+                <Data Value="-4467573.000000" />
+            </Attribute>
+            <Attribute Name="Total mole rate" Unit="kmol/h" DataType="Double">
+                <Data Value="15638.523438" />
+            </Attribute>
+            <Attribute Name="Total mass rate" Unit="kg/h" DataType="Double">
+                <Data Value="282732.250000" />
+            </Attribute>
+            <Attribute Name="Total std liq vol rate" Unit="liter/hr" DataType="Double">
+                <Data Value="282061.656250" />
+            </Attribute>
+            <Attribute Name="Total std vap vol rate" Unit="liter/h" DataType="Double">
+                <Data Value="350516352.000000" />
+            </Attribute>
+            <Attribute Name="Total act vol rate" Unit="liter/h" DataType="Double">
+                <Data Value="282997.000000" />
+            </Attribute>
+            <Attribute Name="Total actual density" Unit="kg/m3" DataType="Double">
+                <Data Value="999.064575" />
+            </Attribute>
+            <Attribute Name="Total Mw" Unit="" DataType="Double">
+                <Data Value="18.079216" />
+            </Attribute>
+            <Attribute Name="Gross H value" Unit="kJ/kg" DataType="Double">
+                <Data Value="182.676132" />
+            </Attribute>
+            <Attribute Name="Net H value" Unit="kJ/kg" DataType="Double">
+                <Data Value="-2267.701904" />
+            </Attribute>
+            <Attribute Name="Reid vapor pressure" Unit="bar" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="UOPK" Unit="" DataType="Double">
+                <Data Value="8.744697" />
+            </Attribute>
+            <Attribute Name="VABP" Unit="C" DataType="Double">
+                <Data Value="485.628632" />
+            </Attribute>
+            <Attribute Name="MeABP" Unit="C" DataType="Double">
+                <Data Value="112.620537" />
+            </Attribute>
+            <Attribute Name="Flash point" Unit="C" DataType="Double">
+                <Data Value="41.863293" />
+            </Attribute>
+            <Attribute Name="Pour point" Unit="C" DataType="Double">
+                <Data Value="-76.342461" />
+            </Attribute>
+            <Attribute Name="Total entropy" Unit="MJ/C/h" DataType="Double">
+                <Data Value="-2557.776611" />
+            </Attribute>
+            <Attribute Name="Mass vapor fraction" Unit="" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="PH value" Unit="" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="RONC" Unit="" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="MONC" Unit="" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="Sulfur content" Unit="" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="Vapor mole rate" Unit="kmol/h" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="Vapor mass rate" Unit="kg/h" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="Vapor enthalpy" Unit="MJ/h" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="Vapor entropy" Unit="MJ/C/h" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="Vapor Mw" Unit="" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="Vapor actual density" Unit="kg/m3" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="Vapor actual volume rate" Unit="liter/h" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="Vap std  Liquid volume rate" Unit="liter/hr" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="Vap std  Vapor volume rate" Unit="liter/h" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="Vapor cp" Unit="kJ/kg-K" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="Vapor Z factor" Unit="" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="Vapor viscosity" Unit="N-s/m2" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="Vapor thermal conductivity" Unit="W/m-K" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="Vapor Cp/Cv" Unit="" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="Relative humidity" Unit="" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="Liquid mole rate" Unit="kmol/h" DataType="Double">
+                <Data Value="15638.523438" />
+            </Attribute>
+            <Attribute Name="Liquid mass rate" Unit="kg/h" DataType="Double">
+                <Data Value="282732.250000" />
+            </Attribute>
+            <Attribute Name="Liquid enthalpy" Unit="MJ/h" DataType="Double">
+                <Data Value="-4467573.000000" />
+            </Attribute>
+            <Attribute Name="Liquid entropy" Unit="MJ/C/h" DataType="Double">
+                <Data Value="-2557.776611" />
+            </Attribute>
+            <Attribute Name="Liquid Mw" Unit="" DataType="Double">
+                <Data Value="18.079216" />
+            </Attribute>
+            <Attribute Name="Liquid actual density" Unit="kg/m3" DataType="Double">
+                <Data Value="999.064575" />
+            </Attribute>
+            <Attribute Name="Liquid actual volume rate" Unit="liter/hr" DataType="Double">
+                <Data Value="282997.000000" />
+            </Attribute>
+            <Attribute Name="Liquid std  Liquid volume rate" Unit="liter/hr" DataType="Double">
+                <Data Value="282061.656250" />
+            </Attribute>
+            <Attribute Name="Liquid std  Vapor volume rate" Unit="liter/h" DataType="Double">
+                <Data Value="350516352.000000" />
+            </Attribute>
+            <Attribute Name="Liquid cp" Unit="kJ/kg-K" DataType="Double">
+                <Data Value="4.177681" />
+            </Attribute>
+            <Attribute Name="Liquid Z factor" Unit="" DataType="Double">
+                <Data Value="0.001058" />
+            </Attribute>
+            <Attribute Name="Liquid viscosity" Unit="N-s/m2" DataType="Double">
+                <Data Value="0.000995" />
+            </Attribute>
+            <Attribute Name="Liquid thermal conductivity" Unit="W/m-K" DataType="Double">
+                <Data Value="0.603728" />
+            </Attribute>
+            <Attribute Name="Liquid surface tension" Unit="N/m" DataType="Double">
+                <Data Value="0.071909" />
+            </Attribute>
+            <Attribute Name="Liquid and solid actual density" Unit="kg/m3" DataType="Double">
+                <Data Value="999.064575" />
+            </Attribute>
+            <Attribute Name="Liquid and solid actual volume" Unit="liter/hr" DataType="Double">
+                <Data Value="282997.000000" />
+            </Attribute>
+            <Attribute Name="Liq  latent heat" Unit="" DataType="Double">
+                <Data Value="18963.371094" />
+            </Attribute>
+            <Attribute Name="Solid mole rate" Unit="kmol/h" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="Solid mass rate" Unit="kg/h" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="Solid Mw" Unit="" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="Solid enthalpy" Unit="MJ/h" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="Solid cp" Unit="kJ/kg-K" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="Solid actual volume" Unit="liter/hr" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="Solid density" Unit="kg/m3" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="Solid std  Vapor volume rate" Unit="liter/h" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="Solid std  Liquid volume rate" Unit="liter/hr" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="Tc" Unit="C" DataType="Double">
+                <Data Value="395.716431" />
+            </Attribute>
+            <Attribute Name="Pc" Unit="bar" DataType="Double">
+                <Data Value="272.479889" />
+            </Attribute>
+            <Attribute Name="TBP (0%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="TBP (5%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="TBP (10%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="TBP (90%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="TBP (95%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="TBP (100%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="TBP10mmHg (0%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="TBP10mmHg (5%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="TBP10mmHg (10%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="TBP10mmHg (90%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="TBP10mmHg (95%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="TBP10mmHg (100%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="D86 (0%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="D86 (5%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="D86 (10%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="D86 (90%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="D86 (95%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="D86 (100%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="D1160 (0%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="D1160 (5%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="D1160 (10%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="D1160 (90%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="D1160 (95%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="D1160 (100%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="D1160_10mmHg (0%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="D1160_10mmHg (5%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="D1160_10mmHg (10%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="D1160_10mmHg (90%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="D1160_10mmHg (95%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="D1160_10mmHg (100%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="D2887 (0%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="D2887 (5%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="D2887 (10%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="D2887 (90%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="D2887 (95%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="D2887 (100%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="Ideal Vapor Cp/Cv" Unit="" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+        </Object>
+        <Object Class="MaterialStream" Name="2">
+            <Attribute Name="Vertices" Unit="" DataType="Integer">
+                <Data X1="386" X2="386" X3="559" />
+                <Data Y1="587" Y2="666" Y3="666" />
+            </Attribute>
+            <Attribute Name="Stream Label" Unit="" DataType="String">
+                <Data Value="" />
+            </Attribute>
+            <Attribute Name="ComponentFlowrates" Unit="kg/h" DataType="Double">
+                <Data Index="1" ComponentName="Benzene" Value="17.186417" />
+                <Data Index="2" ComponentName="BioMass" Value="916.124573" />
+                <Data Index="3" ComponentName="Carbon Dioxide" Value="191.880508" />
+                <Data Index="4" ComponentName="DeadBioMass" Value="153.704788" />
+                <Data Index="5" ComponentName="Alpha-D-Glucose" Value="228.234253" />
+                <Data Index="6" ComponentName="Water" Value="281225.093750" />
+            </Attribute>
+            <Attribute Name="SourceOper" Unit="" DataType="Integer">
+                <Data Value="1" />
+            </Attribute>
+            <Attribute Name="Temperature" Unit="C" DataType="Double">
+                <Data Value="25.000000" />
+            </Attribute>
+            <Attribute Name="Pressure" Unit="bar" DataType="Double">
+                <Data Value="1.000000" />
+            </Attribute>
+            <Attribute Name="Mole vap frac" Unit="" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="Enthalpy" Unit="MJ/h" DataType="Double">
+                <Data Value="-4469989.000000" />
+            </Attribute>
+            <Attribute Name="Total mole rate" Unit="kmol/h" DataType="Double">
+                <Data Value="15659.890625" />
+            </Attribute>
+            <Attribute Name="Total mass rate" Unit="kg/h" DataType="Double">
+                <Data Value="282732.218750" />
+            </Attribute>
+            <Attribute Name="Total std liq vol rate" Unit="liter/hr" DataType="Double">
+                <Data Value="282536.531250" />
+            </Attribute>
+            <Attribute Name="Total std vap vol rate" Unit="liter/h" DataType="Double">
+                <Data Value="350995232.000000" />
+            </Attribute>
+            <Attribute Name="Total act vol rate" Unit="liter/h" DataType="Double">
+                <Data Value="283509.750000" />
+            </Attribute>
+            <Attribute Name="Total actual density" Unit="kg/m3" DataType="Double">
+                <Data Value="997.257507" />
+            </Attribute>
+            <Attribute Name="Total Mw" Unit="" DataType="Double">
+                <Data Value="18.054548" />
+            </Attribute>
+            <Attribute Name="Gross H value" Unit="kJ/kg" DataType="Double">
+                <Data Value="177.294922" />
+            </Attribute>
+            <Attribute Name="Net H value" Unit="kJ/kg" DataType="Double">
+                <Data Value="-2273.337402" />
+            </Attribute>
+            <Attribute Name="Reid vapor pressure" Unit="bar" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="UOPK" Unit="" DataType="Double">
+                <Data Value="8.758178" />
+            </Attribute>
+            <Attribute Name="VABP" Unit="C" DataType="Double">
+                <Data Value="-17.777771" />
+            </Attribute>
+            <Attribute Name="MeABP" Unit="C" DataType="Double">
+                <Data Value="-19.087111" />
+            </Attribute>
+            <Attribute Name="Flash point" Unit="C" DataType="Double">
+                <Data Value="-104.662247" />
+            </Attribute>
+            <Attribute Name="Pour point" Unit="C" DataType="Double">
+                <Data Value="-76.977531" />
+            </Attribute>
+            <Attribute Name="Total entropy" Unit="MJ/C/h" DataType="Double">
+                <Data Value="-2556.172852" />
+            </Attribute>
+            <Attribute Name="Mass vapor fraction" Unit="" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="PH value" Unit="" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="RONC" Unit="" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="MONC" Unit="" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="Sulfur content" Unit="" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="Vapor mole rate" Unit="kmol/h" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="Vapor mass rate" Unit="kg/h" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="Vapor enthalpy" Unit="MJ/h" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="Vapor entropy" Unit="MJ/C/h" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="Vapor Mw" Unit="" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="Vapor actual density" Unit="kg/m3" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="Vapor actual volume rate" Unit="liter/h" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="Vap std  Liquid volume rate" Unit="liter/hr" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="Vap std  Vapor volume rate" Unit="liter/h" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="Vapor cp" Unit="kJ/kg-K" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="Vapor Z factor" Unit="" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="Vapor viscosity" Unit="N-s/m2" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="Vapor thermal conductivity" Unit="W/m-K" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="Vapor Cp/Cv" Unit="" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="Relative humidity" Unit="" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="Liquid mole rate" Unit="kmol/h" DataType="Double">
+                <Data Value="15659.890625" />
+            </Attribute>
+            <Attribute Name="Liquid mass rate" Unit="kg/h" DataType="Double">
+                <Data Value="282732.218750" />
+            </Attribute>
+            <Attribute Name="Liquid enthalpy" Unit="MJ/h" DataType="Double">
+                <Data Value="-4469989.000000" />
+            </Attribute>
+            <Attribute Name="Liquid entropy" Unit="MJ/C/h" DataType="Double">
+                <Data Value="-2556.172852" />
+            </Attribute>
+            <Attribute Name="Liquid Mw" Unit="" DataType="Double">
+                <Data Value="18.054548" />
+            </Attribute>
+            <Attribute Name="Liquid actual density" Unit="kg/m3" DataType="Double">
+                <Data Value="997.257507" />
+            </Attribute>
+            <Attribute Name="Liquid actual volume rate" Unit="liter/hr" DataType="Double">
+                <Data Value="283509.750000" />
+            </Attribute>
+            <Attribute Name="Liquid std  Liquid volume rate" Unit="liter/hr" DataType="Double">
+                <Data Value="282536.531250" />
+            </Attribute>
+            <Attribute Name="Liquid std  Vapor volume rate" Unit="liter/h" DataType="Double">
+                <Data Value="350995232.000000" />
+            </Attribute>
+            <Attribute Name="Liquid cp" Unit="kJ/kg-K" DataType="Double">
+                <Data Value="4.185050" />
+            </Attribute>
+            <Attribute Name="Liquid Z factor" Unit="" DataType="Double">
+                <Data Value="0.001049" />
+            </Attribute>
+            <Attribute Name="Liquid viscosity" Unit="N-s/m2" DataType="Double">
+                <Data Value="0.001008" />
+            </Attribute>
+            <Attribute Name="Liquid thermal conductivity" Unit="W/m-K" DataType="Double">
+                <Data Value="0.602385" />
+            </Attribute>
+            <Attribute Name="Liquid surface tension" Unit="N/m" DataType="Double">
+                <Data Value="0.071748" />
+            </Attribute>
+            <Attribute Name="Liquid and solid actual density" Unit="kg/m3" DataType="Double">
+                <Data Value="997.257507" />
+            </Attribute>
+            <Attribute Name="Liquid and solid actual volume" Unit="liter/hr" DataType="Double">
+                <Data Value="283509.750000" />
+            </Attribute>
+            <Attribute Name="Liq  latent heat" Unit="" DataType="Double">
+                <Data Value="18989.193359" />
+            </Attribute>
+            <Attribute Name="Solid mole rate" Unit="kmol/h" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="Solid mass rate" Unit="kg/h" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="Solid Mw" Unit="" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="Solid enthalpy" Unit="MJ/h" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="Solid cp" Unit="kJ/kg-K" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="Solid actual volume" Unit="liter/hr" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="Solid density" Unit="kg/m3" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="Solid std  Vapor volume rate" Unit="liter/h" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="Solid std  Liquid volume rate" Unit="liter/hr" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="Tc" Unit="C" DataType="Double">
+                <Data Value="393.422058" />
+            </Attribute>
+            <Attribute Name="Pc" Unit="bar" DataType="Double">
+                <Data Value="267.248230" />
+            </Attribute>
+            <Attribute Name="TBP (0%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="TBP (5%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="TBP (10%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="TBP (90%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="TBP (95%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="TBP (100%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="TBP10mmHg (0%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="TBP10mmHg (5%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="TBP10mmHg (10%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="TBP10mmHg (90%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="TBP10mmHg (95%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="TBP10mmHg (100%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="D86 (0%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="D86 (5%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="D86 (10%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="D86 (90%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="D86 (95%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="D86 (100%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="D1160 (0%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="D1160 (5%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="D1160 (10%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="D1160 (90%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="D1160 (95%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="D1160 (100%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="D1160_10mmHg (0%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="D1160_10mmHg (5%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="D1160_10mmHg (10%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="D1160_10mmHg (90%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="D1160_10mmHg (95%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="D1160_10mmHg (100%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="D2887 (0%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="D2887 (5%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="D2887 (10%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="D2887 (90%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="D2887 (95%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="D2887 (100%)" Unit="C" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+            <Attribute Name="Ideal Vapor Cp/Cv" Unit="" DataType="Double">
+                <Data Value="0.000000" />
+            </Attribute>
+        </Object>
+    </Objects>
+    <Objects Name="Equipment">
+        <Object Name="1" UserName="" Class="KREA">
+            <Attribute Name="Position" Unit="" DataType="Integer">
+                <Data X="383" />
+                <Data Y="505" />
+            </Attribute>
+            <Attribute Name="AttachedProducts" Unit="" DataType="Integer">
+                <Data Index="1" Value="2" />
+            </Attribute>
+            <Attribute Name="AttachedFeeds" Unit="" DataType="Integer">
+                <Data Index="1" Value="1" />
+            </Attribute>
+            <Attribute Name="Reactor type" Unit="" DataType="Double">
+                <Data Value="1.000000" />
+            </Attribute>
+            <Attribute Name="Thermal mode" Unit="" DataType="Double">
+                <Data Value="1.000000" />
+            </Attribute>
+            <Attribute Name="Pressure In" Unit="bar" DataType="Double">
+                <Data Value="1.000000" />
+            </Attribute>
+            <Attribute Name="Tout" Unit="C" DataType="Double">
+                <Data Value="25.000000" />
+            </Attribute>
+            <Attribute Name="Q" Unit="MJ/h" DataType="Double">
+                <Data Value="-2416.225586" />
+            </Attribute>
+            <Attribute Name="Reactor volume" Unit="liter" DataType="Double">
+                <Data Value="1698032.750000" />
+            </Attribute>
+            <Attribute Name="Concentration Flag" Unit="" DataType="Double">
+                <Data Value="2.000000" />
+            </Attribute>
+            <Attribute Name="Tolerance" Unit="" DataType="Double">
+                <Data Value="0.000001" />
+            </Attribute>
+            <Attribute Name="Conversion" Unit="" DataType="Double">
+                <Data Value="0.632100" />
+            </Attribute>
+            <Attribute Name="Key" Unit="" DataType="Double">
+                <Data Value="1.000000" />
+            </Attribute>
+            <Attribute Name="No of Reactions" Unit="" DataType="Double">
+                <Data Value="3.000000" />
+            </Attribute>
+            <Attribute Name="Molar Flow Unit" Unit="" DataType="Double">
+                <Data Value="2.000000" />
+            </Attribute>
+            <Attribute Name="Activ E/H of Rxn Unit" Unit="" DataType="Double">
+                <Data Value="7.000000" />
+            </Attribute>
+            <Attribute Name="Volume Unit" Unit="" DataType="Double">
+                <Data Value="2.000000" />
+            </Attribute>
+            <Attribute Name="Rate equation type" Unit="" DataType="Double">
+                <Data Value="2.000000" />
+            </Attribute>
+            <Attribute Name="Overall IG Ht of Rxn" Unit="MJ/h" DataType="Double">
+                <Data Value="-553.107666" />
+            </Attribute>
+            <Attribute Name="Mass unit" Unit="" DataType="Double">
+                <Data Value="3.000000" />
+            </Attribute>
+            <Attribute Name="Overall Liq H of Rxn" Unit="MJ/h" DataType="Double">
+                <Data Value="-2395.158203" />
+            </Attribute>
+        </Object>
+    </Objects>
+    <EventLog />
+</AxsysSimulationCaseNeutralFile>
