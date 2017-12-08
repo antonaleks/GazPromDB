@@ -31,7 +31,7 @@ public class DataBaseXmlHelper extends DataBaseHelper {
         ResultSet rs = statement.executeQuery();
         while (rs.next())
             modelData.add(new Model(rs.getInt("id"), rs.getString("type"),
-                    rs.getDate("date"), rs.getString("xml")));
+                    rs.getDate("date"), rs.getString("xml"), rs.getString("txt")));
         statement.close();
         closeAll();
         return modelData;
@@ -80,7 +80,7 @@ public class DataBaseXmlHelper extends DataBaseHelper {
             List<TreeItem<ObjectModel>> listTreeChild = new ArrayList<>();
             while (rsChild.next()) {
                 TreeItem<ObjectModel> childChild = new TreeItem<>(new ObjectModel("Object",
-                        rsChild.getString(rs.getString(PropertiesManager.getSqlTableProperties().getProperty("XML_OBJECT_NAME"))),
+                        rsChild.getString(PropertiesManager.getSqlTableProperties().getProperty("XML_OBJECT_NAME")),
                         rsChild.getString(PropertiesManager.getSqlTableProperties().getProperty("XML_OBJECT_CLASS")),
                         rsChild.getInt("id")));
                 listTreeChild.add(childChild);

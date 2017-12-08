@@ -95,13 +95,41 @@ public class SqlQueryHelper {
             PropertiesManager.getSqlTableProperties().getProperty("XML_DATA_TABLE_NAME"),
             PropertiesManager.getSqlTableProperties().getProperty("XML_ATTRIBUTE_TABLE_NAME"),
             PropertiesManager.getSqlTableProperties().getProperty("FOREIGN_KEY_XML_ATTRIBUTE"));
+
     // Запросы выборки из TXT отчета
+    protected final static String sqlSelectComponent = String.format("SELECT comp.%s, comp.%s, comp.%s FROM %s comp INNER JOIN " +
+                    "%s model on comp.%s=model.id where model.id = ?",
+            PropertiesManager.getSqlTableProperties().getProperty("TXT_COMPONENTS_NAME"),
+            PropertiesManager.getSqlTableProperties().getProperty("TXT_COMPONENTSE_FORMULA"),
+            PropertiesManager.getSqlTableProperties().getProperty("TXT_COMPONENTS_COMPONENT_INDEX"),
+            PropertiesManager.getSqlTableProperties().getProperty("TXT_COMPONENTS_TABLE_NAME"),
+            PropertiesManager.getSqlTableProperties().getProperty("MODEL_FILES_TABLE_NAME"),
+            PropertiesManager.getSqlTableProperties().getProperty("FOREIGN_KEY_MODEL_FILES"));
+    protected final static String sqlSelectEnergyBalance = String.format("SELECT energy.%s, energy.%s, energy.%s FROM %s energy INNER JOIN " +
+                    "%s model on energy.%s=model.id where model.id = ?",
+            PropertiesManager.getSqlTableProperties().getProperty("TXT_ENERGY_BALANCE_NAME"),
+            PropertiesManager.getSqlTableProperties().getProperty("TXT_ENERGY_BALANCE_INPUT"),
+            PropertiesManager.getSqlTableProperties().getProperty("TXT_ENERGY_BALANCE_OUTPUT"),
+            PropertiesManager.getSqlTableProperties().getProperty("TXT_ENERGY_BALANCE_TABLE_NAME"),
+            PropertiesManager.getSqlTableProperties().getProperty("MODEL_FILES_TABLE_NAME"),
+            PropertiesManager.getSqlTableProperties().getProperty("FOREIGN_KEY_MODEL_FILES"));
+    protected final static String sqlSelectMassBalance = String.format("SELECT mass.%s, mass.%s, mass.%s, mass.%s, mass.%s FROM %s mass INNER JOIN " +
+                    "%s model on mass.%s=model.id where model.id = ?",
+            PropertiesManager.getSqlTableProperties().getProperty("TXT_MASS_BALANCE_NAME"),
+            PropertiesManager.getSqlTableProperties().getProperty("TXT_MASS_BALANCE_INPUT_1"),
+            PropertiesManager.getSqlTableProperties().getProperty("TXT_MASS_BALANCE_OUTPUT_1"),
+            PropertiesManager.getSqlTableProperties().getProperty("TXT_MASS_BALANCE_INPUT_2"),
+            PropertiesManager.getSqlTableProperties().getProperty("TXT_MASS_BALANCE_OUTPUT_2"),
+            PropertiesManager.getSqlTableProperties().getProperty("TXT_MASS_BALANCE_TABLE_NAME"),
+            PropertiesManager.getSqlTableProperties().getProperty("MODEL_FILES_TABLE_NAME"),
+            PropertiesManager.getSqlTableProperties().getProperty("FOREIGN_KEY_MODEL_FILES"));
 
     // Запросы из таблицы с файлами и типом
-    protected final static String sqlSelectModels = String.format("SELECT model.%s as xml, model.id as id, modtype.%s " +
+    protected final static String sqlSelectModels = String.format("SELECT model.%s as xml, model.%s as txt, model.id as id, modtype.%s " +
             "as type, model.%s as date FROM %s  model INNER JOIN %s  modtype on model.%s " +
             "= modtype.id",
             PropertiesManager.getSqlTableProperties().getProperty("MODEL_FILES_PATH_TO_XML"),
+            PropertiesManager.getSqlTableProperties().getProperty("MODEL_FILES_PATH_TO_TXT"),
             PropertiesManager.getSqlTableProperties().getProperty("MODEL_TYPE_TYPE_NAME"),
             PropertiesManager.getSqlTableProperties().getProperty("MODEL_FILES_CREATION_DATE"),
             PropertiesManager.getSqlTableProperties().getProperty("MODEL_FILES_TABLE_NAME"),
