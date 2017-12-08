@@ -31,8 +31,17 @@ public class MainFormController {
 
 
     public void showAddNewUserForm(ActionEvent actionEvent) throws IOException {
-        showNewForm("/fxml/addNewUserForm.fxml");
+        javafx.stage.Window parentWindow = mainForm.getScene().getWindow();//((Node) ((MenuItem) actionEvent.getSource()).getGraphic()).getScene().getWindow();
+        Stage stage = new Stage();
+
+        Parent newRoot = FXMLLoader.load(getClass().getResource("/fxml/addNewUserForm.fxml"));
+        stage.setResizable(true);
+        stage.setScene(new Scene(newRoot));
+        stage.initModality(Modality.WINDOW_MODAL);
+        stage.initOwner(parentWindow);
+        stage.show();
     }
+
 
 
 
