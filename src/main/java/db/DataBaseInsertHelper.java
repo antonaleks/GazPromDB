@@ -1,9 +1,13 @@
 package db;
 
+import entity.Component;
+import entity.EnergyBalance;
+import entity.MassBalance;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
+import txtParsers.Parser;
 import utilities.MySqlConnect;
 
 import java.io.File;
@@ -20,8 +24,14 @@ public class DataBaseInsertHelper extends DataBaseHelper {
     private final static String sqlInsertObject = "insert into object(objects_id, class, name) values(?, ?, ?)";
     private final static String sqlInsertAttribute = "insert into attribute(object_id, name, unit, dataType, description) values(?, ?, ?, ?, ?)";
     private final static String sqlInsertData = "insert into data(attribute_id, component_name, value) values(?, ?, ?)";
-    private final static String sqlInsertModel = "insert into model_files(modeltype_id, pathToXML) values(?, ?)";
+    private final static String sqlInsertModel = "insert into model_files(modeltype_id, pathToXML, pathToMainFile, pathToDXF, pathToTXT, date) values(?, ?, ?, ?, ?, CURRENT_DATE())";
     private final static String sqlLastId = "select last_insert_id()";
+
+    private final static String sqlInsertTxtEnergyBalance = "insert into txt_energy_balance(name, input, output, model_files_id) values(?, ?, ?, ?)";
+    private final static String sqlInsertTxtMassBalance = "insert into txt_mass_balance(name, input_1, output_1, input_2, output_2, model_files_id) values(?, ?, ?, ?, ?, ?)";
+    private final static String sqlInsertTxtComponents = "insert into txt_components(name, formula, component_index, model_files_id) values(?, ?, ?, ?)";
+
+    private int modelId;
 
     public int getLastInsertId() {
         try {
@@ -37,10 +47,53 @@ public class DataBaseInsertHelper extends DataBaseHelper {
         return -1;
     }
 
-    public void insertToModel(int typeId, String pathToXML) throws SQLException {
+    public void insertTxtEnergyBalance(String name, String input, String output, int modelId) throws SQLException {
+        PreparedStatement statement = conn.prepareStatement(sqlInsertTxtEnergyBalance);
+        statement.setString(1, name);
+        statement.setString(2, input);
+        statement.setString(3, output);
+        statement.setInt(4, modelId);
+        statement.execute();
+    }
+
+    public void insertTxtMassBalance(String name, String input_1, String output_1, String input_2, String output_2, int modelId) throws SQLException {
+        PreparedStatement statement = conn.prepareStatement(sqlInsertTxtMassBalance);
+        statement.setString(1, name);
+        statement.setString(2, input_1);
+        statement.setString(3, output_1);
+        statement.setString(4, input_2);
+        statement.setString(5, output_2);
+        statement.setInt(6, modelId);
+        statement.execute();
+    }
+
+    public void insertTxtComponent(String name, String formula, String index, int modelId) throws SQLException {
+        PreparedStatement statement = conn.prepareStatement(sqlInsertTxtComponents);
+        statement.setString(1, name);
+        statement.setString(2, formula);
+        statement.setString(3, index);
+        statement.setInt(4, modelId);
+        statement.execute();
+    }
+
+    public void insertTxtReport(List<EnergyBalance> energyBalances,
+                                List<MassBalance> massBalances,
+                                List<Component> components) throws SQLException {
+        for(EnergyBalance energy : energyBalances)
+            insertTxtEnergyBalance(energy.getName(), energy.getInput(), energy.getOutput(), modelId);
+        for(MassBalance mass : massBalances)
+            insertTxtMassBalance(mass.getName(), mass.getInput_1(), mass.getOutput_1(), mass.getInput_2(), mass.getOutput_2(), modelId);
+        for(Component component : components)
+            insertTxtComponent(component.getName(), component.getFormula(), component.getId(), modelId);
+    }
+
+    public void insertToModel(int typeId, String pathToXML, String pathToDXF, String pathToMainFile, String pathToTXT) throws SQLException {
         PreparedStatement statement = conn.prepareStatement(sqlInsertModel);
         statement.setInt(1, typeId);
         statement.setString(2, pathToXML);
+        statement.setString(3, pathToMainFile);
+        statement.setString(4, pathToDXF);
+        statement.setString(5, pathToTXT);
         statement.execute();
     }
 
@@ -78,7 +131,7 @@ public class DataBaseInsertHelper extends DataBaseHelper {
         statementData.execute();
     }
 
-    public void fillDataBase() {
+    public void fillDataBase(int typeId, String pathToXML, String pathToDXF, String pathToMainFile, String pathToTXT) {
 
         mySqlConnect = new MySqlConnect();
         conn = mySqlConnect.connect();
@@ -86,17 +139,17 @@ public class DataBaseInsertHelper extends DataBaseHelper {
         try {
             //парсинг xml
             SAXBuilder saxBuilder = new SAXBuilder();
-            File xmlFile = new File("src\\main\\resources\\HydrotreaterUnitSimulation.xml");
+            File xmlFile = new File(pathToXML);
             Document document = saxBuilder.build(xmlFile);
             Element rootNode = document.getRootElement();
 
             //вставка модели
-            insertToModel(1, xmlFile.getAbsolutePath());
+            insertToModel(typeId, xmlFile.getAbsolutePath(), pathToDXF, pathToMainFile, pathToTXT);
 
             //последний вставленный индекс
-            int modelId = getLastInsertId();
+            modelId = getLastInsertId();
 
-            List<Element> objectsList = rootNode.getChildren("ObjectModel");
+            List<Element> objectsList = rootNode.getChildren("Objects");
             for (Element objects : objectsList) {
                 System.out.println("ObjectModel Name: "
                         + objects.getAttributeValue("Name"));
@@ -148,6 +201,12 @@ public class DataBaseInsertHelper extends DataBaseHelper {
                     }
                 }
             }
+            Parser txtParser = new Parser();
+            String txtInput = txtParser.parseTxtReport(pathToTXT);
+            List<MassBalance> massBalance = txtParser.parseMassBalance(txtInput);
+            List<EnergyBalance> energyBalance = txtParser.parseEnergyBalance(txtInput);
+            List<Component> components = txtParser.parseComponent(txtInput);
+            insertTxtReport(energyBalance, massBalance, components);
         } catch (IOException ex) {
             ex.printStackTrace();
         } catch (JDOMException ex) {

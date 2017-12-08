@@ -1,9 +1,6 @@
 package db;
 
-import entity.Attribute;
-import entity.Data;
-import entity.Model;
-import entity.ObjectModel;
+import entity.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TreeItem;
@@ -27,6 +24,19 @@ public class DataBaseXmlHelper extends DataBaseHelper {
     private final static String sqlSelectData = "select dat.id, dat.component_name, dat.value from data dat inner join \n" +
             "attribute attr on dat.attribute_id=attr.id where attr.id = ?";
     private final static String sqlLastId = "select last_insert_id()";
+
+    private final static String sqlSelectTypeModels = "Select * from modelType";
+
+    public List<ModelType> selectAllModelsTypeToList() throws SQLException {
+        List<ModelType> modelData = new ArrayList<>();
+        PreparedStatement statement = conn.prepareStatement(sqlSelectTypeModels);
+        ResultSet rs = statement.executeQuery();
+        while (rs.next())
+            modelData.add(new ModelType(rs.getInt("id"), rs.getString("modelType")));
+        statement.close();
+        closeAll();
+        return modelData;
+    }
 
     public ObservableList<Model> selectAllModelsToList() throws SQLException {
         ObservableList<Model> modelData = FXCollections.observableArrayList();

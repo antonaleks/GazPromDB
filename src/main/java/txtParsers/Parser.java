@@ -13,9 +13,9 @@ import java.util.regex.Pattern;
 
 public class Parser {
 
-    private static String path = "C:\\subd\\GazPromDB\\src\\main\\resources\\chemcad_models\\Benzene Hydrogenation to Cyclohexane (CYCLOHEX)\\Benzene_Hydrogenation_to_Cyclohexane_(CYCLOHEX).txt";
+    private String path = "C:\\subd\\GazPromDB\\src\\main\\resources\\chemcad_models\\Benzene Hydrogenation to Cyclohexane (CYCLOHEX)\\Benzene_Hydrogenation_to_Cyclohexane_(CYCLOHEX).txt";
 
-    public static List<MassBalance> parseMassBalance(String input) throws IOException {
+    public List<MassBalance> parseMassBalance(String input) throws IOException {
         String pattern = "(?<=Overall Mass Balance)([\\s\\S]*?)(?=Total)";
         Pattern p  = Pattern.compile(pattern);
         Matcher m = p.matcher(input);
@@ -36,7 +36,7 @@ public class Parser {
         return massBalances;
     }
 
-    public static List<Component> parseComponent(String input) throws IOException {
+    public List<Component> parseComponent(String input) throws IOException {
         String pattern = "(?<=COMPONENTS)([\\s\\S]*?)(?=\r\n\r\n)";
         Pattern p  = Pattern.compile(pattern);
         Matcher m = p.matcher(input);
@@ -58,7 +58,7 @@ public class Parser {
         return components;
     }
 
-    public static List<EnergyBalance> parseEnergyBalance(String input) throws IOException {
+    public List<EnergyBalance> parseEnergyBalance(String input) throws IOException {
         String pattern = "(?<=Overall Energy Balance)([\\s\\S]*?)(?=Total  )";
         Pattern p  = Pattern.compile(pattern);
         Matcher m = p.matcher(input);
@@ -81,7 +81,7 @@ public class Parser {
         return energyBalances;
     }
 
-    public static boolean isOutput(String s){
+    public boolean isOutput(String s){
         int k = 0;
         for(int i = 0; i < s.length(); i++){
             if(s.charAt(i) == ' ') k++;
@@ -91,28 +91,11 @@ public class Parser {
         return false;
     }
 
-    public static void main(String[] args) throws IOException {
+    public String parseTxtReport(String path) throws IOException {
         FileInputStream in = new FileInputStream(path);
         byte[] array = new byte[in.available()];
         in.read(array);
         String input = new String(array);
-        List<Component> components = parseComponent(input);
-        List<MassBalance> massBalances = parseMassBalance(input);
-        List<EnergyBalance> energyBalances = parseEnergyBalance(input);
-        System.out.println("Components");
-        System.out.println("name\tformula\tid");
-        for (Component component:components) {
-            System.out.println(component);
-        }
-        System.out.println("mass Balance");
-        System.out.println("name\tinput1\toutput1\tinput2\toutput2");
-        for (MassBalance massBalance:massBalances) {
-            System.out.println(massBalance);
-        }
-        System.out.println("energy Balance");
-        System.out.println("name\tinput\toutput");
-        for (EnergyBalance energyBalance:energyBalances) {
-            System.out.println(energyBalance);
-        }
+        return input;
     }
 }
