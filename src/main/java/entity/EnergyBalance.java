@@ -23,4 +23,8 @@ public class EnergyBalance {
     public String getInput() {
         return input;
     }
+
+    public String toString(){
+        return this.name + "\t" + this.input + "\t" + this.output;
+    }
 }

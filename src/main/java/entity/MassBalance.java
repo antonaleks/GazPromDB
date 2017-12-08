@@ -35,4 +35,8 @@ public class MassBalance {
     public String getName() {
         return name;
     }
+
+    public String toString(){
+        return this.name + "\t" + this.input_1 + "\t" + this.output_1 + "\t" + this.input_2 + "\t" + this.output_2;
+    }
 }

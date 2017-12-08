@@ -1,0 +1,314 @@
+
+CHEMCAD 6.5.7                                              Page 1
+
+Simulation: Reactive Distillation (ESTE  Date: 12/06/2017  Time: 23:10:36
+
+FLOWSHEET SUMMARY
+
+Equipment   Label         Stream Numbers
+
+   1  SCDS                 1   2  -3  -4
+
+
+Stream Connections
+
+Stream     Equipment
+          From    To
+    1              1
+    2              1
+    3        1      
+    4        1      
+
+
+CHEMCAD 6.5.7                                              Page 2
+
+Simulation: Reactive Distillation (ESTE  Date: 12/06/2017  Time: 23:10:36
+
+Calculation mode : Sequential
+Flash algorithm  : Normal
+
+Equipment Calculation Sequence
+   1
+
+No recycle loops in the flowsheet.
+
+
+CHEMCAD 6.5.7                                              Page 3
+
+Simulation: Reactive Distillation (ESTE  Date: 12/06/2017  Time: 23:10:36
+
+Overall Mass Balance       kmol/h                    kg/h             
+                        Input       Output        Input       Output
+Ethanol                42.984       18.412     1980.230      848.236
+Acetic Acid            25.000        0.428     1501.325       25.718
+Ethyl Acetate           0.000       24.572        0.000     2164.919
+Water                   7.016       31.588      126.393      569.053
+
+Total                  75.000       75.000     3607.948     3607.926
+
+
+CHEMCAD 6.5.7                                              Page 4
+
+Simulation: Reactive Distillation (ESTE  Date: 12/06/2017  Time: 23:10:36
+
+Overall Energy Balance        kcal/h
+                         Input              Output
+Feed Streams      -5.95458e+006
+Product Streams                       -6.12838e+006
+Total Heating      1.91076e+006
+Total Cooling     -2.08456e+006
+Power Added                   0
+Power Generated               0
+
+Total             -6.12838e+006       -6.12838e+006
+
+CHEMCAD 6.5.7                                              Page 5
+
+Simulation: Reactive Distillation (ESTE  Date: 12/06/2017  Time: 23:10:36
+
+COMPONENTS
+          ID #     Name              Formula
+   1       134     Ethanol           C2H6O        
+   2       130     Acetic Acid       C2H4O2       
+   3       155     Ethyl Acetate     C4H8O2       
+   4        62     Water             H2O          
+
+
+THERMODYNAMICS
+
+ K-value model     :  NRTL
+ Vapor association :  Marek and Standart
+                      LLV Three Phase K-values
+ Enthalpy model    :  Latent Heat
+ Liquid density    :  Library  
+
+ Std vapor rate reference temperature is 0 C.
+ Atmospheric pressure is       1.0132 bar.
+
+NRTL Parameters: Tij = Aij + Bij/T + Cij * Ln(T) + Dij * T (T Deg K)
+
+  I   J      Bij      Bji   Alpha   Aij    Aji    Cij    Cji    Dij    Dji
+  1   2  -147.79   105.31   0.299   0.00   0.00   0.00   0.00   0.00   0.00
+  1   3   162.35   154.21   0.299   0.00   0.00   0.00   0.00   0.00   0.00
+  1   4   -55.17   670.44   0.303   0.00   0.00   0.00   0.00   0.00   0.00
+  2   3  -219.88   424.87   0.314   0.00   0.00   0.00   0.00   0.00   0.00
+  2   4  -110.57   424.02   0.300   0.00   0.00   0.00   0.00   0.00   0.00
+  3   4   470.86  1165.66   0.410   0.00   0.00   0.00   0.00   0.00   0.00
+CHEMCAD 6.5.7                                              Page 6
+
+Simulation: Reactive Distillation (ESTE  Date: 12/06/2017  Time: 23:10:36
+EQUIPMENT SUMMARIES 
+
+                      SCDS Rigorous Distillation Summary
+
+Equip. No.                      1
+       Name                        
+No. of stages                  20  
+1st feed stage                  6  
+2nd feed stage                 13  
+Condenser mode                  1  
+Condenser spec               4.0000
+Reboiler mode                   2  
+Reboiler spec.          1.9108e+006
+Est. dist. rate             46.5915
+ (kmol/h)
+Est. reflux rate           186.3778
+ (kmol/h)
+Est. T top  C               78.2057
+Est. T bottom  C           111.9405
+Est. T 2  C                 78.2108
+Top pressure  bar            1.0130
+Calc cond duty  kcal/h -2.0846e+006
+Calc rebr duty  kcal/h  1.9108e+006
+Initial flag                    6  
+Reactive distillation           Y 
+Calc Reflux mole           194.6508
+ (kmol/h)
+Calc Reflux ratio            4.0000
+Calc Reflux mass  kg/h   12472.7188
+Optimization flag               1  
+Calc. tolerance              0.0005
+
+
+Reaction Stoichiometrics and Parameters for unit no. 1
+
+ No. of liquid reactions = 2
+ No. of vapor reactions  = 0
+ Mole unit: 2   Act. E unit : 6  Vol. unit : 2
+ Time unit: 1   Press. unit : 0  Temp unit : 0
+
+ Tray reaction volumes
+
+      Stg      Liq rxn vol       Vapor rxn vol 
+       4       2.0000e+001       0.0000e+000
+       5       2.0000e+001       0.0000e+000
+       6       2.0000e+001       0.0000e+000
+       7       2.0000e+001       0.0000e+000
+       8       2.0000e+001       0.0000e+000
+       9       2.0000e+001       0.0000e+000
+CHEMCAD 6.5.7                                              Page 7
+
+Simulation: Reactive Distillation (ESTE  Date: 12/06/2017  Time: 23:10:36
+EQUIPMENT SUMMARIES 
+
+      10       2.0000e+001       0.0000e+000
+      11       2.0000e+001       0.0000e+000
+      12       2.0000e+001       0.0000e+000
+      13       2.0000e+001       0.0000e+000
+      14       2.0000e+001       0.0000e+000
+      15       2.0000e+001       0.0000e+000
+      16       2.0000e+001       0.0000e+000
+      17       2.0000e+001       0.0000e+000
+      18       2.0000e+001       0.0000e+000
+
+ Reaction   1   Type =   0   Phase =   0
+ A =   2.9000e+004  E =   7.1500e+003  Para3 =   0.0000e+000
+
+ Comp    Stoich.    Exp.factor    AdsorbFac.    AdsorbE       AdsorbExp.
+   1   -1.00e+000   0.0000e+000   0.0000e+000   0.0000e+000   0.0000e+000
+   2   -1.00e+000   0.0000e+000   0.0000e+000   0.0000e+000   0.0000e+000
+   3    1.00e+000   0.0000e+000   0.0000e+000   0.0000e+000   0.0000e+000
+   4    1.00e+000   0.0000e+000   0.0000e+000   0.0000e+000   0.0000e+000
+
+ Reaction   2   Type =   0   Phase =   0
+ A =   7.3800e+003  E =   7.1500e+003  Para3 =   0.0000e+000
+
+ Comp    Stoich.    Exp.factor    AdsorbFac.    AdsorbE       AdsorbExp.
+   1    1.00e+000   0.0000e+000   0.0000e+000   0.0000e+000   0.0000e+000
+   2    1.00e+000   0.0000e+000   0.0000e+000   0.0000e+000   0.0000e+000
+   3   -1.00e+000   0.0000e+000   0.0000e+000   0.0000e+000   0.0000e+000
+   4   -1.00e+000   0.0000e+000   0.0000e+000   0.0000e+000   0.0000e+000
+CHEMCAD 6.5.7                                              Page 8
+
+Simulation: Reactive Distillation (ESTE  Date: 12/06/2017  Time: 23:10:36
+STREAM PROPERTIES 
+
+Stream No.                      1             2             3             4 
+       Name           Acetic Acid       Ethanol   Product Mix         Water 
+- - Overall - -
+Molar flow kmol/h         25.0000       50.0000       48.6627       26.3374 
+Mass flow  kg/h         1501.3251     2106.6230     3118.1799      489.7462 
+Temp C                    70.0000       70.0000       71.4414       95.0822 
+Pres bar                   1.2000        1.2000        1.0130        1.0130 
+Vapor mole fraction        0.0000        0.0000        0.0000        0.0000 
+Enth kcal/h          -2.6894E+006  -3.2652E+006  -4.3660E+006  -1.7624E+006 
+Tc C                     318.8000      248.5665      252.3433      367.1826 
+Pc bar                    57.8600       68.7747       58.8268      207.0046 
+Std. sp gr.  wtr = 1        1.054         0.806         0.878         0.987 
+Std. sp gr.  air = 1        2.073         1.455         2.212         0.642 
+Degree API                 2.7187       44.0244       29.5975       11.8531 
+Average mol wt            60.0530       42.1325       64.0774       18.5951 
+Actual dens kg/m3        994.5735      754.1415      813.6291      944.8305 
+Actual vol m3/h            1.5095        2.7934        3.8324        0.5183 
+Std liq  m3/h              1.4241        2.6132        3.5500        0.4962 
+Std vap 0 C m3/h         560.3412     1120.6825     1090.7084      590.3164 
+- - Liquid only - -
+Molar flow kmol/h         25.0000       50.0000       48.6627       26.3374 
+Mass flow  kg/h         1501.3251     2106.6230     3118.1799      489.7462 
+Average mol wt            60.0530       42.1325       64.0774       18.5951 
+Actual dens kg/m3        994.5735      754.1415      813.6291      944.8305 
+Actual vol m3/h            1.5095        2.7934        3.8324        0.5183 
+Std liq  m3/h              1.4241        2.6132        3.5500        0.4962 
+Std vap 0 C m3/h         560.3412     1120.6825     1090.7084      590.3164 
+Cp kcal/kmol-C            32.3125       29.9168       36.5893       18.4922 
+Z factor                   0.0037        0.0028        0.0033        0.0009 
+Visc cP                    0.6256        0.4848        0.3520        0.2975 
+Th cond kcal/h-m-C         0.1299        0.1425        0.1209        0.5307 
+Surf. tens. N/m            0.0226        0.0194        0.0188        0.0551 
+
+CHEMCAD 6.5.7                                              Page 9
+
+Simulation: Reactive Distillation (ESTE  Date: 12/06/2017  Time: 23:10:36
+FLOW SUMMARIES: 
+
+Stream No.                    1             2             3             4
+Stream Name         Acetic Acid       Ethanol   Product Mix         Water 
+Temp  C                 70.0000*      70.0000*      71.4414       95.0822 
+Pres  bar                1.2000*       1.2000*       1.0130        1.0130 
+Enth  kcal/h       -2.6894E+006  -3.2652E+006  -4.3660E+006  -1.7624E+006 
+Vapor mass frac.        0.00000       0.00000       0.00000       0.00000 
+Total kmol/h            25.0000       50.0000       48.6627       26.3374 
+Total kg/h            1501.3251     2106.6230     3118.1799      489.7462 
+Total std L m3/h         1.4241        2.6132        3.5500        0.4962 
+Total std V m3/h         560.34       1120.68       1090.71        590.32 
+Flow rates in kg/h
+Ethanol                  0.0000     1980.2299      823.1614       25.0750 
+Acetic Acid           1501.3251        0.0000       25.7051        0.0127 
+Ethyl Acetate            0.0000        0.0000     2164.9187        0.0002 
+Water                    0.0000      126.3932      104.3950      464.6583 
+
+CHEMCAD 6.5.7                                             Page 10
+
+Simulation: Reactive Distillation (ESTE  Date: 12/06/2017  Time: 23:10:36
+DISTILLATION PROFILE
+
+Unit type : SCDS    Unit name:     Eqp #  1
+
+                       *   Net Flows   *
+      Temp    Pres     Liquid     Vapor      Feeds      Product     Duties
+Stg     C     bar      kmol/h     kmol/h     kmol/h     kmol/h      kcal/h     
+  1   71.4     1.01     194.65                            48.66 -2.085E+006
+  2   71.7     1.01     195.02     243.31                      
+  3   71.9     1.01     194.66     243.68                      
+  4   72.2     1.01     193.43     243.32                      
+  5   72.7     1.01     190.21     242.09                      
+  6   75.7     1.01     206.44     238.87      25.00           
+  7   75.9     1.01     195.01     230.10                      
+  8   77.0     1.01     185.70     218.67                      
+  9   78.3     1.01     180.25     209.36                      
+ 10   79.1     1.01     177.83     203.91                      
+ 11   79.4     1.01     177.05     201.50                      
+ 12   79.3     1.01     177.12     200.71                      
+ 13   79.0     1.01     228.21     200.78      50.00           
+ 14   79.0     1.01     228.08     201.88                      
+ 15   79.1     1.01     227.90     201.74                      
+ 16   79.2     1.01     227.56     201.57                      
+ 17   79.4     1.01     226.75     201.23                      
+ 18   80.2     1.01     224.25     200.41                      
+ 19   84.0     1.01     219.20     197.92                      
+ 20   95.1     1.01                192.87                 26.34  1.911E+006
+
+
+Mole Reflux ratio        4.000
+
+Total liquid entering stage   6 at   72.435 C,      215.212 kmol/h.
+Total liquid entering stage  13 at   77.030 C,      227.120 kmol/h.
+CHEMCAD 6.5.7                                             Page 11
+
+Simulation: Reactive Distillation (ESTE  Date: 12/06/2017  Time: 23:10:36
+Heating Curves Summary
+
+Eqp # 1  Unit type : SCDS  Unit name: 
+
+Condenser
+
+  NP   Temp    Pres      Del H      Vapor    Liquid  Vap mole  Vap mass
+        C      bar      kcal/h      kg/h     kg/h     frac.      frac.
+   1   71.7     1.0  2.08E+006      15591         0    1.0000    1.0000 Dew
+   2   71.3     1.0  1.88E+006      14083      1508    0.9018    0.9033   
+   3   71.3     1.0  1.67E+006      12554      3037    0.8029    0.8052   
+   4   71.2     1.0  1.46E+006      11016      4574    0.7039    0.7066   
+   5   71.2     1.0  1.25E+006       9472      6118    0.6047    0.6076   
+   6   71.2     1.0  1.04E+006       7923      7668    0.5054    0.5082   
+   7   71.2     1.0  8.34E+005       6369      9222    0.4061    0.4085   
+   8   71.2     1.0  6.25E+005       4813     10778    0.3067    0.3087   
+   9   71.2     1.0  4.17E+005       3254     12337    0.2073    0.2087   
+  10   71.2     1.0  2.08E+005       1694     13897    0.1079    0.1087   
+  11   71.2     1.0      0.000        132     15459    0.0084    0.0085   
+
+
+Reboiler
+
+  NP   Temp    Pres      Del H      Vapor    Liquid  Vap mole  Vap mass
+        C      bar      kcal/h      kg/h     kg/h     frac.      frac.
+   1   84.0     1.0      0.000          0      4924    0.0000    0.0000 Bub
+   2   85.1     1.0  1.91E+005        613      4311    0.0892    0.1245   
+   3   86.5     1.0  3.82E+005       1176      3747    0.1773    0.2389   
+   4   88.2     1.0  5.73E+005       1682      3242    0.2647    0.3415   
+   5   89.8     1.0  7.64E+005       2135      2789    0.3519    0.4336   
+   6   91.2     1.0  9.55E+005       2552      2372    0.4391    0.5183   
+   7   92.3     1.0  1.15E+006       2947      1977    0.5267    0.5985   
+   8   93.2     1.0  1.34E+006       3328      1596    0.6147    0.6760   
+   9   94.0     1.0  1.53E+006       3702      1222    0.7029    0.7518   
+  10   94.6     1.0  1.72E+006       4070       854    0.7913    0.8265   
+  11   95.1     1.0  1.91E+006       4434       490    0.8798    0.9005   

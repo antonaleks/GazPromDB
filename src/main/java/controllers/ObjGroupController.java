@@ -17,7 +17,7 @@ import javafx.util.Callback;
 import java.io.IOException;
 import java.sql.SQLException;
 
-public class objGroupController extends BaseController {
+public class ObjGroupController extends BaseController {
 
     public Label lblId;
     public Label lblType;

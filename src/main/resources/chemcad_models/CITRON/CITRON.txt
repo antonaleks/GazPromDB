@@ -1,0 +1,224 @@
+
+CHEMCAD 6.5.7                                              Page 1
+
+Simulation: CITRON                       Date: 12/06/2017  Time: 23:04:57
+
+FLOWSHEET SUMMARY
+
+Equipment   Label         Stream Numbers
+
+   1  BATC              
+
+
+Stream Connections
+
+Stream     Equipment
+          From    To
+
+
+CHEMCAD 6.5.7                                              Page 2
+
+Simulation: CITRON                       Date: 12/06/2017  Time: 23:04:57
+
+Calculation mode : Sequential
+Flash algorithm  : Normal
+
+Equipment Calculation Sequence
+   1
+
+No recycle loops in the flowsheet.
+
+
+CHEMCAD 6.5.7                                              Page 3
+
+Simulation: CITRON                       Date: 12/06/2017  Time: 23:04:57
+
+Overall Mass Balance       kmol/h                    kg/h             
+                        Input       Output        Input       Output
+CITRONELLAL             0.000        0.000        0.000        0.000
+CITRONELLOL             0.000        0.000        0.000        0.000
+GERANIOL                0.000        0.000        0.000        0.000
+
+Total                   0.000        0.000        0.000        0.000
+
+
+CHEMCAD 6.5.7                                              Page 4
+
+Simulation: CITRON                       Date: 12/06/2017  Time: 23:04:57
+
+Overall Energy Balance        MJ/h
+                         Input              Output
+Feed Streams                  0
+Product Streams                                   0
+Total Heating                 0
+Total Cooling                 0
+Power Added                   0
+Power Generated               0
+
+Total                         0                   0
+
+CHEMCAD 6.5.7                                              Page 5
+
+Simulation: CITRON                       Date: 12/06/2017  Time: 23:04:57
+
+COMPONENTS
+          ID #     Name              Formula
+   1      8001     CITRONELLAL                    
+   2      8002     CITRONELLOL                    
+   3      8003     GERANIOL                       
+
+User/Pool Components Data Source
+   1      8001     CITRONELLAL      
+   2      8002     CITRONELLOL      
+   3      8003     GERANIOL         
+
+THERMODYNAMICS
+
+ K-value model     :  Raoult's Law (Ideal Vapor Pressure)
+ Enthalpy model    :  SRK
+ Liquid density    :  Library  
+
+ Std vapor rate reference temperature is 0 C.
+ Atmospheric pressure is     760.0000 mmHg.
+
+CHEMCAD 6.5.7                                              Page 6
+
+Simulation: CITRON                       Date: 12/06/2017  Time: 23:04:57
+EQUIPMENT SUMMARIES 
+
+                      Batch Distillation
+
+Equip. No.                      1
+       Name                        
+No. of stages                  36  
+Operation steps                 2  
+Stage holdup                 0.0002
+Condenser holdup             0.0057
+Cond pressure  mmHg          1.0000
+Cond pres drop  mmHg         5.0000
+Colm pres drop  mmHg         2.0000
+Method                          1  
+No. of iterations             100  
+Damping factor               0.5000
+Current time  h              7.6000
+
+Batch column # 1   
+
+
+Batch Operation Parameters:
+Step no.                        1            2
+Startup option:                 1            0  
+Overhead tank #                           1.0000
+First spec value             3.0000       3.0000
+Second spec value            0.1200       0.1200
+Step size (hr)               0.1000       0.0500
+Record frequency             1.0000      25.0000
+Stop value                   6.6000       1.0000
+Stop tolerance               0.0010       0.0010
+Elapsed time hr              6.6000       1.0000
+Condenser duty  MJ        -198.5453     -34.9231
+Reboiler duty  MJ          191.3201      33.3599
+
+
+
+CHEMCAD 6.5.7                                              Page 7
+
+Simulation: CITRON                       Date: 12/06/2017  Time: 23:04:57
+DISTILLATION PROFILE
+
+Unit type : BATC    Unit name:     Eqp #  1
+
+                    * End of Operation Step 1 *
+                       *   Net Flows   *
+      Temp    Pres     Liquid     Vapor      Feeds      Product     Duties
+Stg     C     mmHg     kmol/h     kmol/h     kmol/h     kmol/h      MJ/h       
+  1   44.8     1.00       0.36                             0.12      -30.08
+  2   73.9     6.00       0.42       0.48                      
+  3   74.1     6.06       0.42       0.54                      
+  4   74.2     6.12       0.42       0.54                      
+  5   74.4     6.18       0.42       0.54                      
+  6   74.6     6.24       0.42       0.54                      
+  7   74.8     6.29       0.42       0.54                      
+  8   75.2     6.35       0.41       0.54                      
+  9   76.2     6.41       0.40       0.53                      
+ 10   79.2     6.47       0.38       0.52                      
+ 11   85.4     6.53       0.36       0.50                      
+ 12   92.3     6.59       0.34       0.48                      
+ 13   96.5     6.65       0.34       0.46                      
+ 14   98.5     6.71       0.34       0.46                      
+ 15   99.6     6.76       0.34       0.46                      
+ 16  100.3     6.82       0.34       0.46                      
+ 17  101.0     6.88       0.34       0.46                      
+ 18  101.6     6.94       0.34       0.46                      
+ 19  102.1     7.00       0.34       0.45                      
+ 20  102.4     7.06       0.34       0.45                      
+ 21  102.7     7.12       0.34       0.45                      
+ 22  102.9     7.18       0.34       0.45                      
+ 23  103.1     7.24       0.34       0.45                      
+ 24  103.3     7.29       0.34       0.45                      
+ 25  103.4     7.35       0.34       0.45                      
+ 26  103.6     7.41       0.34       0.45                      
+ 27  103.8     7.47       0.34       0.45                      
+ 28  103.9     7.53       0.34       0.45                      
+ 29  104.1     7.59       0.34       0.45                      
+ 30  104.2     7.65       0.34       0.45                      
+ 31  104.4     7.71       0.34       0.45                      
+ 32  104.5     7.76       0.34       0.45                      
+ 33  104.7     7.82       0.34       0.45                      
+ 34  104.8     7.88       0.34       0.45                      
+ 35  105.0     7.94       0.34       0.45                      
+ 36  105.1     8.00                  0.45                  0.00       29.15
+
+
+Mole Reflux ratio        3.000
+
+CHEMCAD 6.5.7                                              Page 8
+
+Simulation: CITRON                       Date: 12/06/2017  Time: 23:04:57
+DISTILLATION PROFILE
+
+Unit type : BATC    Unit name:     Eqp #  1
+
+                    * End of Operation Step 2 *
+                       *   Net Flows   *
+      Temp    Pres     Liquid     Vapor      Feeds      Product     Duties
+Stg     C     mmHg     kmol/h     kmol/h     kmol/h     kmol/h      MJ/h       
+  1   69.0     1.00       0.36                             0.12      -36.05
+  2  100.8     6.00       0.42       0.48                      
+  3  101.5     6.06       0.42       0.54                      
+  4  101.7     6.12       0.42       0.54                      
+  5  101.9     6.18       0.42       0.54                      
+  6  102.1     6.24       0.42       0.54                      
+  7  102.3     6.29       0.42       0.54                      
+  8  102.5     6.35       0.42       0.54                      
+  9  102.6     6.41       0.42       0.54                      
+ 10  102.8     6.47       0.42       0.54                      
+ 11  103.0     6.53       0.42       0.54                      
+ 12  103.1     6.59       0.42       0.54                      
+ 13  103.3     6.65       0.42       0.54                      
+ 14  103.5     6.71       0.42       0.54                      
+ 15  103.6     6.76       0.42       0.54                      
+ 16  103.8     6.82       0.42       0.54                      
+ 17  103.9     6.88       0.42       0.54                      
+ 18  104.1     6.94       0.42       0.54                      
+ 19  104.3     7.00       0.42       0.54                      
+ 20  104.4     7.06       0.42       0.54                      
+ 21  104.6     7.12       0.42       0.54                      
+ 22  104.7     7.18       0.42       0.54                      
+ 23  104.9     7.24       0.42       0.54                      
+ 24  105.0     7.29       0.42       0.54                      
+ 25  105.2     7.35       0.42       0.54                      
+ 26  105.3     7.41       0.42       0.54                      
+ 27  105.5     7.47       0.42       0.54                      
+ 28  105.6     7.53       0.42       0.54                      
+ 29  105.7     7.59       0.42       0.54                      
+ 30  105.9     7.65       0.42       0.54                      
+ 31  106.0     7.71       0.42       0.54                      
+ 32  106.2     7.76       0.42       0.54                      
+ 33  106.3     7.82       0.42       0.54                      
+ 34  106.4     7.88       0.42       0.54                      
+ 35  106.6     7.94       0.42       0.54                      
+ 36  106.7     8.00                  0.54                  0.00       34.53
+
+
+Mole Reflux ratio        3.000
