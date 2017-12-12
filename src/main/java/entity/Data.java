@@ -22,4 +22,8 @@ public class Data {
     public int getId() {
         return id;
     }
+
+    public String toString(){
+        return this.componentName + ", " + this.value;
+    }
 }
