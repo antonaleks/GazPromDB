@@ -30,6 +30,28 @@ public class SqlQueryHelper {
             PropertiesManager.getSqlTableProperties().getProperty("XML_DATA_COMPONENT_NAME"),
             PropertiesManager.getSqlTableProperties().getProperty("XML_DATA_VALUE"));
 
+    protected final static String sqlInsertAllXMLObjects = String.format("INSERT INTO %s(%s, %s, %s) values",
+            PropertiesManager.getSqlTableProperties().getProperty("XML_OBJECTS_TABLE_NAME"),
+            PropertiesManager.getSqlTableProperties().getProperty("FOREIGN_KEY_MODEL_FILES"),
+            PropertiesManager.getSqlTableProperties().getProperty("XML_OBJECTS_NAME"),
+            PropertiesManager.getSqlTableProperties().getProperty("XML_OBJECTS_CLASS"));
+    protected final static String sqlInsertAllXMLObject = String.format("INSERT INTO %s(%s, %s, %s) values",
+            PropertiesManager.getSqlTableProperties().getProperty("XML_OBJECT_TABLE_NAME"),
+            PropertiesManager.getSqlTableProperties().getProperty("FOREIGN_KEY_XML_OBJECTS"),
+            PropertiesManager.getSqlTableProperties().getProperty("XML_OBJECT_NAME"),
+            PropertiesManager.getSqlTableProperties().getProperty("XML_OBJECT_CLASS"));
+    protected final static String sqlInsertAllXMLAttribute = String.format("INSERT INTO %s(%s, %s, %s, %s) values",
+            PropertiesManager.getSqlTableProperties().getProperty("XML_ATTRIBUTE_TABLE_NAME"),
+            PropertiesManager.getSqlTableProperties().getProperty("FOREIGN_KEY_XML_OBJECT"),
+            PropertiesManager.getSqlTableProperties().getProperty("XML_ATTRIBUTE_NAME"),
+            PropertiesManager.getSqlTableProperties().getProperty("XML_ATTRIBUTE_UNIT"),
+            PropertiesManager.getSqlTableProperties().getProperty("XML_ATTRIBUTE_DATA_TYPE"));
+    protected final static String sqlInsertAllXMLData = String.format("INSERT INTO %s(%s, %s, %s) values",
+            PropertiesManager.getSqlTableProperties().getProperty("XML_DATA_TABLE_NAME"),
+            PropertiesManager.getSqlTableProperties().getProperty("FOREIGN_KEY_XML_ATTRIBUTE"),
+            PropertiesManager.getSqlTableProperties().getProperty("XML_DATA_COMPONENT_NAME"),
+            PropertiesManager.getSqlTableProperties().getProperty("XML_DATA_VALUE"));
+
     // Добавление в TXT таблицы
     protected final static String sqlInsertTxtEnergyBalance = String.format("INSERT INTO %s(%s, %s, %s, %s) values(?, ?, ?, ?)",
             PropertiesManager.getSqlTableProperties().getProperty("TXT_ENERGY_BALANCE_TABLE_NAME"),
@@ -64,6 +86,7 @@ public class SqlQueryHelper {
 
     // Вспомогательные запросы
     protected final static String sqlLastInsertId = "SELECT last_insert_id()";
+    protected final static String sqlLastIdFromTableName = "SELECT MAX(`id`) FROM %s";
 
     // Запросы выборки данных из XML файла
     protected final static String sqlSelectObjects = String.format("SELECT obj.%s, obj.%s, obj.id FROM %s obj INNER JOIN " +

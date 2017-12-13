@@ -49,4 +49,8 @@ public class ObjectModel {
     public SimpleIntegerProperty getId() {
         return id;
     }
+
+    public String toString() {
+        return this.name + ", " + this.className;
+    }
 }
