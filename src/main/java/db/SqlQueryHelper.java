@@ -75,14 +75,17 @@ public class SqlQueryHelper {
             PropertiesManager.getSqlTableProperties().getProperty("TXT_COMPONENTS_COMPONENT_INDEX"));
 
     // Добавление в файловые таблицы
-    protected final static String sqlInsertModel = String.format("INSERT INTO %s(%s, %s, %s, %s, %s, %s) values(?, ?, ?, ?, ?, CURRENT_DATE())",
+    protected final static String sqlInsertModel = String.format("INSERT INTO %s(%s, %s, %s, %s, %s, %s, %s, %s, %s) values(?, ?, ?, ?, ?, ?, CURRENT_DATE(), ?, ?)",
             PropertiesManager.getSqlTableProperties().getProperty("MODEL_FILES_TABLE_NAME"),
             PropertiesManager.getSqlTableProperties().getProperty("FOREIGN_KEY_MODEL_TYPE"),
+            PropertiesManager.getSqlTableProperties().getProperty("FOREIGN_KEY_USER"),
             PropertiesManager.getSqlTableProperties().getProperty("MODEL_FILES_PATH_TO_XML"),
             PropertiesManager.getSqlTableProperties().getProperty("MODEL_FILES_PATH_TO_MAIN_FILE"),
             PropertiesManager.getSqlTableProperties().getProperty("MODEL_FILES_PATH_TO_DXF"),
             PropertiesManager.getSqlTableProperties().getProperty("MODEL_FILES_PATH_TO_TXT"),
-            PropertiesManager.getSqlTableProperties().getProperty("MODEL_FILES_CREATION_DATE"));
+            PropertiesManager.getSqlTableProperties().getProperty("MODEL_FILES_CREATION_DATE"),
+            PropertiesManager.getSqlTableProperties().getProperty("MODEL_FILES_PATH_TO_PNG"),
+            PropertiesManager.getSqlTableProperties().getProperty("MODEL_FILES_MODEL_NAME"));
 
     // Вспомогательные запросы
     protected final static String sqlLastInsertId = "SELECT last_insert_id()";
@@ -148,17 +151,31 @@ public class SqlQueryHelper {
             PropertiesManager.getSqlTableProperties().getProperty("FOREIGN_KEY_MODEL_FILES"));
 
     // Запросы из таблицы с файлами и типом
-    protected final static String sqlSelectModels = String.format("SELECT model.%s as xml, model.%s as txt, model.id as id, modtype.%s " +
-            "as type, model.%s as date FROM %s  model INNER JOIN %s  modtype on model.%s " +
-            "= modtype.id",
+    protected final static String sqlSelectModels = String.format("SELECT model.%s as name, model.%s as png, " +
+                    "model.%s as xml, model.%s as txt, model.id as id, modtype.%s as type, users.%s as creator," +
+                    " model.%s as date FROM %s  model INNER JOIN %s  modtype on model.%s = modtype.id " +
+                    "INNER JOIN %s as users on model.%s=users.id",
+            PropertiesManager.getSqlTableProperties().getProperty("MODEL_FILES_MODEL_NAME"),
+            PropertiesManager.getSqlTableProperties().getProperty("MODEL_FILES_PATH_TO_PNG"),
             PropertiesManager.getSqlTableProperties().getProperty("MODEL_FILES_PATH_TO_XML"),
             PropertiesManager.getSqlTableProperties().getProperty("MODEL_FILES_PATH_TO_TXT"),
             PropertiesManager.getSqlTableProperties().getProperty("MODEL_TYPE_TYPE_NAME"),
+            PropertiesManager.getSqlTableProperties().getProperty("USERS_LOGIN"),
             PropertiesManager.getSqlTableProperties().getProperty("MODEL_FILES_CREATION_DATE"),
             PropertiesManager.getSqlTableProperties().getProperty("MODEL_FILES_TABLE_NAME"),
             PropertiesManager.getSqlTableProperties().getProperty("MODEL_TYPE_TABLE_NAME"),
-            PropertiesManager.getSqlTableProperties().getProperty("FOREIGN_KEY_MODEL_TYPE"));
+            PropertiesManager.getSqlTableProperties().getProperty("FOREIGN_KEY_MODEL_TYPE"),
+            PropertiesManager.getSqlTableProperties().getProperty("USERS_TABLE_NAME"),
+            PropertiesManager.getSqlTableProperties().getProperty("FOREIGN_KEY_USER"));
     protected final static String sqlSelectTypeModels = String.format("SELECT * FROM %s",
             PropertiesManager.getSqlTableProperties().getProperty("MODEL_TYPE_TABLE_NAME"));
 
+    protected final static String sqlSelectUserData = String.format("SELECT user.%s as login, user.%s as password, user.id," +
+                    "user.%s as access FROM %s user WHERE user.%s = ? AND user.%s = ?",
+            PropertiesManager.getSqlTableProperties().getProperty("USERS_LOGIN"),
+            PropertiesManager.getSqlTableProperties().getProperty("USERS_PASSWORD"),
+            PropertiesManager.getSqlTableProperties().getProperty("USERS_ACCESS"),
+            PropertiesManager.getSqlTableProperties().getProperty("USERS_TABLE_NAME"),
+            PropertiesManager.getSqlTableProperties().getProperty("USERS_LOGIN"),
+            PropertiesManager.getSqlTableProperties().getProperty("USERS_PASSWORD"));
 }

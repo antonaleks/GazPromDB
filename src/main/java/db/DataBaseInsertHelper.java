@@ -3,6 +3,7 @@ package db;
 import entity.Component;
 import entity.EnergyBalance;
 import entity.MassBalance;
+import entity.User;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
@@ -84,13 +85,16 @@ public class DataBaseInsertHelper extends DataBaseHelper {
             insertTxtComponent(component.getName(), component.getFormula(), component.getId(), modelId);
     }
 
-    public void insertToModel(int typeId, String pathToXML, String pathToDXF, String pathToMainFile, String pathToTXT) throws SQLException {
+    public void insertToModel(int typeId, String pathToXML, String pathToDXF, String pathToMainFile, String pathToTXT, String pathToPng, String name, int creatorId) throws SQLException {
         PreparedStatement statement = conn.prepareStatement(SqlQueryHelper.sqlInsertModel);
         statement.setInt(1, typeId);
-        statement.setString(2, pathToXML);
-        statement.setString(3, pathToMainFile);
-        statement.setString(4, pathToDXF);
-        statement.setString(5, pathToTXT);
+        statement.setInt(2, creatorId);
+        statement.setString(3, pathToXML);
+        statement.setString(4, pathToMainFile);
+        statement.setString(5, pathToDXF);
+        statement.setString(6, pathToTXT);
+        statement.setString(7, pathToPng);
+        statement.setString(8, name);
         statement.execute();
     }
 
@@ -141,7 +145,7 @@ public class DataBaseInsertHelper extends DataBaseHelper {
 
     }
 
-    public void fillDataBase(int typeId, String pathToXML, String pathToDXF, String pathToMainFile, String pathToTXT) {
+    public void fillDataBase(int typeId, String pathToXML, String pathToDXF, String pathToMainFile, String pathToTXT, String name, String pathToPng) {
 
         mySqlConnect = new MySqlConnect();
         conn = mySqlConnect.connect();
@@ -154,14 +158,13 @@ public class DataBaseInsertHelper extends DataBaseHelper {
             Element rootNode = document.getRootElement();
 
             //вставка модели
-            insertToModel(typeId, xmlFile.getAbsolutePath(), pathToDXF, pathToMainFile, pathToTXT);
+            insertToModel(typeId, xmlFile.getAbsolutePath(), pathToDXF, pathToMainFile, pathToTXT, pathToPng, name, User.getInstance().getId());
 
             //последний вставленный индекс
             modelId = getLastInsertId();
             int objectsIndex = getLustIdFrom(PropertiesManager.getSqlTableProperties().getProperty("XML_OBJECTS_TABLE_NAME"));
             int objectIndex = getLustIdFrom(PropertiesManager.getSqlTableProperties().getProperty("XML_OBJECT_TABLE_NAME"));
             int attributeIndex = getLustIdFrom(PropertiesManager.getSqlTableProperties().getProperty("XML_ATTRIBUTE_TABLE_NAME"));
-            int dataIndex = getLustIdFrom(PropertiesManager.getSqlTableProperties().getProperty("XML_DATA_TABLE_NAME"));
 
 
             List<Element> objectsList = rootNode.getChildren("Objects");
@@ -191,7 +194,6 @@ public class DataBaseInsertHelper extends DataBaseHelper {
                             sqlValuesData.append(String.format("(%s, '%s', '%s'),",attributeIndex,
                                     data.getAttributeValue("ComponentName"),
                                     data.getAttributeValue("Value")));
-                            dataIndex++;
                         }
                     }
                 }
