@@ -34,6 +34,15 @@ public class EntriesListFormController extends BaseController {
     private TableColumn<Model, Date> col3;
 
     @FXML
+    private TableColumn<Model, String> colName;
+
+    @FXML
+    private TableColumn<Model, String> colCreator;
+
+    @FXML
+    private TableColumn<Model, String> colSchema;
+
+    @FXML
     private void initialize() throws SQLException {
 
         ObservableList<Model> modelData = new DataBaseXmlHelper().selectAllModelsToList();
@@ -41,6 +50,8 @@ public class EntriesListFormController extends BaseController {
         col1.setCellValueFactory(new PropertyValueFactory<Model, Integer>("id"));
         col2.setCellValueFactory(new PropertyValueFactory<Model, String>("type"));
         col3.setCellValueFactory(new PropertyValueFactory<Model, Date>("date"));
+        colName.setCellValueFactory(new PropertyValueFactory<Model, String>("name"));
+        colCreator.setCellValueFactory(new PropertyValueFactory<Model, String>("creator"));
 
         // заполняем таблицу данными
         tableModel.setItems(modelData);

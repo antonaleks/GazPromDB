@@ -31,7 +31,8 @@ public class DataBaseXmlHelper extends DataBaseHelper {
         ResultSet rs = statement.executeQuery();
         while (rs.next())
             modelData.add(new Model(rs.getInt("id"), rs.getString("type"),
-                    rs.getDate("date"), rs.getString("xml"), rs.getString("txt")));
+                    rs.getDate("date"), rs.getString("xml"), rs.getString("txt"),
+                    rs.getString("png"),  rs.getString("creator"),  rs.getString("name")));
         statement.close();
         closeAll();
         return modelData;

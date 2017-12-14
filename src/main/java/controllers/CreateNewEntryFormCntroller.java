@@ -45,6 +45,7 @@ public class CreateNewEntryFormCntroller {
     private String pathToTXT= "";
     private String pathToDXF = "";
     private String pathToXML = "";
+    private String name = "";
 
     private List<ModelType> types;
 
@@ -99,7 +100,10 @@ public class CreateNewEntryFormCntroller {
         for(int i = 0; i < listView.getItems().size(); i++){
             String row = ((String) listView.getItems().get(i));
             if(row.contains(File.separator)){
-                if ("cc6".equals(row.substring(row.lastIndexOf('.')+1)))pathToMainFile = row;
+                if ("cc6".equals(row.substring(row.lastIndexOf('.')+1))){
+                    pathToMainFile = row;
+                    name = new File(pathToMainFile).getName().split("\\.")[0];
+                }
                 if ("txt".equals(row.substring(row.lastIndexOf('.')+1)))pathToTXT = row;
                 if ("dxf".equals(row.substring(row.lastIndexOf('.')+1))) pathToDXF = row;
                 if ("xml".equals(row.substring(row.lastIndexOf('.')+1)))pathToXML = row;
@@ -120,7 +124,7 @@ public class CreateNewEntryFormCntroller {
 
         DataBaseInsertHelper dataBaseInsertHelper = new DataBaseInsertHelper();
 
-        dataBaseInsertHelper.fillDataBase(typeId, pathToXML, pathToDXF, pathToMainFile, pathToTXT);
+        dataBaseInsertHelper.fillDataBase(typeId, pathToXML, pathToDXF, pathToMainFile, pathToTXT, name, pathToDXF);
 
     }
 }
