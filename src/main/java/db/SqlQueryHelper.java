@@ -167,6 +167,33 @@ public class SqlQueryHelper {
             PropertiesManager.getSqlTableProperties().getProperty("FOREIGN_KEY_MODEL_TYPE"),
             PropertiesManager.getSqlTableProperties().getProperty("USERS_TABLE_NAME"),
             PropertiesManager.getSqlTableProperties().getProperty("FOREIGN_KEY_USER"));
+    protected final static String sqlSelectModelsByParams = String.format("SELECT model.%s as name, model.%s as png, " +
+                    "model.%s as xml, model.%s as txt, model.id as id, modtype.%s as type, users.%s as creator, " +
+                    "model.%s as date FROM %s  model " +
+                    "INNER JOIN %s  modtype on model.%s = modtype.id " +
+                    "INNER JOIN %s as users on model.%s=users.id " +
+                    "INNER JOIN %s as txt_mas on txt_mas.%s = model.id " +
+                    "WHERE CAST(txt_mas.%s as DECIMAL(10,2)) >= ? - ? AND CAST(txt_mas.%s as DECIMAL(10,2))  <= ? + ? AND " +
+                    "CAST(txt_mas.%s as DECIMAL(10,2)) >= ? - ? AND CAST(txt_mas.%s as DECIMAL(10,2)) <= ? + ? AND txt_mas.%s = ?",
+            PropertiesManager.getSqlTableProperties().getProperty("MODEL_FILES_MODEL_NAME"),
+            PropertiesManager.getSqlTableProperties().getProperty("MODEL_FILES_PATH_TO_PNG"),
+            PropertiesManager.getSqlTableProperties().getProperty("MODEL_FILES_PATH_TO_XML"),
+            PropertiesManager.getSqlTableProperties().getProperty("MODEL_FILES_PATH_TO_TXT"),
+            PropertiesManager.getSqlTableProperties().getProperty("MODEL_TYPE_TYPE_NAME"),
+            PropertiesManager.getSqlTableProperties().getProperty("USERS_LOGIN"),
+            PropertiesManager.getSqlTableProperties().getProperty("MODEL_FILES_CREATION_DATE"),
+            PropertiesManager.getSqlTableProperties().getProperty("MODEL_FILES_TABLE_NAME"),
+            PropertiesManager.getSqlTableProperties().getProperty("MODEL_TYPE_TABLE_NAME"),
+            PropertiesManager.getSqlTableProperties().getProperty("FOREIGN_KEY_MODEL_TYPE"),
+            PropertiesManager.getSqlTableProperties().getProperty("USERS_TABLE_NAME"),
+            PropertiesManager.getSqlTableProperties().getProperty("FOREIGN_KEY_USER"),
+            PropertiesManager.getSqlTableProperties().getProperty("TXT_MASS_BALANCE_TABLE_NAME"),
+            PropertiesManager.getSqlTableProperties().getProperty("FOREIGN_KEY_MODEL_FILES"),
+            PropertiesManager.getSqlTableProperties().getProperty("TXT_MASS_BALANCE_INPUT_1"),
+            PropertiesManager.getSqlTableProperties().getProperty("TXT_MASS_BALANCE_INPUT_1"),
+            PropertiesManager.getSqlTableProperties().getProperty("TXT_MASS_BALANCE_INPUT_2"),
+            PropertiesManager.getSqlTableProperties().getProperty("TXT_MASS_BALANCE_INPUT_2"),
+            PropertiesManager.getSqlTableProperties().getProperty("TXT_MASS_BALANCE_NAME"));
     protected final static String sqlSelectTypeModels = String.format("SELECT * FROM %s",
             PropertiesManager.getSqlTableProperties().getProperty("MODEL_TYPE_TABLE_NAME"));
 
