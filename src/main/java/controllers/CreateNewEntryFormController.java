@@ -2,10 +2,8 @@ package controllers;
 
 import db.DataBaseInsertHelper;
 import db.DataBaseXmlHelper;
-import entity.Component;
-import entity.EnergyBalance;
-import entity.MassBalance;
-import entity.ModelType;
+import entity.*;
+import enums.Access;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -21,7 +19,7 @@ import java.util.List;
 /**
  * Created by Влад on 31.10.2017.
  */
-public class CreateNewEntryFormCntroller {
+public class CreateNewEntryFormController {
     @FXML
     private Button mainFileChooseButton;
     @FXML
@@ -57,7 +55,7 @@ public class CreateNewEntryFormCntroller {
             comboBox.getItems().add(type.getType());
     }
 
-    public void chooseMainFile(ActionEvent mouseEvent) {
+    public void chooseMainFile(ActionEvent actionEvent) {
         FileChooser fileChooser = new FileChooser();
         File selectedFile = fileChooser.showOpenDialog(null);
         if(selectedFile!= null){
@@ -81,8 +79,7 @@ public class CreateNewEntryFormCntroller {
 
         if(files!=null){
             listView.getItems().add("Доп. файлы:");
-            for(int i=0;i<files.size();i++)
-                listView.getItems().add(files.get(i).getPath());
+            for (File file : files) listView.getItems().add(file.getPath());
         }
         else {
             System.out.println("Файлы выбраны неверно!");
@@ -95,36 +92,40 @@ public class CreateNewEntryFormCntroller {
         parentWindow.hide();
     }
 
-    public void insertNewModel(ActionEvent actionEvent) throws IOException, SQLException {
+    public void insertNewModel(ActionEvent actionEvent) throws IOException {
+        if (Access.checkAccess(User.getCurrentUser().getAccess(), Access.Right.WRITE)) {
 
-        for(int i = 0; i < listView.getItems().size(); i++){
-            String row = ((String) listView.getItems().get(i));
-            if(row.contains(File.separator)){
-                if ("cc6".equals(row.substring(row.lastIndexOf('.')+1))){
-                    pathToMainFile = row;
-                    name = new File(pathToMainFile).getName().split("\\.")[0];
+
+            for (int i = 0; i < listView.getItems().size(); i++) {
+                String row = ((String) listView.getItems().get(i));
+                if (row.contains(File.separator)) {
+                    if ("cc6".equals(row.substring(row.lastIndexOf('.') + 1))) {
+                        pathToMainFile = row;
+                        name = new File(pathToMainFile).getName().split("\\.")[0];
+                    }
+                    if ("txt".equals(row.substring(row.lastIndexOf('.') + 1))) pathToTXT = row;
+                    if ("dxf".equals(row.substring(row.lastIndexOf('.') + 1))) pathToDXF = row;
+                    if ("xml".equals(row.substring(row.lastIndexOf('.') + 1))) pathToXML = row;
                 }
-                if ("txt".equals(row.substring(row.lastIndexOf('.')+1)))pathToTXT = row;
-                if ("dxf".equals(row.substring(row.lastIndexOf('.')+1))) pathToDXF = row;
-                if ("xml".equals(row.substring(row.lastIndexOf('.')+1)))pathToXML = row;
             }
-        }
-        int typeId = -1;
-        for (ModelType type: types){
-            if(comboBox.getSelectionModel().getSelectedItem().equals(type.getType())){
-                typeId = type.getId();
-                break;
+            int typeId = -1;
+            for (ModelType type : types) {
+                if (comboBox.getSelectionModel().getSelectedItem().equals(type.getType())) {
+                    typeId = type.getId();
+                    break;
+                }
             }
+            Parser txtParser = new Parser();
+            String txtInput = txtParser.parseTxtReport(pathToTXT);
+            List<MassBalance> massBalance = txtParser.parseMassBalance(txtInput);
+            List<EnergyBalance> energyBalance = txtParser.parseEnergyBalance(txtInput);
+            List<Component> components = txtParser.parseComponent(txtInput);
+
+            DataBaseInsertHelper dataBaseInsertHelper = new DataBaseInsertHelper();
+
+            dataBaseInsertHelper.fillDataBase(typeId, pathToXML, pathToDXF, pathToMainFile, pathToTXT, name, pathToDXF);
+            System.out.println("Complete");
         }
-        Parser txtParser = new Parser();
-        String txtInput = txtParser.parseTxtReport(pathToTXT);
-        List<MassBalance> massBalance = txtParser.parseMassBalance(txtInput);
-        List<EnergyBalance> energyBalance = txtParser.parseEnergyBalance(txtInput);
-        List<Component> components = txtParser.parseComponent(txtInput);
-
-        DataBaseInsertHelper dataBaseInsertHelper = new DataBaseInsertHelper();
-
-        dataBaseInsertHelper.fillDataBase(typeId, pathToXML, pathToDXF, pathToMainFile, pathToTXT, name, pathToDXF);
-
+        else System.out.println("У вас нет прав на данное действие");
     }
 }

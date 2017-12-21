@@ -3,14 +3,11 @@ package db;
 import entity.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.control.TreeItem;
 import properties.PropertiesManager;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class DataBaseTxtHelper extends DataBaseHelper {
 

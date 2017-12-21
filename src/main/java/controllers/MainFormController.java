@@ -24,67 +24,20 @@ public class MainFormController {
     }
 
     @FXML
-    public void showChangesListForm(ActionEvent actionEvent) throws IOException {
-        showNewForm("/fxml/changesListForm.fxml");
-    }
-
-
-
-    public void showAddNewUserForm(ActionEvent actionEvent) throws IOException {
-        javafx.stage.Window parentWindow = mainForm.getScene().getWindow();//((Node) ((MenuItem) actionEvent.getSource()).getGraphic()).getScene().getWindow();
-        Stage stage = new Stage();
-
-        Parent newRoot = FXMLLoader.load(getClass().getResource("/fxml/addNewUserForm.fxml"));
-        stage.setResizable(true);
-        stage.setScene(new Scene(newRoot));
-        stage.initModality(Modality.WINDOW_MODAL);
-        stage.initOwner(parentWindow);
-        stage.show();
-    }
-
-
-
-
     public void showEntriesListForm(ActionEvent actionEvent) throws IOException {
         showNewForm("/fxml/entriesListForm.fxml");
-    }
-
-    public void showUsersListForm(ActionEvent actionEvent) throws IOException {
-        showNewForm("/fxml/usersListForm.fxml");
-    }
-
-    public void showUserHistoryForm(ActionEvent actionEvent) throws IOException {
-        showNewForm("/fxml/userHistoryForm.fxml");
-    }
-
-    public void showFindEntryForm(ActionEvent actionEvent) throws IOException {
-        showNewForm("/fxml/userHistoryForm.fxml");
-    }
-
-    public void showFindChahgesForm(ActionEvent actionEvent) throws IOException {
-        showNewForm("/fxml/userHistoryForm.fxml");
-    }
-    @FXML
-    public void showHelpForm(ActionEvent actionEvent)  {
-        try {
-            showNewForm("/fxml/administratorMessageForm.fxml");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     public void exitFromDataBase(ActionEvent actionEvent) {
     }
 
-    @FXML
     public void showCreateEntryForm(ActionEvent actionEvent) throws IOException {
         showNewForm("/fxml/createNewEntryForm.fxml");
     }
 
-
     //Helper method, which helps do not duplicate code
     private void showNewForm(String fxmlForm) throws IOException {
-        javafx.stage.Window parentWindow = mainForm.getScene().getWindow();//((Node) ((MenuItem) actionEvent.getSource()).getGraphic()).getScene().getWindow();
+        javafx.stage.Window parentWindow = mainForm.getScene().getWindow();
         Stage stage = new Stage();
         Parent newRoot = FXMLLoader.load(getClass().getResource(fxmlForm));
         stage.setResizable(true);

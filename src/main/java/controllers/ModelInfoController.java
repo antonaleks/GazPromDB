@@ -22,13 +22,13 @@ public class ModelInfoController extends BaseController {
     @FXML
     public ListView filesList;
     @FXML
-    public Label modelID;
+    private Label modelID;
     @FXML
     public Button btnExit;
     @FXML
-    public Label lblCreated;
+    private Label lblCreated;
     @FXML
-    public Label lblType;
+    private Label lblType;
 
     private Model model;
 
@@ -38,6 +38,12 @@ public class ModelInfoController extends BaseController {
         modelID.setText(modelID.getText()+this.model.getId());
         lblCreated.setText("Создана пользователем: " + this.model.getCreator() + " дата: " + this.model.getDate());
         lblType.setText(lblType.getText()+this.model.getType());
+        filesList.getItems().add("Основной файл:");
+        filesList.getItems().add(this.model.getPathToMainFile());
+        filesList.getItems().add("Доп. файлы:");
+        filesList.getItems().add(this.model.getPathToXml());
+        filesList.getItems().add(this.model.getPathToTxt());
+        filesList.getItems().add(this.model.getPathToDxf());
     }
 
 

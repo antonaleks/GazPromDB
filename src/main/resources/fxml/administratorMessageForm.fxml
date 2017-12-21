@@ -5,11 +5,14 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="428.0" prefWidth="600.0" stylesheets="/styles/base/base.css" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdministratorMessageFormController">
-   <children>
-      <Button layoutX="396.0" layoutY="395.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="132.0" text="Отправить" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="129.0" />
-      <Label layoutX="20.0" layoutY="6.0" text="Сообщение от пользователя: username" />
-      <TextArea layoutX="20.0" layoutY="32.0" prefHeight="327.0" prefWidth="564.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="30.0" />
-      <Button layoutX="527.0" layoutY="367.0" mnemonicParsing="false" onAction="#closeForm" prefHeight="25.0" prefWidth="92.0" text="Отмена" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="15.0" />
-   </children>
+<AnchorPane prefHeight="428.0" prefWidth="600.0" stylesheets="/styles/base/base.css"
+            xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.AdministratorMessageFormController">
+    <Button layoutX="396.0" layoutY="395.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="132.0" text="Отправить"
+            AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="129.0"/>
+    <Label layoutX="20.0" layoutY="6.0" text="Сообщение от пользователя: username"/>
+    <TextArea layoutX="20.0" layoutY="32.0" prefHeight="327.0" prefWidth="564.0" AnchorPane.bottomAnchor="50.0"
+              AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="30.0"/>
+    <Button layoutX="527.0" layoutY="367.0" mnemonicParsing="false" onAction="#closeForm" prefHeight="25.0"
+            prefWidth="92.0" text="Отмена" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="15.0"/>
 </AnchorPane>

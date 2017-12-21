@@ -11,9 +11,11 @@ public class Model {
     private String pathToDxf;
     private String pathToPng;
     private String pathToTxt;
+    private String pathToMainFile;
+
     private String name;
 
-    public Model(int id, String type, Date date, String pathToXml, String pathToTxt, String pathToPng, String creator, String name) {
+    public Model(int id, String type, Date date, String pathToXml, String pathToTxt, String pathToPng, String creator, String name, String pathToMainFile, String pathToDxf) {
         this.id = id;
         this.type = type;
         this.date = date;
@@ -22,10 +24,16 @@ public class Model {
         this.pathToPng = pathToPng;
         this.creator = creator;
         this.name = name;
+        this.pathToMainFile = pathToMainFile;
+        this.pathToDxf = pathToDxf;
     }
 
     public String getName() {
         return name;
+    }
+
+    public String getPathToMainFile() {
+        return pathToMainFile;
     }
 
     public String getCreator() {

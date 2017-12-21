@@ -60,11 +60,11 @@ public class EntriesListFormController extends BaseController {
 
         ObservableList<Model> modelData = new DataBaseXmlHelper().selectAllModelsToList();
         // устанавливаем тип и значение которое должно хранится в колонке
-        col1.setCellValueFactory(new PropertyValueFactory<Model, Integer>("id"));
-        col2.setCellValueFactory(new PropertyValueFactory<Model, String>("type"));
-        col3.setCellValueFactory(new PropertyValueFactory<Model, Date>("date"));
-        colName.setCellValueFactory(new PropertyValueFactory<Model, String>("name"));
-        colCreator.setCellValueFactory(new PropertyValueFactory<Model, String>("creator"));
+        col1.setCellValueFactory(new PropertyValueFactory<>("id"));
+        col2.setCellValueFactory(new PropertyValueFactory<>("type"));
+        col3.setCellValueFactory(new PropertyValueFactory<>("date"));
+        colName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        colCreator.setCellValueFactory(new PropertyValueFactory<>("creator"));
 
         // заполняем таблицу данными
         tableModel.setItems(modelData);
@@ -91,11 +91,11 @@ public class EntriesListFormController extends BaseController {
                 Double.parseDouble(estimate.getText()),
                 compName.getText());
         // устанавливаем тип и значение которое должно хранится в колонке
-        col1.setCellValueFactory(new PropertyValueFactory<Model, Integer>("id"));
-        col2.setCellValueFactory(new PropertyValueFactory<Model, String>("type"));
-        col3.setCellValueFactory(new PropertyValueFactory<Model, Date>("date"));
-        colName.setCellValueFactory(new PropertyValueFactory<Model, String>("name"));
-        colCreator.setCellValueFactory(new PropertyValueFactory<Model, String>("creator"));
+        col1.setCellValueFactory(new PropertyValueFactory<>("id"));
+        col2.setCellValueFactory(new PropertyValueFactory<>("type"));
+        col3.setCellValueFactory(new PropertyValueFactory<>("date"));
+        colName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        colCreator.setCellValueFactory(new PropertyValueFactory<>("creator"));
 
         // заполняем таблицу данными
         tableModel.setItems(modelData);

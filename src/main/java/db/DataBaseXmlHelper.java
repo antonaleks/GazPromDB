@@ -32,7 +32,7 @@ public class DataBaseXmlHelper extends DataBaseHelper {
         while (rs.next())
             modelData.add(new Model(rs.getInt("id"), rs.getString("type"),
                     rs.getDate("date"), rs.getString("xml"), rs.getString("txt"),
-                    rs.getString("png"),  rs.getString("creator"),  rs.getString("name")));
+                    rs.getString("png"),  rs.getString("creator"),  rs.getString("name"), rs.getString("main"),rs.getString("dxf")));
         statement.close();
         closeAll();
         return modelData;
@@ -54,7 +54,7 @@ public class DataBaseXmlHelper extends DataBaseHelper {
         while (rs.next())
             modelData.add(new Model(rs.getInt("id"), rs.getString("type"),
                     rs.getDate("date"), rs.getString("xml"), rs.getString("txt"),
-                    rs.getString("png"),  rs.getString("creator"),  rs.getString("name")));
+                    rs.getString("png"),  rs.getString("creator"),  rs.getString("name"), rs.getString("main"), rs.getString("dxf")));
         statement.close();
         closeAll();
         return modelData;

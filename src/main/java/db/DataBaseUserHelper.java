@@ -1,8 +1,6 @@
 package db;
 
-import entity.Data;
 import entity.User;
-import properties.PropertiesManager;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,10 +14,10 @@ public class DataBaseUserHelper extends DataBaseHelper {
         statement.setString(2, password);
         ResultSet rs = statement.executeQuery();
         if(rs.next()) {
-            User.getInstance().setLogin(rs.getString("login"));
-            User.getInstance().setPassword(rs.getString("password"));
-            User.getInstance().setAccess(rs.getString("access"));
-            User.getInstance().setId(rs.getInt("id"));
+            User.getCurrentUser().setLogin(rs.getString("login"));
+            User.getCurrentUser().setPassword(rs.getString("password"));
+            User.getCurrentUser().setAccess(rs.getString("access"));
+            User.getCurrentUser().setId(rs.getInt("id"));
             statement.close();
             closeAll();
             return true;

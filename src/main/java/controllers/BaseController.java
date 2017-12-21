@@ -9,9 +9,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public abstract class BaseController {
+abstract class BaseController {
 
-    public void loadModalWindow(ActionEvent actionEvent, String title, Parent root) throws IOException {
+    void loadModalWindow(ActionEvent actionEvent, String title, Parent root) {
         javafx.stage.Window parentWindow = ((Node) actionEvent.getSource()).getScene().getWindow();
         Stage stage = new Stage();
         stage.setTitle(title);

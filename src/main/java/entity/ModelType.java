@@ -1,7 +1,5 @@
 package entity;
 
-import java.util.Date;
-
 public class ModelType {
     private int id;
     private String type;
