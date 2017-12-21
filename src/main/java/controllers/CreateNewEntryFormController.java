@@ -1,5 +1,6 @@
 package controllers;
 
+import converters.Converter;
 import db.DataBaseInsertHelper;
 import db.DataBaseXmlHelper;
 import entity.*;
@@ -43,6 +44,7 @@ public class CreateNewEntryFormController {
     private String pathToTXT= "";
     private String pathToDXF = "";
     private String pathToXML = "";
+    private String pathToPNG = "";
     private String name = "";
 
     private List<ModelType> types;
@@ -123,7 +125,10 @@ public class CreateNewEntryFormController {
 
             DataBaseInsertHelper dataBaseInsertHelper = new DataBaseInsertHelper();
 
-            dataBaseInsertHelper.fillDataBase(typeId, pathToXML, pathToDXF, pathToMainFile, pathToTXT, name, pathToDXF);
+            pathToPNG = new Converter().parseFile(pathToDXF);
+
+            dataBaseInsertHelper.fillDataBase(typeId, pathToXML, pathToDXF, pathToMainFile, pathToTXT, name, pathToPNG);
+
             System.out.println("Complete");
         }
         else System.out.println("У вас нет прав на данное действие");

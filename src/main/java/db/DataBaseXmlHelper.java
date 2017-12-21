@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.TreeItem;
 import properties.PropertiesManager;
 
+import java.net.MalformedURLException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -25,20 +26,20 @@ public class DataBaseXmlHelper extends DataBaseHelper {
         return modelData;
     }
 
-    public ObservableList<Model> selectAllModelsToList() throws SQLException {
+    public ObservableList<Model> selectAllModelsToList() throws SQLException, MalformedURLException {
         ObservableList<Model> modelData = FXCollections.observableArrayList();
         PreparedStatement statement = conn.prepareStatement(SqlQueryHelper.sqlSelectModels);
         ResultSet rs = statement.executeQuery();
         while (rs.next())
             modelData.add(new Model(rs.getInt("id"), rs.getString("type"),
                     rs.getDate("date"), rs.getString("xml"), rs.getString("txt"),
-                    rs.getString("png"),  rs.getString("creator"),  rs.getString("name"), rs.getString("main"),rs.getString("dxf")));
+                    rs.getString("png"),  rs.getString("creator"),  rs.getString("name"), rs.getString("main"), rs.getString("dxf")));
         statement.close();
         closeAll();
         return modelData;
     }
 
-    public ObservableList<Model> selectAllModelsByParamsToList(double input_1, double input_2, double estimate, String name) throws SQLException {
+    public ObservableList<Model> selectAllModelsByParamsToList(double input_1, double input_2, double estimate, String name) throws SQLException, MalformedURLException {
         ObservableList<Model> modelData = FXCollections.observableArrayList();
         PreparedStatement statement = conn.prepareStatement(SqlQueryHelper.sqlSelectModelsByParams);
         statement.setDouble(1, input_1);

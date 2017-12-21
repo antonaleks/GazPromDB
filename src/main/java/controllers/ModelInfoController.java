@@ -9,8 +9,12 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.sql.SQLException;
 
 /**
@@ -21,6 +25,8 @@ public class ModelInfoController extends BaseController {
     public Button btnParams;
     @FXML
     public ListView filesList;
+    @FXML
+    public ImageView imageView;
     @FXML
     private Label modelID;
     @FXML
@@ -33,7 +39,7 @@ public class ModelInfoController extends BaseController {
     private Model model;
 
     @FXML
-    public void initialize(Model model) {
+    public void initialize(Model model) throws MalformedURLException {
         this.model = model;
         modelID.setText(modelID.getText()+this.model.getId());
         lblCreated.setText("Создана пользователем: " + this.model.getCreator() + " дата: " + this.model.getDate());
@@ -44,6 +50,7 @@ public class ModelInfoController extends BaseController {
         filesList.getItems().add(this.model.getPathToXml());
         filesList.getItems().add(this.model.getPathToTxt());
         filesList.getItems().add(this.model.getPathToDxf());
+        imageView.setImage(this.model.getImage());
     }
 
 

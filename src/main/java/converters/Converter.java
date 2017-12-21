@@ -1,18 +1,22 @@
 package converters;
 
-/*
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.util.HashMap;
+
 import org.kabeja.dxf.DXFDocument;
 import org.kabeja.parser.*;
-import org.kabeja.parser.ParserBuilder;
 import org.kabeja.svg.SVGGenerator;
 import org.kabeja.xml.*;
 
 public class Converter {
-    private String pathToDFX = "src/main/resources/HydrotreaterUnitSimulation.dxf";
 
-    public void parseFile(String sourceFile) {
+    public String parseFile(String sourceFile) {
         try {
-            FileOutputStream o = new FileOutputStream(sourceFile.substring(0, sourceFile.length()-4)+".png");
+            String pathToPng = sourceFile.substring(0, sourceFile.length()-4)+".png";
+            FileOutputStream o=new FileOutputStream(pathToPng);
             InputStream in = new FileInputStream(sourceFile);//your stream from upload or somewhere
             Parser dxfParser = ParserBuilder.createDefaultParser();
             dxfParser.parse(in, "");
@@ -21,12 +25,13 @@ public class Converter {
             SAXSerializer out = new org.kabeja.batik.tools.SAXPNGSerializer();
             out.setOutput(o);
             generator.generate(doc,out,new HashMap());
-
+            return pathToPng;
         } catch (ParseException e) {
             e.printStackTrace();
+            return null;
         } catch (Exception ioe) {
             ioe.printStackTrace();
+            return null;
         }
     }
 }
-*/

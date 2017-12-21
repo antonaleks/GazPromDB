@@ -12,8 +12,11 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.sql.SQLException;
 import java.util.Date;
 
@@ -53,10 +56,10 @@ public class EntriesListFormController extends BaseController {
     private TableColumn<Model, String> colCreator;
 
     @FXML
-    private TableColumn<Model, String> colSchema;
+    private TableColumn<Model, ImageView> colSchema;
 
     @FXML
-    private void initialize() throws SQLException {
+    private void initialize() throws SQLException, MalformedURLException {
 
         ObservableList<Model> modelData = new DataBaseXmlHelper().selectAllModelsToList();
         // устанавливаем тип и значение которое должно хранится в колонке
@@ -65,6 +68,7 @@ public class EntriesListFormController extends BaseController {
         col3.setCellValueFactory(new PropertyValueFactory<>("date"));
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colCreator.setCellValueFactory(new PropertyValueFactory<>("creator"));
+        colSchema.setCellValueFactory(new PropertyValueFactory<>("imageView"));
 
         // заполняем таблицу данными
         tableModel.setItems(modelData);
@@ -84,7 +88,7 @@ public class EntriesListFormController extends BaseController {
         loadModalWindow(actionEvent, "Параметры модели", root);
     }
 
-    public void get_info(ActionEvent actionEvent) throws SQLException {
+    public void get_info(ActionEvent actionEvent) throws SQLException, MalformedURLException {
         ObservableList<Model> modelData = new DataBaseXmlHelper().selectAllModelsByParamsToList(
                 Double.parseDouble(in_1.getText()),
                 Double.parseDouble(in_2.getText()),
