@@ -129,8 +129,18 @@ public class CreateNewEntryFormController {
 
             dataBaseInsertHelper.fillDataBase(typeId, pathToXML, pathToDXF, pathToMainFile, pathToTXT, name, pathToPNG);
 
-            System.out.println("Complete");
+            Alert alertComplete = new Alert(Alert.AlertType.INFORMATION);
+            alertComplete.setTitle("Информация о выполнении задачи");
+            alertComplete.setHeaderText("Внесение в базу данных новой записи");
+            alertComplete.setContentText("Новая запись была успешно создана");
+            alertComplete.showAndWait();
         }
-        else System.out.println("У вас нет прав на данное действие");
+        else {
+            Alert alertComplete = new Alert(Alert.AlertType.ERROR);
+            alertComplete.setTitle("Информация о выполнении задачи");
+            alertComplete.setHeaderText("Внесение в базу данных новой записи");
+            alertComplete.setContentText("Ошибка! Вы не имеете прав на создание новой записи");
+            alertComplete.showAndWait();
+        }
     }
 }

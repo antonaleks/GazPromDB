@@ -26,7 +26,7 @@ public class ObjGroupController extends BaseController {
     private Label lblType;
 
     @FXML
-    private Label lblPathXml;
+    private Label lblModelName;
 
     @FXML
     private TreeTableView<ObjectModel> treeTable;
@@ -46,7 +46,7 @@ public class ObjGroupController extends BaseController {
     public void initialize(Model model) throws SQLException {
         this.model = model;
         lblId.setText(lblId.getText()+model.getId());
-        lblPathXml.setText(lblPathXml.getText()+model.getPathToXml());
+        lblModelName.setText(lblModelName.getText() + model.getName());
         lblType.setText(lblType.getText()+model.getType());
 
         TreeItem<ObjectModel> root = new TreeItem<>(new ObjectModel("Objects", "", ""));

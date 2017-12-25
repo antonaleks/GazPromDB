@@ -26,7 +26,7 @@ public class DataController {
     @FXML
     private Label lblType;
     @FXML
-    private Label lblPathXml;
+    private Label lblModelName;
     @FXML
     private Label lblObjId;
     @FXML
@@ -45,7 +45,7 @@ public class DataController {
     @FXML
     public void initialize(Model model, ObjectModel object, Attribute attribute) throws SQLException {
         lblId.setText(lblId.getText() + model.getId());
-        lblPathXml.setText(lblPathXml.getText() + model.getPathToXml());
+        lblModelName.setText(lblModelName.getText() + model.getName());
         lblType.setText(lblType.getText() + model.getType());
         lblObjId.setText(lblObjId.getText() + object.getId().intValue());
         lblObjName.setText(lblObjName.getText() + object.getName().getValue());

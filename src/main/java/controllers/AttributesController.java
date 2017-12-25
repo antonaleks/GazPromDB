@@ -24,7 +24,7 @@ public class AttributesController extends BaseController {
     @FXML
     private Label lblType;
     @FXML
-    private Label lblPathXml;
+    private Label lblModelName;
     @FXML
     private Label lblObjId;
     @FXML
@@ -50,7 +50,7 @@ public class AttributesController extends BaseController {
         this.model = model;
         this.object = object;
         lblId.setText(lblId.getText()+this.model.getId());
-        lblPathXml.setText(lblPathXml.getText()+this.model.getPathToXml());
+        lblModelName.setText(lblModelName.getText() + this.model.getName());
         lblType.setText(lblType.getText()+this.model.getType());
         lblObjId.setText(lblObjId.getText() + this.object.getId().intValue());
         lblObjName.setText(lblObjName.getText() + this.object.getName().getValue());

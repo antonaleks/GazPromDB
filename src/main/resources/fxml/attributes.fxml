@@ -9,7 +9,7 @@
     <AnchorPane onDragDetected="#showData" prefHeight="720.0" prefWidth="765.0" VBox.vgrow="ALWAYS">
         <Label fx:id="lblType" layoutX="117.0" layoutY="11.0" text="Model type: "/>
         <Label fx:id="lblId" layoutX="21.0" layoutY="11.0" text="Model id: "/>
-        <Label fx:id="lblPathXml" layoutX="21.0" layoutY="44.0" text="XML: "/>
+        <Label fx:id="lblModelName" layoutX="21.0" layoutY="44.0" text="Название модели "/>
         <Label fx:id="lblObjId" layoutX="499.0" layoutY="11.0" text="Object id: "/>
         <Label fx:id="lblObjName" layoutX="640.0" layoutY="11.0" text="Object name: "/>
         <Label fx:id="lblObjClass" layoutX="642.0" layoutY="44.0" text="Object class: "/>

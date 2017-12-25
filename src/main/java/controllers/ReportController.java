@@ -15,7 +15,7 @@ public class ReportController extends BaseController {
     @FXML
     private Label lblType;
     @FXML
-    private Label lblPathTxt;
+    private Label lblModelName;
     @FXML
     private Label lblId;
 
@@ -54,7 +54,7 @@ public class ReportController extends BaseController {
     public void initialize(Model model) throws SQLException {
         Model model1 = model;
         lblId.setText(lblId.getText()+ model1.getId());
-        lblPathTxt.setText(lblPathTxt.getText()+ model1.getPathToTxt());
+        lblModelName.setText(lblModelName.getText()+ model1.getName());
         lblType.setText(lblType.getText()+ model1.getType());
 
         ObservableList<Component> componentData = new DataBaseTxtHelper().selectComponentByModelToList(model1.getId());
