@@ -31,7 +31,30 @@ public class DataBaseXmlHelper extends DataBaseHelper {
         ResultSet rs = statement.executeQuery();
         while (rs.next())
             modelData.add(new Model(rs.getInt("id"), rs.getString("type"),
-                    rs.getDate("date"), rs.getString("xml"), rs.getString("txt")));
+                    rs.getDate("date"), rs.getString("xml"), rs.getString("txt"),
+                    rs.getString("png"),  rs.getString("creator"),  rs.getString("name")));
+        statement.close();
+        closeAll();
+        return modelData;
+    }
+
+    public ObservableList<Model> selectAllModelsByParamsToList(double input_1, double input_2, double estimate, String name) throws SQLException {
+        ObservableList<Model> modelData = FXCollections.observableArrayList();
+        PreparedStatement statement = conn.prepareStatement(SqlQueryHelper.sqlSelectModelsByParams);
+        statement.setDouble(1, input_1);
+        statement.setDouble(2, estimate);
+        statement.setDouble(3, input_1);
+        statement.setDouble(4, estimate);
+        statement.setDouble(5, input_2);
+        statement.setDouble(6, estimate);
+        statement.setDouble(7, input_2);
+        statement.setDouble(8, estimate);
+        statement.setString(9, name);
+        ResultSet rs = statement.executeQuery();
+        while (rs.next())
+            modelData.add(new Model(rs.getInt("id"), rs.getString("type"),
+                    rs.getDate("date"), rs.getString("xml"), rs.getString("txt"),
+                    rs.getString("png"),  rs.getString("creator"),  rs.getString("name")));
         statement.close();
         closeAll();
         return modelData;

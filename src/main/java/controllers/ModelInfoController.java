@@ -36,7 +36,7 @@ public class ModelInfoController extends BaseController {
     public void initialize(Model model) {
         this.model = model;
         modelID.setText(modelID.getText()+this.model.getId());
-        lblCreated.setText(lblCreated.getText()+this.model.getDate());
+        lblCreated.setText("Создана пользователем: " + this.model.getCreator() + " дата: " + this.model.getDate());
         lblType.setText(lblType.getText()+this.model.getType());
     }
 

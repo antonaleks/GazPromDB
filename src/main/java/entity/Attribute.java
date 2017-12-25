@@ -28,4 +28,8 @@ public class Attribute {
     public int getId() {
         return id;
     }
+
+    public String toString(){
+        return this.name + ", " + this.unit + ", " + this.dataType;
+    }
 }

@@ -3,10 +3,12 @@ package db;
 import entity.Component;
 import entity.EnergyBalance;
 import entity.MassBalance;
+import entity.User;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
+import properties.PropertiesManager;
 import txtParsers.Parser;
 import utilities.MySqlConnect;
 
@@ -22,6 +24,12 @@ public class DataBaseInsertHelper extends DataBaseHelper {
 
     // Идентификатор добавляемой модели
     private int modelId;
+
+    // Строки для добавления в таблицы
+    private StringBuilder sqlValuesObjects = new StringBuilder("");
+    private StringBuilder sqlValuesObject = new StringBuilder("");
+    private StringBuilder sqlValuesAttribute = new StringBuilder("");
+    private StringBuilder sqlValuesData = new StringBuilder("");
 
     public int getLastInsertId() {
         try {
@@ -77,13 +85,16 @@ public class DataBaseInsertHelper extends DataBaseHelper {
             insertTxtComponent(component.getName(), component.getFormula(), component.getId(), modelId);
     }
 
-    public void insertToModel(int typeId, String pathToXML, String pathToDXF, String pathToMainFile, String pathToTXT) throws SQLException {
+    public void insertToModel(int typeId, String pathToXML, String pathToDXF, String pathToMainFile, String pathToTXT, String pathToPng, String name, int creatorId) throws SQLException {
         PreparedStatement statement = conn.prepareStatement(SqlQueryHelper.sqlInsertModel);
         statement.setInt(1, typeId);
-        statement.setString(2, pathToXML);
-        statement.setString(3, pathToMainFile);
-        statement.setString(4, pathToDXF);
-        statement.setString(5, pathToTXT);
+        statement.setInt(2, creatorId);
+        statement.setString(3, pathToXML);
+        statement.setString(4, pathToMainFile);
+        statement.setString(5, pathToDXF);
+        statement.setString(6, pathToTXT);
+        statement.setString(7, pathToPng);
+        statement.setString(8, name);
         statement.execute();
     }
 
@@ -120,7 +131,21 @@ public class DataBaseInsertHelper extends DataBaseHelper {
         statementData.execute();
     }
 
-    public void fillDataBase(int typeId, String pathToXML, String pathToDXF, String pathToMainFile, String pathToTXT) {
+    public void insertAllToTable(String sql, String params) throws SQLException {
+        PreparedStatement statementData = conn.prepareStatement(sql + params);
+        statementData.execute();
+    }
+
+    public int getLustIdFrom(String tableName) throws SQLException {
+        PreparedStatement statementData = conn.prepareStatement(String.format(SqlQueryHelper.sqlLastIdFromTableName, tableName));
+        ResultSet rs =statementData.executeQuery();
+        if(rs.next())
+            return rs.getInt(1);
+        return -1;
+
+    }
+
+    public void fillDataBase(int typeId, String pathToXML, String pathToDXF, String pathToMainFile, String pathToTXT, String name, String pathToPng) {
 
         mySqlConnect = new MySqlConnect();
         conn = mySqlConnect.connect();
@@ -133,62 +158,50 @@ public class DataBaseInsertHelper extends DataBaseHelper {
             Element rootNode = document.getRootElement();
 
             //вставка модели
-            insertToModel(typeId, xmlFile.getAbsolutePath(), pathToDXF, pathToMainFile, pathToTXT);
+            insertToModel(typeId, xmlFile.getAbsolutePath(), pathToDXF, pathToMainFile, pathToTXT, pathToPng, name, User.getInstance().getId());
 
             //последний вставленный индекс
             modelId = getLastInsertId();
+            int objectsIndex = getLustIdFrom(PropertiesManager.getSqlTableProperties().getProperty("XML_OBJECTS_TABLE_NAME"));
+            int objectIndex = getLustIdFrom(PropertiesManager.getSqlTableProperties().getProperty("XML_OBJECT_TABLE_NAME"));
+            int attributeIndex = getLustIdFrom(PropertiesManager.getSqlTableProperties().getProperty("XML_ATTRIBUTE_TABLE_NAME"));
+
 
             List<Element> objectsList = rootNode.getChildren("Objects");
             for (Element objects : objectsList) {
-                System.out.println("ObjectModel Name: "
-                        + objects.getAttributeValue("Name"));
-                //вставка ObjectModel
-                insertToObjects(modelId, objects.getAttributeValue("ClassName"),
-                        objects.getAttributeValue("Name"));
-
-                //последний вставленный индекс
-                int objectsId = getLastInsertId();
+                sqlValuesObjects.append(String.format("(%s, '%s', '%s'),",modelId,
+                        objects.getAttributeValue("ClassName"),
+                        objects.getAttributeValue("Name")));
+                objectsIndex++;
 
                 List<Element> objectList = objects.getChildren("Object");
                 for (Element object : objectList) {
-                    System.out.println("\tObject ClassName: "
-                            + object.getAttributeValue("Class") + "\tName: "
-                            + object.getAttributeValue("Name"));
-                    //вставка ObjectModel
-                    insertToObject(objectsId, object.getAttributeValue("Class"),
-                            object.getAttributeValue("Name"));
-
-                    //последний вставленный индекс
-                    int objectId = getLastInsertId();
+                    sqlValuesObject.append(String.format("(%s, '%s', '%s'),",objectsIndex,
+                            object.getAttributeValue("Class"),
+                            object.getAttributeValue("Name")));
+                    objectIndex++;
 
                     List<Element> attributeList = object.getChildren("Attribute");
                     for (Element attribute : attributeList) {
-                        System.out.println("\t\tAttribute Name: "
-                                + attribute.getAttributeValue("Name") + "\tUnit: "
-                                + attribute.getAttributeValue("Unit") + "\tDescription: "
-                                + attribute.getAttributeValue("Description") + "\tDataType: "
-                                + attribute.getAttributeValue("DataType"));
-                        //вставка Attribute
-                        insertToAttribute(objectId,
+                        sqlValuesAttribute.append(String.format("(%s, '%s', '%s', '%s'),",objectIndex,
                                 attribute.getAttributeValue("Name"),
                                 attribute.getAttributeValue("Unit"),
-                                attribute.getAttributeValue("DataType"));
-
-                        //последний вставленный индекс
-                        int attributeId = getLastInsertId();
+                                attribute.getAttributeValue("DataType")));
+                        attributeIndex++;
 
                         List<Element> dataList = attribute.getChildren("Data");
                         for (Element data : dataList) {
-                            System.out.println("\t\t\tData ComponentName: "
-                                    + data.getAttributeValue("ComponentName") + "\tValue: "
-                                    + data.getAttributeValue("Value"));
-                            //вставка Data
-                            insertToData(attributeId, data.getAttributeValue("ComponentName"),
-                                    data.getAttributeValue("Value"));
+                            sqlValuesData.append(String.format("(%s, '%s', '%s'),",attributeIndex,
+                                    data.getAttributeValue("ComponentName"),
+                                    data.getAttributeValue("Value")));
                         }
                     }
                 }
             }
+            insertAllToTable(SqlQueryHelper.sqlInsertAllXMLObjects, sqlValuesObjects.substring(0, sqlValuesObjects.length()-1));
+            insertAllToTable(SqlQueryHelper.sqlInsertAllXMLObject, sqlValuesObject.substring(0, sqlValuesObject.length()-1));
+            insertAllToTable(SqlQueryHelper.sqlInsertAllXMLAttribute, sqlValuesAttribute.substring(0, sqlValuesAttribute.length()-1));
+            insertAllToTable(SqlQueryHelper.sqlInsertAllXMLData, sqlValuesData.substring(0, sqlValuesData.length()-1));
             Parser txtParser = new Parser();
             String txtInput = txtParser.parseTxtReport(pathToTXT);
             List<MassBalance> massBalance = txtParser.parseMassBalance(txtInput);
