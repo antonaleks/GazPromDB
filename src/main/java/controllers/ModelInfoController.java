@@ -1,6 +1,7 @@
 package controllers;
 
 import entity.Model;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,8 +13,8 @@ import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-import java.io.File;
-import java.io.IOException;
+
+import java.io.*;
 import java.net.MalformedURLException;
 import java.sql.SQLException;
 
@@ -39,7 +40,7 @@ public class ModelInfoController extends BaseController {
     private Model model;
 
     @FXML
-    public void initialize(Model model) throws MalformedURLException {
+    public void initialize(Model model) throws MalformedURLException{
         this.model = model;
         modelID.setText(modelID.getText()+this.model.getId());
         lblCreated.setText("Создана пользователем: " + this.model.getCreator() + " дата: " + this.model.getDate());
@@ -50,7 +51,6 @@ public class ModelInfoController extends BaseController {
         filesList.getItems().add(this.model.getPathToXml());
         filesList.getItems().add(this.model.getPathToTxt());
         filesList.getItems().add(this.model.getPathToDxf());
-        imageView.setImage(this.model.getImage());
     }
 
 

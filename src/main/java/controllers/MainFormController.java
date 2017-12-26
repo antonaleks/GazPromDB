@@ -25,10 +25,19 @@ public class MainFormController {
 
     @FXML
     public void showEntriesListForm(ActionEvent actionEvent) throws IOException {
-        showNewForm("/fxml/entriesListForm.fxml");
+        //showNewForm("/fxml/entriesListForm.fxml");
+        javafx.stage.Window parentWindow = mainForm.getScene().getWindow();
+        Stage stage = new Stage();
+        Parent newRoot = FXMLLoader.load(getClass().getResource("/fxml/schemaViewForm.fxml"));
+        stage.setResizable(true);
+        stage.setScene(new Scene(newRoot));
+        stage.initModality(Modality.WINDOW_MODAL);
+        stage.initOwner(parentWindow);
+        stage.show();
     }
 
-    public void exitFromDataBase(ActionEvent actionEvent) {
+    public void exitFromDataBase(ActionEvent actionEvent) throws IOException {
+        showNewForm("fxml/schemaViewForm.fxml");
     }
 
     public void showCreateEntryForm(ActionEvent actionEvent) throws IOException {
