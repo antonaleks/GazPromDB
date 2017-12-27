@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="/styles/base/base.css" xmlns="http://javafx.com/javafx/8"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.UsersListFormController">
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.unused.UsersListFormController">
     <Label layoutX="25.0" layoutY="14.0" text="Список пользователей:"/>
     <Button layoutX="457.0" layoutY="368.0" mnemonicParsing="false" onAction="#closeForm" prefHeight="25.0"
             prefWidth="117.0" text="Закрыть" AnchorPane.bottomAnchor="7.0" AnchorPane.rightAnchor="26.0"/>

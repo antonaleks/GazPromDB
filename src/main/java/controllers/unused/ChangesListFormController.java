@@ -1,4 +1,5 @@
-package controllers;
+package controllers.unused;
+
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -10,14 +11,14 @@ import java.io.IOException;
 /**
  * Created by Влад on 29.10.2017.
  */
-public class ChangesListFormController extends BaseController {
+public class ChangesListFormController {
     public void closeForm(ActionEvent actionEvent) {
         javafx.stage.Window parentWindow = ((Node) actionEvent.getSource()).getScene().getWindow();
         parentWindow.hide();
     }
 
     public void showFindChangesForm(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/findChangesForm.fxml"));
-        loadModalWindow(actionEvent, "Поиск изменений", root);
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/unused/findChangesForm.fxml"));
+        //loadModalWindow(actionEvent, "Поиск изменений", root);
     }
 }

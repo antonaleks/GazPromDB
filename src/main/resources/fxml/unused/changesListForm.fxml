@@ -8,7 +8,7 @@
 
 <AnchorPane prefHeight="485.0" prefWidth="600.0" stylesheets="/styles/base/base.css"
             xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="controllers.ChangesListFormController">
+            fx:controller="controllers.unused.ChangesListFormController">
     <TableView layoutX="15.0" layoutY="38.0" prefHeight="367.0" prefWidth="571.0" AnchorPane.bottomAnchor="62.0"
                AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="38.0">
       <columns>

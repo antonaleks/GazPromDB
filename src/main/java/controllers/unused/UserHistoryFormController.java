@@ -1,4 +1,5 @@
-package controllers;
+package controllers.unused;
+
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -10,10 +11,10 @@ import java.io.IOException;
 /**
  * Created by Влад on 31.10.2017.
  */
-public class UserHistoryFormController extends BaseController {
+public class UserHistoryFormController  {
     public void showFoundChangesForm(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/foundChangesForm.fxml"));
-        loadModalWindow(actionEvent, "Найденные изменения", root);
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/unused/foundChangesForm.fxml"));
+        //loadModalWindow(actionEvent, "Найденные изменения", root);
     }
 
     public void closeForm(ActionEvent actionEvent) {

@@ -38,9 +38,9 @@ public class SchemaViewController {
     private final ObjectProperty<Point2D> lastMouseCoordinates = new SimpleObjectProperty<Point2D>();
 
     @FXML
-    public void initialize() throws MalformedURLException {
+    public void initialize(String pathToSvg) throws MalformedURLException {
 
-        InputStream svgFile = getClass().getResourceAsStream("/HydrotreaterUnitSimulation.svg");
+        InputStream svgFile = getClass().getResourceAsStream(pathToSvg);//may be need new FileStream
         SvgLoader loader = new SvgLoader();
         Group svgImage = loader.loadSvg(svgFile);
         group.getChildren().setAll(svgImage);

@@ -1,19 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="484.0" prefWidth="526.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ModelInfoController">
-    <Label fx:id="modelID" layoutX="40.0" layoutY="34.0" text="Модель №" />
-    <Label layoutX="40.0" layoutY="77.0" text="Файлы:" />
-    <ListView fx:id="filesList" layoutX="28.0" layoutY="117.0" prefHeight="200.0" prefWidth="215.0" />
-    <ImageView fx:id="imageView" fitHeight="150.0" fitWidth="200.0" layoutX="284.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true" />
-    <Label fx:id="lblCreated" layoutX="28.0" layoutY="366.0" text="Создана: &lt;username&gt; " />
-    <Button fx:id="btnParams" layoutX="45.0" layoutY="417.0" mnemonicParsing="false" onAction="#showParams" prefHeight="31.0" prefWidth="151.0" text="Параметры" />
-    <Button fx:id="btnExit" layoutX="409.0" layoutY="417.0" mnemonicParsing="false" onAction="#closeForm" prefHeight="31.0" prefWidth="95.0" text="Выход" />
-    <Label fx:id="lblType" layoutX="159.0" layoutY="34.0" text="Тип: " />
-    <Button layoutX="353.0" layoutY="286.0" mnemonicParsing="false" onAction="#showReport" prefHeight="31.0" prefWidth="151.0" text="Отчет" />
+<AnchorPane prefHeight="484.0" prefWidth="526.0" stylesheets="@../styles/dark-theme.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ModelInfoController">
+    <Label fx:id="modelID" layoutX="28.0" layoutY="51.0" text="Модель №" textFill="#fbeaea" />
+    <Label layoutX="28.0" layoutY="117.0" text="Файлы:" textFill="#fbeaea" />
+    <ListView fx:id="filesList" layoutX="28.0" layoutY="142.0" prefHeight="200.0" prefWidth="215.0" />
+    <Label fx:id="lblCreated" layoutX="19.0" layoutY="400.0" text="Создана: &lt;username&gt; " textFill="#fbeaea" />
+    <Label fx:id="lblType" layoutX="160.0" layoutY="51.0" text="Тип: " textFill="#fbeaea" />
+   <JFXButton layoutX="326.0" layoutY="181.0" onAction="#showSchema" prefHeight="45.0" prefWidth="158.0" styleClass="login-button" text="Схема">
+      <graphic>
+         <FontAwesomeIconView glyphName="IMAGE" />
+      </graphic>
+   </JFXButton>
+   <JFXButton fx:id="btnExit" layoutX="390.0" layoutY="417.0" onAction="#closeForm" prefHeight="45.0" prefWidth="109.0" styleClass="login-button" text="Выход">
+      <graphic>
+         <FontAwesomeIconView />
+      </graphic>
+   </JFXButton>
+   <JFXButton fx:id="btnParams" layoutX="326.0" layoutY="117.0" onAction="#showParams" prefHeight="45.0" prefWidth="158.0" styleClass="login-button" text="Параметры">
+      <graphic>
+         <FontAwesomeIconView glyphName="COG" />
+      </graphic>
+   </JFXButton>
+   <JFXButton layoutX="326.0" layoutY="248.0" onAction="#showReport" prefHeight="45.0" prefWidth="158.0" styleClass="login-button" text="Отчет">
+      <graphic>
+         <FontAwesomeIconView glyphName="FILE" />
+      </graphic>
+   </JFXButton>
+   <Label fx:id="modelName" layoutX="28.0" layoutY="84.0" text="Название:  " textFill="#fbeaea" />
 </AnchorPane>

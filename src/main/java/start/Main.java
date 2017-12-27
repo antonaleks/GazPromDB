@@ -12,7 +12,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/enterForm.fxml"));
         primaryStage.setTitle("Вход в систему");
-        primaryStage.setScene(new Scene(root, 270, 300));
+        primaryStage.setScene(new Scene(root));
         /*primaryStage.setMinHeight(400);
         primaryStage.setMinWidth(300);
         primaryStage.setMaxHeight(400);*/

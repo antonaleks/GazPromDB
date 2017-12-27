@@ -9,7 +9,7 @@
 
 <AnchorPane prefHeight="318.0" prefWidth="462.0" stylesheets="/styles/base/base.css"
             xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="controllers.FindChangesFormController">
+            fx:controller="controllers.unused.FindChangesFormController">
     <Button layoutX="331.0" layoutY="224.0" mnemonicParsing="false" onAction="#closeForm" text="Закрыть"/>
     <Label layoutX="60.0" layoutY="57.0" prefHeight="25.0" prefWidth="126.0" text="Логин пользователя:"/>
     <TextField layoutX="186.0" layoutY="57.0" prefHeight="25.0" prefWidth="207.0"

@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.MenuBar;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -14,26 +15,18 @@ import java.io.IOException;
 
 public class MainFormController {
     @FXML
-    private BorderPane mainForm;
+    private StackPane stackPane;
     @FXML
     private MenuBar menuBar;
 
     public MainFormController() {
-        mainForm=new BorderPane();
+        stackPane=new StackPane();
 
     }
 
     @FXML
     public void showEntriesListForm(ActionEvent actionEvent) throws IOException {
-        //showNewForm("/fxml/entriesListForm.fxml");
-        javafx.stage.Window parentWindow = mainForm.getScene().getWindow();
-        Stage stage = new Stage();
-        Parent newRoot = FXMLLoader.load(getClass().getResource("/fxml/schemaViewForm.fxml"));
-        stage.setResizable(true);
-        stage.setScene(new Scene(newRoot));
-        stage.initModality(Modality.WINDOW_MODAL);
-        stage.initOwner(parentWindow);
-        stage.show();
+        showNewForm("/fxml/entriesListForm.fxml");
     }
 
     public void exitFromDataBase(ActionEvent actionEvent) throws IOException {
@@ -46,7 +39,7 @@ public class MainFormController {
 
     //Helper method, which helps do not duplicate code
     private void showNewForm(String fxmlForm) throws IOException {
-        javafx.stage.Window parentWindow = mainForm.getScene().getWindow();
+        javafx.stage.Window parentWindow = stackPane.getScene().getWindow();
         Stage stage = new Stage();
         Parent newRoot = FXMLLoader.load(getClass().getResource(fxmlForm));
         stage.setResizable(true);

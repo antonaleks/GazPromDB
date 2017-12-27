@@ -1,6 +1,7 @@
 package controllers;
 
 //import converters.Converter;
+import com.jfoenix.controls.*;
 import converters.Converter;
 import db.DataBaseInsertHelper;
 import db.DataBaseXmlHelper;
@@ -23,23 +24,25 @@ import java.util.List;
  */
 public class CreateNewEntryFormController {
     @FXML
-    private Button mainFileChooseButton;
+    private JFXButton mainFileChooseButton;
     @FXML
-    private Label mainFilePathLabel;
+    private JFXListView listView;
     @FXML
-    private ListView listView;
+    private JFXButton extraFilesChooseButton;
     @FXML
-    private Button extraFilesChooseButton;
+    private JFXCheckBox txtCheckBox;
     @FXML
-    private CheckBox txtCheckBox;
+    private JFXCheckBox dxfCheckBox;
     @FXML
-    private CheckBox dxfCheckBox;
+    private JFXCheckBox xmlCheckBox;
     @FXML
-    private CheckBox xmlCheckBox;
+    private JFXButton createButton;
     @FXML
-    private Button createButton;
+    private JFXButton closeButton;
     @FXML
-    private ComboBox comboBox;
+    private JFXComboBox comboBox;
+    @FXML
+    private JFXSpinner loading;
 
     private String pathToMainFile = "";
     private String pathToTXT= "";
@@ -53,9 +56,9 @@ public class CreateNewEntryFormController {
 
     @FXML
     public void initialize() throws SQLException {
-        types = new DataBaseXmlHelper().selectAllModelsTypeToList();
-        for(ModelType type: types)
-            comboBox.getItems().add(type.getType());
+        //types = new DataBaseXmlHelper().selectAllModelsTypeToList();
+        //for(ModelType type: types)
+        //    comboBox.getItems().add(type.getType());
     }
 
     public void chooseMainFile(ActionEvent actionEvent) {
@@ -97,8 +100,11 @@ public class CreateNewEntryFormController {
 
     public void insertNewModel(ActionEvent actionEvent) throws IOException {
         if (Access.checkAccess(User.getCurrentUser().getAccess(), Access.Right.WRITE)) {
-
-
+            loading.setVisible(true);
+            createButton.setDisable(true);
+            extraFilesChooseButton.setDisable(true);
+            mainFileChooseButton.setDisable(true);
+            closeButton.setDisable(true);
             for (int i = 0; i < listView.getItems().size(); i++) {
                 String row = ((String) listView.getItems().get(i));
                 if (row.contains(File.separator)) {
@@ -135,6 +141,12 @@ public class CreateNewEntryFormController {
             alertComplete.setHeaderText("Внесение в базу данных новой записи");
             alertComplete.setContentText("Новая запись была успешно создана");
             alertComplete.showAndWait();
+
+            loading.setVisible(false);
+            createButton.setDisable(false);
+            extraFilesChooseButton.setDisable(false);
+            mainFileChooseButton.setDisable(false);
+            closeButton.setDisable(false);
         }
         else {
             Alert alertComplete = new Alert(Alert.AlertType.ERROR);

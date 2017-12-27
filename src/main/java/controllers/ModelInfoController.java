@@ -1,5 +1,6 @@
 package controllers;
 
+import com.jfoenix.controls.JFXButton;
 import entity.Model;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
@@ -23,15 +24,15 @@ import java.sql.SQLException;
  */
 public class ModelInfoController extends BaseController {
     @FXML
-    public Button btnParams;
+    public JFXButton btnParams;
     @FXML
     public ListView filesList;
     @FXML
-    public ImageView imageView;
-    @FXML
     private Label modelID;
     @FXML
-    public Button btnExit;
+    private Label modelName;
+    @FXML
+    public JFXButton btnExit;
     @FXML
     private Label lblCreated;
     @FXML
@@ -45,6 +46,7 @@ public class ModelInfoController extends BaseController {
         modelID.setText(modelID.getText()+this.model.getId());
         lblCreated.setText("Создана пользователем: " + this.model.getCreator() + " дата: " + this.model.getDate());
         lblType.setText(lblType.getText()+this.model.getType());
+        modelName.setText(modelName.getText()+this.model.getName());
         filesList.getItems().add("Основной файл:");
         filesList.getItems().add(this.model.getPathToMainFile());
         filesList.getItems().add("Доп. файлы:");
@@ -75,5 +77,14 @@ public class ModelInfoController extends BaseController {
         ReportController reportController = loader.getController();
         reportController.initialize(this.model);
         loadModalWindow(actionEvent, "Данные из txt отчета", root);
+    }
+
+    public void showSchema(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(
+                "/fxml/schemaViewForm.fxml"));
+        Parent root = loader.load();
+        SchemaViewController schemaViewController = loader.getController();
+        schemaViewController.initialize(this.model.getPathToSvg());
+        loadModalWindow(actionEvent, "Схема модели", root);
     }
 }

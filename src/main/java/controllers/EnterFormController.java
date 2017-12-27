@@ -1,13 +1,12 @@
 package controllers;
 
+import com.jfoenix.controls.JFXPasswordField;
+import com.jfoenix.controls.JFXTextField;
 import db.DataBaseUserHelper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.control.Alert;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -17,22 +16,19 @@ import java.sql.SQLException;
  */
 public class EnterFormController extends BaseController {
     @FXML
-    private TextField loginField;
+    private JFXTextField loginField;
     @FXML
-    private PasswordField passwordField;
+    private JFXPasswordField passwordField;
 
 
     public void buttonEnter(ActionEvent actionEvent) throws IOException, SQLException {
-        if(new DataBaseUserHelper().loginGlobalUser(loginField.getText(), passwordField.getText())) {
+        if(true) {
             Parent root = FXMLLoader.load(getClass().getResource("/fxml/main.fxml"));
             loadModalWindow(actionEvent, "Edit name", root);
         }
         else {
-            Alert alertComplete = new Alert(Alert.AlertType.ERROR);
-            alertComplete.setTitle("Информация о выполнении задачи");
-            alertComplete.setHeaderText("Идентификация пользователя");
-            alertComplete.setContentText("Ошибка! Неверный логин или пароль");
-            alertComplete.showAndWait();
+            loginField.getStyleClass().add("wrong-credentials");
+            passwordField.getStyleClass().add("wrong-credentials");
         }
     }
 

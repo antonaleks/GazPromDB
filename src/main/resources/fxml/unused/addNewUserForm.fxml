@@ -8,7 +8,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="523.0" stylesheets="/styles/base/base.css"
             xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="controllers.AddNewUserController">
+            fx:controller="controllers.unused.AddNewUserController">
     <Label layoutX="37.0" layoutY="57.0" prefHeight="17.0" prefWidth="239.0" text="Логин нового пользователя"
            AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="55.0"/>
     <TextField layoutX="293.0" layoutY="55.0" style="-fx-text-fill: deepskyblue; -fx-font-weight: bold"

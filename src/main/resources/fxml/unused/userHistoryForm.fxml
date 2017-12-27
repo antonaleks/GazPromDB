@@ -7,7 +7,7 @@
 
 <AnchorPane prefHeight="182.0" prefWidth="469.0" stylesheets="/styles/base/base.css"
             xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="controllers.UserHistoryFormController">
+            fx:controller="controllers.unused.UserHistoryFormController">
     <Button layoutX="68.0" layoutY="101.0" mnemonicParsing="false" onAction="#showFoundChangesForm" prefHeight="25.0"
             prefWidth="222.0" text="История пользователя"/>
     <Button layoutX="321.0" layoutY="101.0" mnemonicParsing="false" onAction="#closeForm" prefHeight="25.0"

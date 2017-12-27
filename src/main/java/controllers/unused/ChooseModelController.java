@@ -1,4 +1,4 @@
-package controllers;
+package controllers.unused;
 
 public class ChooseModelController {
 }

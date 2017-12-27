@@ -1,20 +1,96 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="mainForm" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to top, white, deepskyblue);" stylesheets="/styles/base/menu.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainFormController">
-   <top>
-       <MenuBar fx:id="menuBar" styleClass="cool-item" BorderPane.alignment="CENTER">
-           <Menu mnemonicParsing="false" text="Добавление">
-               <MenuItem fx:id="createEntry" mnemonicParsing="false" onAction="#showCreateEntryForm" text="Добавить запись" />
-           </Menu>
-           <Menu mnemonicParsing="false" style="-fx-text-fill: white" text="Просмотр">
-               <MenuItem fx:id="entriesList" mnemonicParsing="false" onAction="#showEntriesListForm" text="Список записей" />
-           </Menu>
-           <Menu fx:id="exit" mnemonicParsing="false" onAction="#exitFromDataBase" text="Выход" />
-       </MenuBar>
-   </top>
-</BorderPane>
+<StackPane fx:id="stackPane" stylesheets="@../styles/dark-theme.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainFormController">
+   <children>
+      <VBox prefHeight="513.0" prefWidth="759.0">
+         <children>
+             <MenuBar fx:id="menuBar" styleClass="cool-item">
+                 <Menu mnemonicParsing="false" text="Добавление">
+                     <MenuItem fx:id="createEntry" mnemonicParsing="false" onAction="#showCreateEntryForm" text="Добавить запись" />
+                 </Menu>
+                 <Menu mnemonicParsing="false" style="-fx-text-fill: white" text="Просмотр">
+                     <MenuItem fx:id="entriesList" mnemonicParsing="false" onAction="#showEntriesListForm" text="Список записей" />
+                 </Menu>
+                 <Menu fx:id="exit" mnemonicParsing="false" onAction="#exitFromDataBase" text="Выход" />
+             </MenuBar>
+            <JFXTabPane prefHeight="488.0" prefWidth="803.0">
+               <tabs>
+                  <Tab text="Действия">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="720.0">
+                           <children>
+                              <JFXButton contentDisplay="TOP" layoutX="108.0" layoutY="113.0" onAction="#showCreateEntryForm" prefHeight="203.0" prefWidth="193.0" styleClass="login-button" text="Добавление новой записи" textAlignment="CENTER" wrapText="true">
+                                 <font>
+                                    <Font name="Arial Black" size="20.0" />
+                                 </font>
+                                 <graphic>
+                                    <FontAwesomeIconView glyphName="PLUS" size="70" textAlignment="CENTER" wrappingWidth="73.0" />
+                                 </graphic>
+                              </JFXButton>
+                              <JFXButton contentDisplay="TOP" layoutX="453.0" layoutY="113.0" prefHeight="203.0" prefWidth="193.0" styleClass="login-button" text="Просмотр моделей" textAlignment="CENTER" wrapText="true">
+                                 <font>
+                                    <Font name="Arial Black" size="20.0" />
+                                 </font>
+                                 <graphic>
+                                    <FontAwesomeIconView glyphName="EYE" size="70" textAlignment="CENTER" wrappingWidth="73.0" />
+                                 </graphic>
+                              </JFXButton>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab text="Пользователь">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="955.0">
+                           <children>
+                              <JFXButton contentDisplay="TOP" layoutX="462.0" layoutY="98.0" prefHeight="203.0" prefWidth="193.0" styleClass="login-button" text="Сменить пользователя" textAlignment="CENTER" wrapText="true">
+                                 <font>
+                                    <Font name="Arial Black" size="20.0" />
+                                 </font>
+                                 <graphic>
+                                    <FontAwesomeIconView glyphName="SIGN_OUT" size="70" textAlignment="CENTER" wrappingWidth="73.0" />
+                                 </graphic>
+                              </JFXButton>
+                              <Label layoutX="14.0" layoutY="71.0" text="Имя пользователя: " textFill="WHITE">
+                                 <font>
+                                    <Font size="27.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="14.0" layoutY="161.0" text="Ваши права:" textFill="WHITE">
+                                 <font>
+                                    <Font size="27.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lableIUsername" layoutX="14.0" layoutY="115.0" text="&lt;username&gt;" textFill="WHITE">
+                                 <font>
+                                    <Font size="27.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="labeRights" layoutX="15.0" layoutY="210.0" text="&lt;права&gt;" textFill="WHITE">
+                                 <font>
+                                    <Font size="27.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+               </tabs>
+            </JFXTabPane>
+         </children>
+      </VBox>
+   </children>
+</StackPane>

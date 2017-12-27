@@ -6,7 +6,7 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.*?>
 <AnchorPane prefHeight="436.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="controllers.ModelEditingFormController">
+            fx:controller="controllers.unused.ModelEditingFormController">
    <TextArea layoutX="14.0" layoutY="21.0" prefHeight="383.0" prefWidth="570.0" AnchorPane.bottomAnchor="32.0"
              AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="21.0"/>
    <Button layoutX="430.0" layoutY="408.0" mnemonicParsing="false" onAction="#showEditConfirmForm" text="Сохранить"

@@ -1,0 +1,69 @@
+
+
+*{
+    -fx-primary: #2a2e37;
+    -fx-secondary: #FFFF8D;
+    -fx-primarytext:  #949eb3;
+    -fx-red: #FF0000;
+}
+
+.root{
+    -fx-background-color: -fx-primary;
+    -fx-border-width: 3px;
+}
+
+.glyph-icon{
+    -fx-fill: -fx-primarytext;
+}
+
+.button{
+    -fx-text-fill: -fx-primarytext;
+}
+
+.login-button{
+    -fx-border-color: -fx-secondary;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+}
+
+.login-button: hover{
+    -fx-border-color: -fx-primarytext;
+    -fx-background-color: -fx-secondary;
+    -fx-text-fill: -fx-primarytext;
+}
+
+.text-field{
+    -fx-text-fill: -fx-primarytext;
+}
+
+.wrong-credentials{
+    -jfx-unfocus-color: -fx-red;
+    -jfx-focus-color: -fx-red;
+}
+
+.tab{
+    -fx-pref-width: 350;
+    -fx-pref-height: 60;
+    -fx-background-color: -fx-primary;
+}
+
+.tab-header-background{
+    -fx-background-color: -fx-primary;
+}
+
+.menu-bar{
+    -fx-base: -fx-primary;
+    -fx-background-color: -fx-primary;
+}
+
+.check-box{
+    -fx-text-fill: -fx-primarytext;
+}
+
+.table{
+    -fx-background-color: -fx-primarytext;
+}
+
+.accordion{
+    -fx-background-color: -fx-primary;
+}

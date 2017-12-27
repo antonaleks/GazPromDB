@@ -5,7 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <AnchorPane prefHeight="143.0" prefWidth="296.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="controllers.ConfirmFormController">
+            fx:controller="controllers.unused.ConfirmFormController">
    <Label layoutX="23.0" layoutY="52.0" text="Вы уверены, что хотите сохранить изменения?"/>
    <Button layoutX="124.0" layoutY="93.0" mnemonicParsing="false" text="Сохранить"/>
    <Button layoutX="211.0" layoutY="93.0" mnemonicParsing="false" onAction="#closeForm" text="Отменить"/>
