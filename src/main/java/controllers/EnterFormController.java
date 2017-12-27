@@ -22,9 +22,9 @@ public class EnterFormController extends BaseController {
 
 
     public void buttonEnter(ActionEvent actionEvent) throws IOException, SQLException {
-        if(true) {
+        if(new DataBaseUserHelper().loginGlobalUser(loginField.getText(), passwordField.getText())) {
             Parent root = FXMLLoader.load(getClass().getResource("/fxml/main.fxml"));
-            loadModalWindow(actionEvent, "Edit name", root);
+            loadModalWindow(actionEvent, "Главное меню", root);
         }
         else {
             loginField.getStyleClass().add("wrong-credentials");

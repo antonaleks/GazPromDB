@@ -1,5 +1,7 @@
 package entity;
 
+import enums.Access;
+
 public class User {
     private String login;
     private String password;
@@ -31,6 +33,16 @@ public class User {
     public static User getCurrentUser() {
         if(user==null)user=new User();
         return user;
+    }
+
+    public String getUsersRights(){
+        String rights = "";
+        if(Access.checkAccess(this.access, Access.Right.WRITE))rights+="-Запись\n";
+        if(Access.checkAccess(this.access, Access.Right.ADDUSER))rights+="-Добавление пользователей\n";
+        if(Access.checkAccess(this.access, Access.Right.READ))rights+="-Чтение\n";
+        if(Access.checkAccess(this.access, Access.Right.REMOVE))rights+="-Удаление данных\n";
+        if(Access.checkAccess(this.access, Access.Right.UPDATE))rights+="-Обновление данных\n";
+        return rights;
     }
 
     public String getPassword() {

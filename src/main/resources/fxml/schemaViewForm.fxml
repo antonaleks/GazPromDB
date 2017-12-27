@@ -6,17 +6,17 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox minHeight="256.0" minWidth="256.0" prefHeight="374.0" prefWidth="585.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SchemaViewController">
+<VBox minHeight="256.0" minWidth="256.0" prefHeight="523.0" prefWidth="762.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SchemaViewController">
    <children>
       <AnchorPane VBox.vgrow="ALWAYS">
          <children>
             <ScrollPane fx:id="scrollPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="256.0" prefWidth="256.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <content>
-                  <AnchorPane prefHeight="372.0" prefWidth="582.0">
+                  <AnchorPane prefHeight="521.0" prefWidth="759.0">
                      <children>
                         <Group fx:id="scrollContent" onMouseDragged="#scrollPaneOnMouseDragged" onMousePressed="#scrollPaneOnMousePressed" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <StackPane fx:id="zoomPane" layoutX="14.0" layoutY="14.0" onScroll="#zoomPaneOnScroll" prefHeight="370.0" prefWidth="582.0">
+                              <StackPane fx:id="zoomPane" layoutX="14.0" layoutY="14.0" onScroll="#zoomPaneOnScroll" prefHeight="520.0" prefWidth="757.0">
                                  <children>
                                     <Group fx:id="group" />
                                  </children>

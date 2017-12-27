@@ -17,8 +17,6 @@ public class Model {
     private String pathToSvg;
     private String pathToTxt;
     private String pathToMainFile;
-    private Image image;
-    private ImageView imageView;
 
     private String name;
 
@@ -33,18 +31,8 @@ public class Model {
         this.name = name;
         this.pathToMainFile = pathToMainFile;
         this.pathToDxf = pathToDxf;
-        if(this.pathToSvg != null) this.image = new Image(new File(pathToSvg).toURL().toString());
     }
 
-    public Image getImage() {
-        return image;
-    }
-
-    public ImageView getImageView(){
-        if (imageView == null) imageView = new ImageView(image);
-        imageView.setFitHeight(60);
-        return imageView;
-    }
 
     public String getName() {
         return name;

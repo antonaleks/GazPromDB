@@ -55,8 +55,6 @@ public class EntriesListFormController extends BaseController {
     @FXML
     private TableColumn<Model, String> colCreator;
 
-    @FXML
-    private TableColumn<Model, ImageView> colSchema;
 
     @FXML
     private void initialize() throws SQLException, MalformedURLException {
@@ -68,7 +66,6 @@ public class EntriesListFormController extends BaseController {
         col3.setCellValueFactory(new PropertyValueFactory<>("date"));
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colCreator.setCellValueFactory(new PropertyValueFactory<>("creator"));
-        colSchema.setCellValueFactory(new PropertyValueFactory<>("imageView"));
 
         // заполняем таблицу данными
         tableModel.setItems(modelData);

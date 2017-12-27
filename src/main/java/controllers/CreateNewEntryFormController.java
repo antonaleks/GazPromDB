@@ -56,9 +56,21 @@ public class CreateNewEntryFormController {
 
     @FXML
     public void initialize() throws SQLException {
-        //types = new DataBaseXmlHelper().selectAllModelsTypeToList();
-        //for(ModelType type: types)
-        //    comboBox.getItems().add(type.getType());
+        types = new DataBaseXmlHelper().selectAllModelsTypeToList();
+        for(ModelType type: types)
+            comboBox.getItems().add(type.getType());
+        comboBox.setButtonCell(new ListCell(){
+
+            @Override
+            protected void updateItem(Object item, boolean empty) {
+                super.updateItem(item, empty);
+                if(!(item==null)){
+                    setStyle("-fx-text-fill: #FFFF8D");
+                    setText(item.toString());
+                }
+            }
+
+        });
     }
 
     public void chooseMainFile(ActionEvent actionEvent) {
@@ -136,17 +148,17 @@ public class CreateNewEntryFormController {
 
             dataBaseInsertHelper.fillDataBase(typeId, pathToXML, pathToDXF, pathToMainFile, pathToTXT, name, pathToSVG);
 
-            Alert alertComplete = new Alert(Alert.AlertType.INFORMATION);
-            alertComplete.setTitle("Информация о выполнении задачи");
-            alertComplete.setHeaderText("Внесение в базу данных новой записи");
-            alertComplete.setContentText("Новая запись была успешно создана");
-            alertComplete.showAndWait();
-
             loading.setVisible(false);
             createButton.setDisable(false);
             extraFilesChooseButton.setDisable(false);
             mainFileChooseButton.setDisable(false);
             closeButton.setDisable(false);
+
+            Alert alertComplete = new Alert(Alert.AlertType.INFORMATION);
+            alertComplete.setTitle("Информация о выполнении задачи");
+            alertComplete.setHeaderText("Внесение в базу данных новой записи");
+            alertComplete.setContentText("Новая запись была успешно создана");
+            alertComplete.showAndWait();
         }
         else {
             Alert alertComplete = new Alert(Alert.AlertType.ERROR);

@@ -1,10 +1,13 @@
 package controllers;
 
+import entity.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuBar;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
@@ -12,12 +15,24 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.sql.SQLException;
 
 public class MainFormController {
     @FXML
     private StackPane stackPane;
     @FXML
     private MenuBar menuBar;
+    @FXML
+    private Label lableIUsername;
+    @FXML
+    private Label labeRights;
+
+    @FXML
+    private void initialize() {
+        lableIUsername.setText(User.getCurrentUser().getLogin());
+        labeRights.setText(User.getCurrentUser().getUsersRights());
+    }
 
     public MainFormController() {
         stackPane=new StackPane();
@@ -30,7 +45,8 @@ public class MainFormController {
     }
 
     public void exitFromDataBase(ActionEvent actionEvent) throws IOException {
-        showNewForm("fxml/schemaViewForm.fxml");
+        javafx.stage.Window parentWindow = ((Node) actionEvent.getSource()).getScene().getWindow();
+        parentWindow.hide();
     }
 
     public void showCreateEntryForm(ActionEvent actionEvent) throws IOException {

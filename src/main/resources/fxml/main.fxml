@@ -40,7 +40,7 @@
                                     <FontAwesomeIconView glyphName="PLUS" size="70" textAlignment="CENTER" wrappingWidth="73.0" />
                                  </graphic>
                               </JFXButton>
-                              <JFXButton contentDisplay="TOP" layoutX="453.0" layoutY="113.0" prefHeight="203.0" prefWidth="193.0" styleClass="login-button" text="Просмотр моделей" textAlignment="CENTER" wrapText="true">
+                              <JFXButton contentDisplay="TOP" layoutX="453.0" layoutY="113.0" onAction="#showEntriesListForm" prefHeight="203.0" prefWidth="193.0" styleClass="login-button" text="Просмотр моделей" textAlignment="CENTER" wrapText="true">
                                  <font>
                                     <Font name="Arial Black" size="20.0" />
                                  </font>
@@ -56,7 +56,7 @@
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="955.0">
                            <children>
-                              <JFXButton contentDisplay="TOP" layoutX="462.0" layoutY="98.0" prefHeight="203.0" prefWidth="193.0" styleClass="login-button" text="Сменить пользователя" textAlignment="CENTER" wrapText="true">
+                              <JFXButton contentDisplay="TOP" layoutX="462.0" layoutY="98.0" onAction="#exitFromDataBase" prefHeight="203.0" prefWidth="193.0" styleClass="login-button" text="Сменить пользователя" textAlignment="CENTER" wrapText="true">
                                  <font>
                                     <Font name="Arial Black" size="20.0" />
                                  </font>

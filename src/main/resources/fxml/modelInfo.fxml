@@ -19,7 +19,7 @@
    </JFXButton>
    <JFXButton fx:id="btnExit" layoutX="390.0" layoutY="417.0" onAction="#closeForm" prefHeight="45.0" prefWidth="109.0" styleClass="login-button" text="Выход">
       <graphic>
-         <FontAwesomeIconView />
+         <FontAwesomeIconView glyphName="CLOSE" />
       </graphic>
    </JFXButton>
    <JFXButton fx:id="btnParams" layoutX="326.0" layoutY="117.0" onAction="#showParams" prefHeight="45.0" prefWidth="158.0" styleClass="login-button" text="Параметры">

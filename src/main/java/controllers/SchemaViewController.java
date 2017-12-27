@@ -17,6 +17,9 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 
@@ -38,9 +41,9 @@ public class SchemaViewController {
     private final ObjectProperty<Point2D> lastMouseCoordinates = new SimpleObjectProperty<Point2D>();
 
     @FXML
-    public void initialize(String pathToSvg) throws MalformedURLException {
+    public void initialize(String pathToSvg) throws IOException {
 
-        InputStream svgFile = getClass().getResourceAsStream(pathToSvg);//may be need new FileStream
+        InputStream svgFile = new FileInputStream(pathToSvg);
         SvgLoader loader = new SvgLoader();
         Group svgImage = loader.loadSvg(svgFile);
         group.getChildren().setAll(svgImage);

@@ -5,6 +5,7 @@
     -fx-secondary: #FFFF8D;
     -fx-primarytext:  #949eb3;
     -fx-red: #FF0000;
+    -fx-prompttext: #d6aebc;
 }
 
 .root{
@@ -34,6 +35,7 @@
 
 .text-field{
     -fx-text-fill: -fx-primarytext;
+    -fx-prompt-text-fill: -fx-prompttext;
 }
 
 .wrong-credentials{
@@ -57,7 +59,11 @@
 }
 
 .check-box{
-    -fx-text-fill: -fx-primarytext;
+    -fx-text-fill: -fx-secondary;
+}
+
+.combo-box{
+    -fx-text-fill: -fx-secondary;
 }
 
 .table{
