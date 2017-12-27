@@ -84,7 +84,7 @@ class SqlQueryHelper {
             PropertiesManager.getSqlTableProperties().getProperty("MODEL_FILES_PATH_TO_DXF"),
             PropertiesManager.getSqlTableProperties().getProperty("MODEL_FILES_PATH_TO_TXT"),
             PropertiesManager.getSqlTableProperties().getProperty("MODEL_FILES_CREATION_DATE"),
-            PropertiesManager.getSqlTableProperties().getProperty("MODEL_FILES_PATH_TO_PNG"),
+            PropertiesManager.getSqlTableProperties().getProperty("MODEL_FILES_PATH_TO_SVG"),
             PropertiesManager.getSqlTableProperties().getProperty("MODEL_FILES_MODEL_NAME"));
 
     // Вспомогательные запросы
@@ -151,14 +151,14 @@ class SqlQueryHelper {
             PropertiesManager.getSqlTableProperties().getProperty("FOREIGN_KEY_MODEL_FILES"));
 
     // Запросы из таблицы с файлами и типом
-    final static String sqlSelectModels = String.format("SELECT model.%s as main, model.%s as dxf, model.%s as name, model.%s as png, " +
+    final static String sqlSelectModels = String.format("SELECT model.%s as main, model.%s as dxf, model.%s as name, model.%s as svg, " +
                     "model.%s as xml, model.%s as txt, model.id as id, modtype.%s as type, users.%s as creator," +
                     " model.%s as date FROM %s  model INNER JOIN %s  modtype on model.%s = modtype.id " +
                     "INNER JOIN %s as users on model.%s=users.id",
             PropertiesManager.getSqlTableProperties().getProperty("MODEL_FILES_PATH_TO_MAIN_FILE"),
             PropertiesManager.getSqlTableProperties().getProperty("MODEL_FILES_PATH_TO_DXF"),
             PropertiesManager.getSqlTableProperties().getProperty("MODEL_FILES_MODEL_NAME"),
-            PropertiesManager.getSqlTableProperties().getProperty("MODEL_FILES_PATH_TO_PNG"),
+            PropertiesManager.getSqlTableProperties().getProperty("MODEL_FILES_PATH_TO_SVG"),
             PropertiesManager.getSqlTableProperties().getProperty("MODEL_FILES_PATH_TO_XML"),
             PropertiesManager.getSqlTableProperties().getProperty("MODEL_FILES_PATH_TO_TXT"),
             PropertiesManager.getSqlTableProperties().getProperty("MODEL_TYPE_TYPE_NAME"),
@@ -169,7 +169,7 @@ class SqlQueryHelper {
             PropertiesManager.getSqlTableProperties().getProperty("FOREIGN_KEY_MODEL_TYPE"),
             PropertiesManager.getSqlTableProperties().getProperty("USERS_TABLE_NAME"),
             PropertiesManager.getSqlTableProperties().getProperty("FOREIGN_KEY_USER"));
-    final static String sqlSelectModelsByParams = String.format("SELECT model.%s as main, model.%s as dxf, model.%s as name, model.%s as png, " +
+    final static String sqlSelectModelsByParams = String.format("SELECT model.%s as main, model.%s as dxf, model.%s as name, model.%s as svg, " +
                     "model.%s as xml, model.%s as txt, model.id as id, modtype.%s as type, users.%s as creator, " +
                     "model.%s as date FROM %s  model " +
                     "INNER JOIN %s  modtype on model.%s = modtype.id " +
@@ -180,7 +180,7 @@ class SqlQueryHelper {
             PropertiesManager.getSqlTableProperties().getProperty("MODEL_FILES_PATH_TO_MAIN_FILE"),
             PropertiesManager.getSqlTableProperties().getProperty("MODEL_FILES_PATH_TO_DXF"),
             PropertiesManager.getSqlTableProperties().getProperty("MODEL_FILES_MODEL_NAME"),
-            PropertiesManager.getSqlTableProperties().getProperty("MODEL_FILES_PATH_TO_PNG"),
+            PropertiesManager.getSqlTableProperties().getProperty("MODEL_FILES_PATH_TO_SVG"),
             PropertiesManager.getSqlTableProperties().getProperty("MODEL_FILES_PATH_TO_XML"),
             PropertiesManager.getSqlTableProperties().getProperty("MODEL_FILES_PATH_TO_TXT"),
             PropertiesManager.getSqlTableProperties().getProperty("MODEL_TYPE_TYPE_NAME"),

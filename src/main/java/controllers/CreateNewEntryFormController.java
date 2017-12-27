@@ -45,7 +45,7 @@ public class CreateNewEntryFormController {
     private String pathToTXT= "";
     private String pathToDXF = "";
     private String pathToXML = "";
-    private String pathToPNG = "";
+    private String pathToSVG = "";
     private String name = "";
 
     private List<ModelType> types;
@@ -126,9 +126,9 @@ public class CreateNewEntryFormController {
 
             DataBaseInsertHelper dataBaseInsertHelper = new DataBaseInsertHelper();
 
-            pathToPNG = new Converter().parseFile(pathToDXF);
+            pathToSVG = new Converter().parseFile(pathToDXF);
 
-            dataBaseInsertHelper.fillDataBase(typeId, pathToXML, pathToDXF, pathToMainFile, pathToTXT, name, pathToPNG);
+            dataBaseInsertHelper.fillDataBase(typeId, pathToXML, pathToDXF, pathToMainFile, pathToTXT, name, pathToSVG);
 
             Alert alertComplete = new Alert(Alert.AlertType.INFORMATION);
             alertComplete.setTitle("Информация о выполнении задачи");

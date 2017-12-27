@@ -85,7 +85,7 @@ public class DataBaseInsertHelper extends DataBaseHelper {
             insertTxtComponent(component.getName(), component.getFormula(), component.getId(), modelId);
     }
 
-    private void insertToModel(int typeId, String pathToXML, String pathToDXF, String pathToMainFile, String pathToTXT, String pathToPng, String name, int creatorId) throws SQLException {
+    private void insertToModel(int typeId, String pathToXML, String pathToDXF, String pathToMainFile, String pathToTXT, String pathToSvg, String name, int creatorId) throws SQLException {
         PreparedStatement statement = conn.prepareStatement(SqlQueryHelper.sqlInsertModel);
         statement.setInt(1, typeId);
         statement.setInt(2, creatorId);
@@ -93,7 +93,7 @@ public class DataBaseInsertHelper extends DataBaseHelper {
         statement.setString(4, pathToMainFile);
         statement.setString(5, pathToDXF);
         statement.setString(6, pathToTXT);
-        statement.setString(7, pathToPng);
+        statement.setString(7, pathToSvg);
         statement.setString(8, name);
         statement.execute();
     }
@@ -145,7 +145,7 @@ public class DataBaseInsertHelper extends DataBaseHelper {
 
     }
 
-    public void fillDataBase(int typeId, String pathToXML, String pathToDXF, String pathToMainFile, String pathToTXT, String name, String pathToPng) {
+    public void fillDataBase(int typeId, String pathToXML, String pathToDXF, String pathToMainFile, String pathToTXT, String name, String pathToSvg) {
 
         mySqlConnect = new MySqlConnect();
         conn = mySqlConnect.connect();
@@ -158,7 +158,7 @@ public class DataBaseInsertHelper extends DataBaseHelper {
             Element rootNode = document.getRootElement();
 
             //вставка модели
-            insertToModel(typeId, xmlFile.getAbsolutePath(), pathToDXF, pathToMainFile, pathToTXT, pathToPng, name, User.getCurrentUser().getId());
+            insertToModel(typeId, xmlFile.getAbsolutePath(), pathToDXF, pathToMainFile, pathToTXT, pathToSvg, name, User.getCurrentUser().getId());
 
             //последний вставленный индекс
             modelId = getLastInsertId();

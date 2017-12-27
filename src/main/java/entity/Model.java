@@ -14,7 +14,7 @@ public class Model {
     private String pathToXml;
     private String creator;
     private String pathToDxf;
-    private String pathToPng;
+    private String pathToSvg;
     private String pathToTxt;
     private String pathToMainFile;
     private Image image;
@@ -22,18 +22,18 @@ public class Model {
 
     private String name;
 
-    public Model(int id, String type, Date date, String pathToXml, String pathToTxt, String pathToPng, String creator, String name, String pathToMainFile, String pathToDxf) throws MalformedURLException {
+    public Model(int id, String type, Date date, String pathToXml, String pathToTxt, String pathToSvg, String creator, String name, String pathToMainFile, String pathToDxf) throws MalformedURLException {
         this.id = id;
         this.type = type;
         this.date = date;
         this.pathToXml = pathToXml;
         this.pathToTxt = pathToTxt;
-        this.pathToPng = pathToPng;
+        this.pathToSvg = pathToSvg;
         this.creator = creator;
         this.name = name;
         this.pathToMainFile = pathToMainFile;
         this.pathToDxf = pathToDxf;
-        if(this.pathToPng != null) this.image = new Image(new File(pathToPng).toURL().toString());
+        if(this.pathToSvg != null) this.image = new Image(new File(pathToSvg).toURL().toString());
     }
 
     public Image getImage() {
@@ -77,8 +77,8 @@ public class Model {
         return date;
     }
 
-    public String getPathToPng() {
-        return pathToPng;
+    public String getPathToSvg() {
+        return pathToSvg;
     }
 
     public String getPathToDxf() {
