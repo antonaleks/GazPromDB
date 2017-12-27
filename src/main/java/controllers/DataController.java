@@ -26,7 +26,7 @@ public class DataController {
     @FXML
     private Label lblType;
     @FXML
-    private Label lblPathXml;
+    private Label lblModelName;
     @FXML
     private Label lblObjId;
     @FXML
@@ -44,14 +44,12 @@ public class DataController {
 
     @FXML
     public void initialize(Model model, ObjectModel object, Attribute attribute) throws SQLException {
-        Model model1 = model;
-        ObjectModel object1 = object;
-        lblId.setText(lblId.getText() + model1.getId());
-        lblPathXml.setText(lblPathXml.getText() + model1.getPathToXml());
-        lblType.setText(lblType.getText() + model1.getType());
-        lblObjId.setText(lblObjId.getText() + object1.getId().intValue());
-        lblObjName.setText(lblObjName.getText() + object1.getName().getValue());
-        lblObjClass.setText(lblObjClass.getText() + object1.getClassName().getValue());
+        lblId.setText(lblId.getText() + model.getId());
+        lblModelName.setText(lblModelName.getText() + model.getName());
+        lblType.setText(lblType.getText() + model.getType());
+        lblObjId.setText(lblObjId.getText() + object.getId().intValue());
+        lblObjName.setText(lblObjName.getText() + object.getName().getValue());
+        lblObjClass.setText(lblObjClass.getText() + object.getClassName().getValue());
         lblAttrName.setText(lblAttrName.getText()+attribute.getName());
         lblAttrUnit.setText(lblAttrUnit.getText()+attribute.getUnit());
         lblAttrDataType.setText(lblAttrDataType.getText()+attribute.getDataType());
@@ -59,8 +57,8 @@ public class DataController {
 
         ObservableList<Data> tableListData = new DataBaseXmlHelper().selectDataByAttributeToList(attribute.getId());
         // устанавливаем тип и значение которое должно хранится в колонке
-        col1.setCellValueFactory(new PropertyValueFactory<Data, String>("componentName"));
-        col2.setCellValueFactory(new PropertyValueFactory<Data, String>("value"));
+        col1.setCellValueFactory(new PropertyValueFactory<>("componentName"));
+        col2.setCellValueFactory(new PropertyValueFactory<>("value"));
 
         // заполняем таблицу данными
         tableData.setItems(tableListData);

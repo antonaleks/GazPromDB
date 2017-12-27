@@ -28,7 +28,7 @@ public class User {
 
     private static User user;
 
-    public static User getInstance() {
+    public static User getCurrentUser() {
         if(user==null)user=new User();
         return user;
     }

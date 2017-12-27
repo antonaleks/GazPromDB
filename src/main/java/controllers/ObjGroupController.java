@@ -19,10 +19,15 @@ import java.sql.SQLException;
 
 public class ObjGroupController extends BaseController {
 
-    public Label lblId;
-    public Label lblType;
-    public Label lblPathXml;
-    private Model model;
+    @FXML
+    private Label lblId;
+
+    @FXML
+    private Label lblType;
+
+    @FXML
+    private Label lblModelName;
+
     @FXML
     private TreeTableView<ObjectModel> treeTable;
 
@@ -35,34 +40,21 @@ public class ObjGroupController extends BaseController {
     @FXML
     private TreeTableColumn<ObjectModel, String> col3;
 
+    private Model model;
+
     @FXML
     public void initialize(Model model) throws SQLException {
         this.model = model;
         lblId.setText(lblId.getText()+model.getId());
-        lblPathXml.setText(lblPathXml.getText()+model.getPathToXml());
+        lblModelName.setText(lblModelName.getText() + model.getName());
         lblType.setText(lblType.getText()+model.getType());
 
         TreeItem<ObjectModel> root = new TreeItem<>(new ObjectModel("Objects", "", ""));
         root.getChildren().setAll(new DataBaseXmlHelper().selectAllObjectsToTree(model.getId()));
 
-        col1.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<ObjectModel, String>, ObservableValue<String>>() {
-            @Override
-            public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<ObjectModel, String> param) {
-                return param.getValue().getValue().getType();
-            }
-        });
-        col2.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<ObjectModel, String>, ObservableValue<String>>() {
-            @Override
-            public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<ObjectModel, String> param) {
-                return param.getValue().getValue().getName();
-            }
-        });
-        col3.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<ObjectModel, String>, ObservableValue<String>>() {
-            @Override
-            public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<ObjectModel, String> param) {
-                return param.getValue().getValue().getClassName();
-            }
-        });
+        col1.setCellValueFactory(param -> param.getValue().getValue().getType());
+        col2.setCellValueFactory(param -> param.getValue().getValue().getName());
+        col3.setCellValueFactory(param -> param.getValue().getValue().getClassName());
         treeTable.setRoot(root);
     }
 

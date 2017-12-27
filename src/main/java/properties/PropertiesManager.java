@@ -8,13 +8,13 @@ import java.util.Properties;
 
 public class PropertiesManager {
 
-    private static String pathToSqlTableProperties = "src/main/resources/propeties/mySqlTables.properties";
     private static Properties sqlTableProps;
 
     public static Properties getSqlTableProperties() {
         if (sqlTableProps == null){
             sqlTableProps = new Properties();
             try {
+                String pathToSqlTableProperties = "src/main/resources/propeties/mySqlTables.properties";
                 sqlTableProps.load(new FileInputStream(new File(pathToSqlTableProperties).getAbsolutePath()));
             } catch (IOException e) {
                 e.printStackTrace();

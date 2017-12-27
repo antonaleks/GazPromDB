@@ -7,16 +7,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane prefHeight="484.0" prefWidth="526.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ModelInfoController">
-   <children>
-      <Label fx:id="modelID" layoutX="40.0" layoutY="34.0" text="Модель №" />
-      <Label layoutX="40.0" layoutY="77.0" text="Файлы:" />
-      <ListView fx:id="filesList" layoutX="28.0" layoutY="117.0" prefHeight="200.0" prefWidth="200.0" />
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="284.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="lblCreated" layoutX="28.0" layoutY="366.0" text="Создана: &lt;username&gt; " />
-      <Button fx:id="btnParams" layoutX="45.0" layoutY="417.0" mnemonicParsing="false" onAction="#showParams" prefHeight="31.0" prefWidth="151.0" text="Параметры" />
-      <Button layoutX="209.0" layoutY="417.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="151.0" text="Редактировать" />
-      <Button fx:id="btnExit" layoutX="409.0" layoutY="417.0" mnemonicParsing="false" onAction="#closeForm" prefHeight="31.0" prefWidth="95.0" text="Выход" />
-      <Label fx:id="lblType" layoutX="159.0" layoutY="34.0" text="Тип: " />
-      <Button layoutX="353.0" layoutY="286.0" mnemonicParsing="false" onAction="#showReport" prefHeight="31.0" prefWidth="151.0" text="Отчет" />
-   </children>
+    <Label fx:id="modelID" layoutX="40.0" layoutY="34.0" text="Модель №" />
+    <Label layoutX="40.0" layoutY="77.0" text="Файлы:" />
+    <ListView fx:id="filesList" layoutX="28.0" layoutY="117.0" prefHeight="200.0" prefWidth="215.0" />
+    <ImageView fx:id="imageView" fitHeight="150.0" fitWidth="200.0" layoutX="284.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true" />
+    <Label fx:id="lblCreated" layoutX="28.0" layoutY="366.0" text="Создана: &lt;username&gt; " />
+    <Button fx:id="btnParams" layoutX="45.0" layoutY="417.0" mnemonicParsing="false" onAction="#showParams" prefHeight="31.0" prefWidth="151.0" text="Параметры" />
+    <Button fx:id="btnExit" layoutX="409.0" layoutY="417.0" mnemonicParsing="false" onAction="#closeForm" prefHeight="31.0" prefWidth="95.0" text="Выход" />
+    <Label fx:id="lblType" layoutX="159.0" layoutY="34.0" text="Тип: " />
+    <Button layoutX="353.0" layoutY="286.0" mnemonicParsing="false" onAction="#showReport" prefHeight="31.0" prefWidth="151.0" text="Отчет" />
 </AnchorPane>

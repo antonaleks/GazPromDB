@@ -1,7 +1,6 @@
 package controllers;
 
 import db.DataBaseTxtHelper;
-import db.DataBaseXmlHelper;
 import entity.*;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -13,62 +12,77 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.sql.SQLException;
 
 public class ReportController extends BaseController {
+    @FXML
+    private Label lblType;
+    @FXML
+    private Label lblModelName;
+    @FXML
+    private Label lblId;
 
-    private Model model;
-    public Label lblType;
-    public Label lblPathTxt;
-    public Label lblId;
+    @FXML
+    private TableView<Component> compTable;
+    @FXML
+    private TableColumn<Component, String> compName;
+    @FXML
+    private TableColumn<Component, String> compFormula;
+    @FXML
+    private TableColumn<Component, String> compIndex;
 
-    public TableView<Component> compTable;
-    public TableColumn<Component, String> compName;
-    public TableColumn<Component, String> compFormula;
-    public TableColumn<Component, String> compIndex;
+    @FXML
+    private TableView<EnergyBalance> energyTable;
+    @FXML
+    private TableColumn<EnergyBalance, String> energyName;
+    @FXML
+    private TableColumn<EnergyBalance, String> energyInput;
+    @FXML
+    private TableColumn<EnergyBalance, String> energyOutput;
 
-    public TableView<EnergyBalance> energyTable;
-    public TableColumn<EnergyBalance, String> energyName;
-    public TableColumn<EnergyBalance, String> energyInput;
-    public TableColumn<EnergyBalance, String> energyOutput;
-
-    public TableView<MassBalance> massTable;
-    public TableColumn<MassBalance, String> massName;
-    public TableColumn<MassBalance, String> massInput_1;
-    public TableColumn<MassBalance, String> massOutput_1;
-    public TableColumn<MassBalance, String> massInput_2;
-    public TableColumn<MassBalance, String> massOutput_2;
+    @FXML
+    private TableView<MassBalance> massTable;
+    @FXML
+    private TableColumn<MassBalance, String> massName;
+    @FXML
+    private TableColumn<MassBalance, String> massInput_1;
+    @FXML
+    private TableColumn<MassBalance, String> massOutput_1;
+    @FXML
+    private TableColumn<MassBalance, String> massInput_2;
+    @FXML
+    private TableColumn<MassBalance, String> massOutput_2;
 
     @FXML
     public void initialize(Model model) throws SQLException {
-        this.model = model;
-        lblId.setText(lblId.getText()+this.model.getId());
-        lblPathTxt.setText(lblPathTxt.getText()+this.model.getPathToTxt());
-        lblType.setText(lblType.getText()+this.model.getType());
+        Model model1 = model;
+        lblId.setText(lblId.getText()+ model1.getId());
+        lblModelName.setText(lblModelName.getText()+ model1.getName());
+        lblType.setText(lblType.getText()+ model1.getType());
 
-        ObservableList<Component> componentData = new DataBaseTxtHelper().selectComponentByModelToList(this.model.getId());
-        ObservableList<EnergyBalance> energyData = new DataBaseTxtHelper().selectEnergyBalanceByModelToList(this.model.getId());
-        ObservableList<MassBalance> massData = new DataBaseTxtHelper().selectMassBalanceByModelToList(this.model.getId());
+        ObservableList<Component> componentData = new DataBaseTxtHelper().selectComponentByModelToList(model1.getId());
+        ObservableList<EnergyBalance> energyData = new DataBaseTxtHelper().selectEnergyBalanceByModelToList(model1.getId());
+        ObservableList<MassBalance> massData = new DataBaseTxtHelper().selectMassBalanceByModelToList(model1.getId());
 
         // устанавливаем тип и значение которое должно хранится в колонке
-        compName.setCellValueFactory(new PropertyValueFactory<Component, String>("name"));
-        compFormula.setCellValueFactory(new PropertyValueFactory<Component, String>("formula"));
-        compIndex.setCellValueFactory(new PropertyValueFactory<Component, String>("id"));
+        compName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        compFormula.setCellValueFactory(new PropertyValueFactory<>("formula"));
+        compIndex.setCellValueFactory(new PropertyValueFactory<>("id"));
 
         // заполняем таблицу данными
         compTable.setItems(componentData);
 
         // устанавливаем тип и значение которое должно хранится в колонке
-        energyName.setCellValueFactory(new PropertyValueFactory<EnergyBalance, String>("name"));
-        energyInput.setCellValueFactory(new PropertyValueFactory<EnergyBalance, String>("input"));
-        energyOutput.setCellValueFactory(new PropertyValueFactory<EnergyBalance, String>("output"));
+        energyName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        energyInput.setCellValueFactory(new PropertyValueFactory<>("input"));
+        energyOutput.setCellValueFactory(new PropertyValueFactory<>("output"));
 
         // заполняем таблицу данными
         energyTable.setItems(energyData);
 
         // устанавливаем тип и значение которое должно хранится в колонке
-        massName.setCellValueFactory(new PropertyValueFactory<MassBalance, String>("name"));
-        massInput_1.setCellValueFactory(new PropertyValueFactory<MassBalance, String>("input_1"));
-        massOutput_1.setCellValueFactory(new PropertyValueFactory<MassBalance, String>("output_1"));
-        massInput_2.setCellValueFactory(new PropertyValueFactory<MassBalance, String>("input_2"));
-        massOutput_2.setCellValueFactory(new PropertyValueFactory<MassBalance, String>("output_2"));
+        massName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        massInput_1.setCellValueFactory(new PropertyValueFactory<>("input_1"));
+        massOutput_1.setCellValueFactory(new PropertyValueFactory<>("output_1"));
+        massInput_2.setCellValueFactory(new PropertyValueFactory<>("input_2"));
+        massOutput_2.setCellValueFactory(new PropertyValueFactory<>("output_2"));
 
         // заполняем таблицу данными
         massTable.setItems(massData);

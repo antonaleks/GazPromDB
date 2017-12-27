@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+
+<VBox minHeight="256.0" minWidth="256.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SchemaViewController">
+   <children>
+      <AnchorPane VBox.vgrow="ALWAYS">
+         <children>
+            <ScrollPane fx:id="scrollPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="256.0" prefWidth="256.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <content>
+                  <AnchorPane>
+                     <children>
+                        <Group fx:id="scrollContent" onMouseDragged="#scrollPaneOnMouseDragged" onMousePressed="#scrollPaneOnMousePressed" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <StackPane fx:id="zoomPane" layoutX="14.0" layoutY="14.0" onScroll="#zoomPaneOnScroll" prefHeight="262.0" prefWidth="260.0">
+                                 <children>
+                                    <Group fx:id="group" />
+                                 </children>
+                              </StackPane>
+                           </children>
+                        </Group>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </ScrollPane>
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>

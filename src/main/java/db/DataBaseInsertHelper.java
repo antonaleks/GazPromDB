@@ -31,7 +31,7 @@ public class DataBaseInsertHelper extends DataBaseHelper {
     private StringBuilder sqlValuesAttribute = new StringBuilder("");
     private StringBuilder sqlValuesData = new StringBuilder("");
 
-    public int getLastInsertId() {
+    private int getLastInsertId() {
         try {
             Statement st = conn.createStatement();
 
@@ -45,7 +45,7 @@ public class DataBaseInsertHelper extends DataBaseHelper {
         return -1;
     }
 
-    public void insertTxtEnergyBalance(String name, String input, String output, int modelId) throws SQLException {
+    private void insertTxtEnergyBalance(String name, String input, String output, int modelId) throws SQLException {
         PreparedStatement statement = conn.prepareStatement(SqlQueryHelper.sqlInsertTxtEnergyBalance);
         statement.setInt(1, modelId);
         statement.setString(2, name);
@@ -54,7 +54,7 @@ public class DataBaseInsertHelper extends DataBaseHelper {
         statement.execute();
     }
 
-    public void insertTxtMassBalance(String name, String input_1, String output_1, String input_2, String output_2, int modelId) throws SQLException {
+    private void insertTxtMassBalance(String name, String input_1, String output_1, String input_2, String output_2, int modelId) throws SQLException {
         PreparedStatement statement = conn.prepareStatement(SqlQueryHelper.sqlInsertTxtMassBalance);
         statement.setInt(1, modelId);
         statement.setString(2, name);
@@ -65,7 +65,7 @@ public class DataBaseInsertHelper extends DataBaseHelper {
         statement.execute();
     }
 
-    public void insertTxtComponent(String name, String formula, String index, int modelId) throws SQLException {
+    private void insertTxtComponent(String name, String formula, String index, int modelId) throws SQLException {
         PreparedStatement statement = conn.prepareStatement(SqlQueryHelper.sqlInsertTxtComponents);
         statement.setInt(1, modelId);
         statement.setString(2, name);
@@ -74,9 +74,9 @@ public class DataBaseInsertHelper extends DataBaseHelper {
         statement.execute();
     }
 
-    public void insertTxtReport(List<EnergyBalance> energyBalances,
-                                List<MassBalance> massBalances,
-                                List<Component> components) throws SQLException {
+    private void insertTxtReport(List<EnergyBalance> energyBalances,
+                                 List<MassBalance> massBalances,
+                                 List<Component> components) throws SQLException {
         for(EnergyBalance energy : energyBalances)
             insertTxtEnergyBalance(energy.getName(), energy.getInput(), energy.getOutput(), modelId);
         for(MassBalance mass : massBalances)
@@ -85,7 +85,7 @@ public class DataBaseInsertHelper extends DataBaseHelper {
             insertTxtComponent(component.getName(), component.getFormula(), component.getId(), modelId);
     }
 
-    public void insertToModel(int typeId, String pathToXML, String pathToDXF, String pathToMainFile, String pathToTXT, String pathToPng, String name, int creatorId) throws SQLException {
+    private void insertToModel(int typeId, String pathToXML, String pathToDXF, String pathToMainFile, String pathToTXT, String pathToSvg, String name, int creatorId) throws SQLException {
         PreparedStatement statement = conn.prepareStatement(SqlQueryHelper.sqlInsertModel);
         statement.setInt(1, typeId);
         statement.setInt(2, creatorId);
@@ -93,7 +93,7 @@ public class DataBaseInsertHelper extends DataBaseHelper {
         statement.setString(4, pathToMainFile);
         statement.setString(5, pathToDXF);
         statement.setString(6, pathToTXT);
-        statement.setString(7, pathToPng);
+        statement.setString(7, pathToSvg);
         statement.setString(8, name);
         statement.execute();
     }
@@ -131,12 +131,12 @@ public class DataBaseInsertHelper extends DataBaseHelper {
         statementData.execute();
     }
 
-    public void insertAllToTable(String sql, String params) throws SQLException {
+    private void insertAllToTable(String sql, String params) throws SQLException {
         PreparedStatement statementData = conn.prepareStatement(sql + params);
         statementData.execute();
     }
 
-    public int getLustIdFrom(String tableName) throws SQLException {
+    private int getLustIdFrom(String tableName) throws SQLException {
         PreparedStatement statementData = conn.prepareStatement(String.format(SqlQueryHelper.sqlLastIdFromTableName, tableName));
         ResultSet rs =statementData.executeQuery();
         if(rs.next())
@@ -145,7 +145,7 @@ public class DataBaseInsertHelper extends DataBaseHelper {
 
     }
 
-    public void fillDataBase(int typeId, String pathToXML, String pathToDXF, String pathToMainFile, String pathToTXT, String name, String pathToPng) {
+    public void fillDataBase(int typeId, String pathToXML, String pathToDXF, String pathToMainFile, String pathToTXT, String name, String pathToSvg) {
 
         mySqlConnect = new MySqlConnect();
         conn = mySqlConnect.connect();
@@ -158,7 +158,7 @@ public class DataBaseInsertHelper extends DataBaseHelper {
             Element rootNode = document.getRootElement();
 
             //вставка модели
-            insertToModel(typeId, xmlFile.getAbsolutePath(), pathToDXF, pathToMainFile, pathToTXT, pathToPng, name, User.getInstance().getId());
+            insertToModel(typeId, xmlFile.getAbsolutePath(), pathToDXF, pathToMainFile, pathToTXT, pathToSvg, name, User.getCurrentUser().getId());
 
             //последний вставленный индекс
             modelId = getLastInsertId();
@@ -208,12 +208,8 @@ public class DataBaseInsertHelper extends DataBaseHelper {
             List<EnergyBalance> energyBalance = txtParser.parseEnergyBalance(txtInput);
             List<Component> components = txtParser.parseComponent(txtInput);
             insertTxtReport(energyBalance, massBalance, components);
-        } catch (IOException ex) {
+        } catch (IOException | SQLException | JDOMException ex) {
             ex.printStackTrace();
-        } catch (JDOMException ex) {
-            ex.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
         } finally {
             mySqlConnect.disconnect();
         }

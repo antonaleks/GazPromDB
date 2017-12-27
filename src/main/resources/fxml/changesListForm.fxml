@@ -6,21 +6,26 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="485.0" prefWidth="600.0" stylesheets="/styles/base/base.css" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ChangesListFormController">
-   <children>
-      <TableView layoutX="15.0" layoutY="38.0" prefHeight="367.0" prefWidth="571.0" AnchorPane.bottomAnchor="62.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="38.0">
-        <columns>
-          <TableColumn prefWidth="136.0" text="Название модели" />
-          <TableColumn prefWidth="128.0" text="Пользователь" />
-            <TableColumn prefWidth="160.0" text="Действие" />
-            <TableColumn prefWidth="146.0" text="Дата" />
-        </columns>
-         <columnResizePolicy>
-            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-         </columnResizePolicy>
-      </TableView>
-      <Label layoutX="23.0" layoutY="14.0" text="Список изменений в базе данных" />
-      <Button fx:id="closeButton" layoutX="483.0" layoutY="430.0" mnemonicParsing="false" onAction="#closeForm" prefHeight="25.0" prefWidth="103.0" text="Закрыть" AnchorPane.bottomAnchor="12.0" AnchorPane.rightAnchor="14.0" />
-      <Button fx:id="findChagesButton" layoutX="284.0" layoutY="448.0" mnemonicParsing="false" onAction="#showFindChangesForm" prefHeight="25.0" prefWidth="172.0" text="Поиск изменений" AnchorPane.bottomAnchor="12.0" AnchorPane.rightAnchor="144.0" />
-   </children>
+<AnchorPane prefHeight="485.0" prefWidth="600.0" stylesheets="/styles/base/base.css"
+            xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.ChangesListFormController">
+    <TableView layoutX="15.0" layoutY="38.0" prefHeight="367.0" prefWidth="571.0" AnchorPane.bottomAnchor="62.0"
+               AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="38.0">
+      <columns>
+          <TableColumn prefWidth="136.0" text="Название модели"/>
+          <TableColumn prefWidth="128.0" text="Пользователь"/>
+          <TableColumn prefWidth="160.0" text="Действие"/>
+          <TableColumn prefWidth="146.0" text="Дата"/>
+      </columns>
+        <columnResizePolicy>
+          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+        </columnResizePolicy>
+    </TableView>
+    <Label layoutX="23.0" layoutY="14.0" text="Список изменений в базе данных"/>
+    <Button fx:id="closeButton" layoutX="483.0" layoutY="430.0" mnemonicParsing="false" onAction="#closeForm"
+            prefHeight="25.0" prefWidth="103.0" text="Закрыть" AnchorPane.bottomAnchor="12.0"
+            AnchorPane.rightAnchor="14.0"/>
+    <Button fx:id="findChagesButton" layoutX="284.0" layoutY="448.0" mnemonicParsing="false"
+            onAction="#showFindChangesForm" prefHeight="25.0" prefWidth="172.0" text="Поиск изменений"
+            AnchorPane.bottomAnchor="12.0" AnchorPane.rightAnchor="144.0"/>
 </AnchorPane>

@@ -1,6 +1,7 @@
 package controllers;
 
 import entity.Model;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,8 +10,12 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
-import java.io.IOException;
+
+import java.io.*;
+import java.net.MalformedURLException;
 import java.sql.SQLException;
 
 /**
@@ -22,22 +27,30 @@ public class ModelInfoController extends BaseController {
     @FXML
     public ListView filesList;
     @FXML
-    public Label modelID;
+    public ImageView imageView;
+    @FXML
+    private Label modelID;
     @FXML
     public Button btnExit;
     @FXML
-    public Label lblCreated;
+    private Label lblCreated;
     @FXML
-    public Label lblType;
+    private Label lblType;
 
     private Model model;
 
     @FXML
-    public void initialize(Model model) {
+    public void initialize(Model model) throws MalformedURLException{
         this.model = model;
         modelID.setText(modelID.getText()+this.model.getId());
         lblCreated.setText("Создана пользователем: " + this.model.getCreator() + " дата: " + this.model.getDate());
         lblType.setText(lblType.getText()+this.model.getType());
+        filesList.getItems().add("Основной файл:");
+        filesList.getItems().add(this.model.getPathToMainFile());
+        filesList.getItems().add("Доп. файлы:");
+        filesList.getItems().add(this.model.getPathToXml());
+        filesList.getItems().add(this.model.getPathToTxt());
+        filesList.getItems().add(this.model.getPathToDxf());
     }
 
 

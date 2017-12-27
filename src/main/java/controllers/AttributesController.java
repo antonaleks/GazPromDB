@@ -14,24 +14,33 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-
 import java.io.IOException;
 import java.sql.SQLException;
 
 public class AttributesController extends BaseController {
 
-
-    public Button btnData;
-    public Label lblType;
-    public Label lblPathXml;
-    public Label lblObjId;
-    public Label lblId;
-    public Label lblObjName;
-    public Label lblObjClass;
-    public TableView<Attribute> tableAttr;
-    public TableColumn<Attribute, String> col1;
-    public TableColumn<Attribute, String> col2;
-    public TableColumn<Attribute, String> col3;
+    @FXML
+    private Button btnData;
+    @FXML
+    private Label lblType;
+    @FXML
+    private Label lblModelName;
+    @FXML
+    private Label lblObjId;
+    @FXML
+    private Label lblId;
+    @FXML
+    private Label lblObjName;
+    @FXML
+    private Label lblObjClass;
+    @FXML
+    private TableView<Attribute> tableAttr;
+    @FXML
+    private TableColumn<Attribute, String> col1;
+    @FXML
+    private TableColumn<Attribute, String> col2;
+    @FXML
+    private TableColumn<Attribute, String> col3;
 
     private Model model;
     private ObjectModel object;
@@ -41,7 +50,7 @@ public class AttributesController extends BaseController {
         this.model = model;
         this.object = object;
         lblId.setText(lblId.getText()+this.model.getId());
-        lblPathXml.setText(lblPathXml.getText()+this.model.getPathToXml());
+        lblModelName.setText(lblModelName.getText() + this.model.getName());
         lblType.setText(lblType.getText()+this.model.getType());
         lblObjId.setText(lblObjId.getText() + this.object.getId().intValue());
         lblObjName.setText(lblObjName.getText() + this.object.getName().getValue());
@@ -50,9 +59,9 @@ public class AttributesController extends BaseController {
         ObservableList<Attribute> attributeData = new DataBaseXmlHelper().selectAttributeByObjectToList(object.getId().intValue());
 
         // устанавливаем тип и значение которое должно хранится в колонке
-        col1.setCellValueFactory(new PropertyValueFactory<Attribute, String>("name"));
-        col2.setCellValueFactory(new PropertyValueFactory<Attribute, String>("unit"));
-        col3.setCellValueFactory(new PropertyValueFactory<Attribute, String>("dataType"));
+        col1.setCellValueFactory(new PropertyValueFactory<>("name"));
+        col2.setCellValueFactory(new PropertyValueFactory<>("unit"));
+        col3.setCellValueFactory(new PropertyValueFactory<>("dataType"));
 
         // заполняем таблицу данными
         tableAttr.setItems(attributeData);
