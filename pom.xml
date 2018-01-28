@@ -22,6 +22,7 @@
                 </configuration>
             </plugin>
         </plugins>
+
     </build>
 
     <dependencies>
@@ -94,6 +95,17 @@
             <version>1.0</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.kabeja</groupId>
+            <artifactId>kabeja1</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.kabeja</groupId>
+            <artifactId>kabeja2</artifactId>
+            <version>1.0</version>
+        </dependency>
 
     </dependencies>
 

@@ -22,16 +22,12 @@ public class MySqlConnect {
             DriverManager.registerDriver(driver);
         }
         catch (SQLException e1) {
-            System.out.println("Драйвер не зарегистрировался");
             return null;
         }
         try {
             connection = DriverManager.getConnection(URL, USER, PASSWORD);
-            if (!connection.isClosed())
-                System.out.println("Соединение установлено");
             return connection;
         }catch (SQLException ex) {
-            System.err.println("Соединение не установлено");
             ex.printStackTrace(); // Понадобился, чтобы отловить исключения, скрытые выводом на экран предупреждения
             return connection;
         }
