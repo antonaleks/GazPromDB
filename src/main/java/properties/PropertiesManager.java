@@ -9,6 +9,7 @@ import java.util.Properties;
 public class PropertiesManager {
 
     private static Properties sqlTableProps;
+    private static Properties configProps;
 
     public static Properties getSqlTableProperties() {
         if (sqlTableProps == null){
@@ -22,6 +23,20 @@ public class PropertiesManager {
             return sqlTableProps;
         }
         else return sqlTableProps;
+    }
+
+    public static Properties getConfigProperties() {
+        if (configProps == null){
+            configProps = new Properties();
+            try {
+                String pathToSqlTableProperties = "src/main/resources/propeties/config.properties";
+                configProps.load(new FileInputStream(new File(pathToSqlTableProperties).getAbsolutePath()));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return configProps;
+        }
+        else return configProps;
     }
 }
 

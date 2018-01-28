@@ -1,14 +1,16 @@
 package utilities;
 
+import properties.PropertiesManager;
+
 import java.sql.Connection;
 import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class MySqlConnect {
-    private static final String URL = "jdbc:mysql://localhost:3306/chemcad?autoReconnect=true&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC";
-    private static final String USER = "root";
-    private static final String PASSWORD = "root";
+    private static final String URL = "jdbc:mysql://" + PropertiesManager.getConfigProperties().getProperty("url") + PropertiesManager.getConfigProperties().getProperty("schema") + "?autoReconnect=true&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC";
+    private static final String USER = PropertiesManager.getConfigProperties().getProperty("login");
+    private static final String PASSWORD = PropertiesManager.getConfigProperties().getProperty("password");
     private Connection connection;
 
     public Connection connect() {
