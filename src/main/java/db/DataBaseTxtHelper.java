@@ -8,6 +8,7 @@ import properties.PropertiesManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class DataBaseTxtHelper extends DataBaseHelper {
 
@@ -56,5 +57,16 @@ public class DataBaseTxtHelper extends DataBaseHelper {
         statement.close();
         closeAll();
         return tableListData;
+    }
+
+    public ArrayList<String> selectTxtPropertiesName() throws SQLException {
+        ArrayList<String> list = new ArrayList<>();
+        PreparedStatement statement = conn.prepareStatement(SqlQueryHelper.sqlSelectPropertiesName);
+        ResultSet rs = statement.executeQuery();
+        while (rs.next())
+            list.add(rs.getString("name"));
+        statement.close();
+        closeAll();
+        return list;
     }
 }

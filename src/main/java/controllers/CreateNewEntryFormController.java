@@ -12,7 +12,12 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.stage.FileChooser;
+import properties.JsonManager;
 import txtParsers.Parser;
+import winApi.ApiHelper;
+import winApi.threads.CreateJson;
+import winApi.threads.FillDataBase;
+import winApi.threads.ParseFiles;
 
 import java.io.File;
 import java.io.IOException;
@@ -44,15 +49,57 @@ public class CreateNewEntryFormController {
     @FXML
     private JFXSpinner loading;
 
-    private String pathToMainFile = "";
-    private String pathToTXT= "";
-    private String pathToDXF = "";
-    private String pathToXML = "";
-    private String pathToSVG = "";
-    private String name = "";
+    private static String pathToMainFile = "";
+    private static String pathToTXT= "";
+    private static String pathToDXF = "";
+    private static String pathToXML = "";
+    private static String pathToSVG = "";
+    private static String name = "";
+    private static int typeId;
+
+    public static int getTypeId() {
+        return typeId;
+    }
+
+    public static void setPathToSVG(String pathToSVG) {
+        CreateNewEntryFormController.pathToSVG = pathToSVG;
+    }
+
+    public static String getPathToMainFile() {
+        return pathToMainFile;
+    }
+
+    public static String getPathToTXT() {
+        return pathToTXT;
+    }
+
+    public static String getPathToDXF() {
+        return pathToDXF;
+    }
+
+    public static String getPathToXML() {
+        return pathToXML;
+    }
+
+    public static String getPathToSVG() {
+        return pathToSVG;
+    }
+
+    public static String getName() {
+        return name;
+    }
+
+    private static List<StreamsElement> streamsElements;
+
+    public static void setStreamsElements(List<StreamsElement> streamsElements) {
+        CreateNewEntryFormController.streamsElements = streamsElements;
+    }
+
+    public static List<StreamsElement> getStreamsElements() {
+        return streamsElements;
+    }
 
     private List<ModelType> types;
-
 
     @FXML
     public void initialize() throws SQLException {
@@ -110,7 +157,7 @@ public class CreateNewEntryFormController {
         parentWindow.hide();
     }
 
-    public void insertNewModel(ActionEvent actionEvent) throws IOException {
+    public void insertNewModel(ActionEvent actionEvent) throws IOException, SQLException {
         if (Access.checkAccess(User.getCurrentUser().getAccess(), Access.Right.WRITE)) {
             loading.setVisible(true);
             createButton.setDisable(true);
@@ -129,24 +176,36 @@ public class CreateNewEntryFormController {
                     if ("xml".equals(row.substring(row.lastIndexOf('.') + 1))) pathToXML = row;
                 }
             }
-            int typeId = -1;
+            typeId = -1;
             for (ModelType type : types) {
                 if (comboBox.getSelectionModel().getSelectedItem().equals(type.getType())) {
                     typeId = type.getId();
                     break;
                 }
             }
-            Parser txtParser = new Parser();
-            String txtInput = txtParser.parseTxtReport(pathToTXT);
-            List<MassBalance> massBalance = txtParser.parseMassBalance(txtInput);
-            List<EnergyBalance> energyBalance = txtParser.parseEnergyBalance(txtInput);
-            List<Component> components = txtParser.parseComponent(txtInput);
+            //new thread
+            ParseFiles parseFiles = new ParseFiles();
 
-            DataBaseInsertHelper dataBaseInsertHelper = new DataBaseInsertHelper();
+//            Parser txtParser = new Parser();
+//            String txtInput = txtParser.parseTxtReport(pathToTXT);
+//            List<MassBalance> massBalance = txtParser.parseMassBalance(txtInput);
+//            List<EnergyBalance> energyBalance = txtParser.parseEnergyBalance(txtInput);
+//            List<Component> components = txtParser.parseComponent(txtInput);
+//            List<StreamsElement> streamsElements = txtParser.parseStreams(txtInput, components);
+            //new thread
+            CreateJson createJson = new CreateJson();
 
-            pathToSVG = new Converter().parseFile(pathToDXF);
+//            JsonManager.createJson(streamsElements, name);
+            //new thread
+            FillDataBase fillDataBase = new FillDataBase();
 
-            dataBaseInsertHelper.fillDataBase(typeId, pathToXML, pathToDXF, pathToMainFile, pathToTXT, name, pathToSVG);
+            ApiHelper.buildThreads(parseFiles, createJson, fillDataBase);
+
+//            DataBaseInsertHelper dataBaseInsertHelper = new DataBaseInsertHelper();
+//
+//            pathToSVG = new Converter().parseFile(pathToDXF);
+//
+//            dataBaseInsertHelper.fillDataBase(typeId, pathToXML, pathToDXF, pathToMainFile, pathToTXT, name, pathToSVG);
 
             loading.setVisible(false);
             createButton.setDisable(false);

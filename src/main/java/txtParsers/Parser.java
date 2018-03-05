@@ -1,11 +1,14 @@
 package txtParsers;
 
+import db.DataBaseTxtHelper;
 import entity.Component;
 import entity.EnergyBalance;
 import entity.MassBalance;
+import entity.StreamsElement;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -36,7 +39,7 @@ public class Parser {
         return massBalances;
     }
 
-    public List<Component> parseComponent(String input) {
+    public List<Component> parseComponent(String input) throws SQLException {
         String pattern = "(?<=COMPONENTS)([\\s\\S]*?)(?=\r\n\r\n)";
         Pattern p  = Pattern.compile(pattern);
         Matcher m = p.matcher(input);
@@ -96,5 +99,66 @@ public class Parser {
         byte[] array = new byte[in.available()];
         in.read(array);
         return new String(array);
+    }
+
+    private ArrayList<String> getStreamsComponentsName(String input){
+        String pattern = "(?<=Stream Name)([\\s\\S]*?)(?=Flow rates in)";
+        ArrayList<String> propsName = new ArrayList<>();
+        Pattern p = Pattern.compile(pattern);
+        Matcher m = p.matcher(input);
+        m.find();
+        String[] text = m.group().trim().split("\n");
+        int i = 0;
+        if(!(text[0].replaceAll("[\\s]{2,}", " ").trim().split(" ").length > 1))i++;
+        for(int j = i; j < text.length; j++){
+            propsName.add(text[j].split("   ")[0]);
+        }
+        return propsName;
+
+    }
+
+    public List<StreamsElement> parseStreams(String input, List<Component> components) throws SQLException {
+        String pattern = "(?<=FLOW SUMMARIES:)([\\s\\S]*?)(?=$)";
+
+        Pattern p = Pattern.compile(pattern);
+        Matcher m = p.matcher(input);
+
+        List<StreamsElement> elements = new ArrayList<>();
+        String text = "";
+        while (m.find()){
+            text += m.group() + " ";
+        }
+        ArrayList<String> propsName = getStreamsComponentsName(text);
+        for (String name :
+                propsName) {
+            double[] values = parseComponentsInStream(text, name);
+            if(values!=null) elements.add(new StreamsElement(parseComponentsInStream(text, name), name));
+        }
+        for (Component component :
+                components) {
+
+            double[] values = parseComponentsInStream(text, component.getName());
+            if(values!=null) elements.add(new StreamsElement(values, component.getName()));
+        }
+        return elements;
+    }
+
+    public double[] parseComponentsInStream(String input, String name){
+        if(name.contains("*")) return null;
+        String pattern = "(?<=" + name.replaceAll("[+]","") + ")([\\s\\S]*?)(?=[\\n])";
+        Pattern p  = Pattern.compile(pattern);
+        Matcher m = p.matcher(input);
+        String text = "";
+        while (m.find()){
+            text += m.group() + " ";
+        }
+        String textNoSpace = text.replace("\n", "").replace("\r","").replaceAll("[+]","").replaceAll("[A-Z,a-z]", "").replaceAll("[\\s]{2,}", " ").trim();
+        String[] textArr = textNoSpace.split(" ");
+        if(textArr==null)return null;
+        double[] array = new double[textArr.length];
+        for (int i = 0; i < textArr.length; i++) {
+            array[i] = new Double(textArr[i].replace("*", ""));
+        }
+        return array;
     }
 }

@@ -198,8 +198,8 @@ Enth  MJ/h         -4.4676E+006  -4.4700E+006
 Vapor mass frac.        0.00000       0.00000 
 Total kmol/h         15638.5234    15659.8906 
 Total kg/h          282732.2500   282732.2188 
-Total std L liter/  282061.6563   282536.5313 
-Total std V liter/ 350516352.00  350995232.00 
+Total std L liter/   282061.6563   282536.5313 
+Total std V liter/    350516352.00  350995232.00 
 Flow rates in kg/h
 Benzene                100.0000       17.1864 
 BioMass                696.0000      916.1246 
@@ -207,3 +207,4 @@ Carbon Dioxide           0.0000      191.8805
 DeadBioMass            126.2700      153.7048 
 Alpha-D-Glucose        785.0000      228.2342 
 Water               281025.0000   281225.0938 
+CHEMCAD 6.5.7                                              Page 10

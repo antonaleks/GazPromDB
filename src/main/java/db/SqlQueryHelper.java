@@ -149,6 +149,7 @@ class SqlQueryHelper {
             PropertiesManager.getSqlTableProperties().getProperty("TXT_MASS_BALANCE_TABLE_NAME"),
             PropertiesManager.getSqlTableProperties().getProperty("MODEL_FILES_TABLE_NAME"),
             PropertiesManager.getSqlTableProperties().getProperty("FOREIGN_KEY_MODEL_FILES"));
+    final static String sqlSelectPropertiesName = String.format("SELECT name FROM txt_properties");
 
     // Запросы из таблицы с файлами и типом
     final static String sqlSelectModels = String.format("SELECT model.%s as main, model.%s as dxf, model.%s as name, model.%s as svg, " +
