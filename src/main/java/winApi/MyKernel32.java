@@ -12,28 +12,113 @@ import java.util.List;
 
 public interface MyKernel32 extends Kernel32 {
 
-    static MyKernel32 INSTANCE = (MyKernel32) Native.loadLibrary("kernel32", MyKernel32.class,W32APIOptions.DEFAULT_OPTIONS);
+    MyKernel32 INSTANCE = (MyKernel32) Native.loadLibrary("kernel32", MyKernel32.class,W32APIOptions.DEFAULT_OPTIONS);
 
+    /**
+     * Уменьшает счет времени приостановки работы потока.
+     * Когда счет времени приостановки работы уменьшается до нуля, выполнение потока продолжается.
+     *
+     * @param hThread
+     *            Дескриптор для потока, который будет перезагружен.
+     *            Дескриптор должен иметь право доступа THREAD_SUSPEND_RESUME.
+     *
+     * @return Если функция завершается успешно, величина возвращаемого значения -
+     *         предшествующий счет времени приостановки работы потока.
+     *         Если функция завершается с ошибкой, величина возвращаемого значения равна - (минус) 1.
+     *         Чтобы получить дополнительные данные об ошибках, вызовите GetLastError.
+     */
     DWORD ResumeThread(HANDLE hThread);
 
+    /**
+     * Создает поток, который выполняется в пределах виртуального адресного пространства вызывающего процесса.
+     *
+     * @param lpThreadAttributes
+     *            Данный аргумент определяет, может ли создаваемый поток быть унаследован дочерним процессом.
+     * @param dwStackSize
+     *            Размер стека в байтах. Если передать 0, то будет использоваться значение по-умолчанию (1 мегабайт).
+     * @param lpStartAddress
+     *            Адрес функции, которая будет выполняться потоком.
+     *            Т.е. можно сказать, что функция, адрес которой передаётся в этот аргумент,
+     *            является создаваемым потоком.
+     * @param lpParameter
+     *            Указатель на переменную, которая будет передана в поток.
+     * @param dwCreationFlags
+     *            Флаги создания. Здесь можно отложить запуск выполнения потока.
+     * @param lpThreadId
+     *            Указатель на переменную, куда будет сохранён идентификатор потока.
+     *
+     * @return Если функция завершается успешно, величина возвращаемого значения - дескриптор нового потока.
+     *         Если функция завершается с ошибкой, величина возвращаемого значения - ПУСТО (NULL).
+     *         Чтобы получать дополнительные данные об ошибках, вызовите GetLastError.
+     */
     HANDLE CreateThread(Pointer lpThreadAttributes, Pointer dwStackSize, Callback lpStartAddress, Pointer lpParameter, DWORD dwCreationFlags, Pointer lpThreadId);
 
+    /**
+     * Извлекает информацию о распределении интервалов времени для заданного потока.
+     *
+     * @param hThread
+     *            Дескриптор потока, информация о распределении интервалов времени которого разыскивается.
+     *            Этот дескриптор должен быть создан с правом доступа THREAD_QUERY_INFORMATION.
+     * @param lpCreationTime
+     *            Указатель на структуру FILETIME, которая принимает момент создания потока.
+     * @param lpExitTime
+     *            Указатель на структуру FILETIME, которая принимает момент выхода потока.
+     *            Если поток не вышел, содержание этой структуры не определенное.
+     * @param lpKernelTime
+     *            Указатель на структуру FILETIME, которая принимает величину времени,
+     *            в ходе которого поток выполнялся в привилегированном режиме (режиме ядра).
+     * @param lpUserTime
+     *            Указатель на структуру FILETIME, которая принимает величину времени,
+     *            в ходе которого поток выполнялся в непривилегированном (пользовательском) режиме.
+     *
+     * @return Если функция завершается успешно, величина возвращаемого значения - не ноль.
+     *         Если функция завершается с ошибкой, величина возвращаемого значения - ноль.
+     */
+    boolean GetThreadTimes(HANDLE hThread, FILETIME lpCreationTime, FILETIME lpExitTime, FILETIME lpKernelTime, FILETIME lpUserTime);
+
+    /**
+     * Ждет монопольное использование указанного объекта критической секции.
+     * Функция возвращает значение тогда, когда вызывающему потоку предоставляют монопольное использование.
+     *
+     * @param lpCriticalSection
+     *            Указатель на объект критической секции.
+     */
     void EnterCriticalSection(CRITICAL_SECTION lpCriticalSection);
 
+    /**
+     * Освобождает монопольное использование, давая возможность другому потоку стать монопольным пользователем
+     * и получить доступ к защищенному ресурсу.
+     *
+     * @param lpCriticalSection
+     *            Указатель на объект критической секции.
+     */
     void LeaveCriticalSection(CRITICAL_SECTION lpCriticalSection);
 
+    /**
+     * Освобождает системные ресурсы, которые были распределены, когда объект критической секции был инициализирован.
+     * После того, как эта функция вызвалась, объект критической секции больше не может использоваться для синхронизации.
+     *
+     * @param lpCriticalSection
+     *            Указатель на объект критической секции.
+     */
     void DeleteCriticalSection(CRITICAL_SECTION lpCriticalSection);
 
-    boolean InitializeCriticalSection(CRITICAL_SECTION lpCriticalSection);
+    /**
+     * Заполняют поля структуры, адресуемой lpCriticalSection.
+     *
+     * @param lpCriticalSection
+     *            Указатель на объект критической секции.
+     */
+    void InitializeCriticalSection(CRITICAL_SECTION lpCriticalSection);
 
-    public static class CRITICAL_SECTION extends Structure {
+    class CRITICAL_SECTION extends Structure {
 
-        public WinDef.INT_PTR DebugInfo;
-        public long LockCount;
-        public long RecursionCount;
-        public WinDef.INT_PTR OwningThread;
-        public WinDef.INT_PTR LockSemaphore;
-        public WinDef.INT_PTR SpinCount;
+        public WinDef.INT_PTR DebugInfo;  // Используется операционной системой
+        public long LockCount;  // Счетчик использования этой критической секции
+        public long RecursionCount;  // Счетчик повторного захвата из нити-владельца
+        public WinDef.INT_PTR OwningThread;  // Уникальный ID нити-владельца
+        public WinDef.INT_PTR LockSemaphore;  // Объект ядра используемый для ожидания
+        public WinDef.INT_PTR SpinCount;  // Количество холостых циклов перед вызовом ядра
 
         protected List<String> getFieldOrder() {
             return Arrays.asList("DebugInfo", "LockCount", "RecursionCount", "OwningThread", "LockSemaphore", "SpinCount");

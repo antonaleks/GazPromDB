@@ -1,12 +1,14 @@
 package controllers;
 
 //import converters.Converter;
+
 import com.jfoenix.controls.*;
 import converters.Converter;
 import db.DataBaseInsertHelper;
 import db.DataBaseXmlHelper;
 import entity.*;
 import enums.Access;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -50,7 +52,7 @@ public class CreateNewEntryFormController {
     private JFXSpinner loading;
 
     private static String pathToMainFile = "";
-    private static String pathToTXT= "";
+    private static String pathToTXT = "";
     private static String pathToDXF = "";
     private static String pathToXML = "";
     private static String pathToSVG = "";
@@ -104,14 +106,14 @@ public class CreateNewEntryFormController {
     @FXML
     public void initialize() throws SQLException {
         types = new DataBaseXmlHelper().selectAllModelsTypeToList();
-        for(ModelType type: types)
+        for (ModelType type : types)
             comboBox.getItems().add(type.getType());
-        comboBox.setButtonCell(new ListCell(){
+        comboBox.setButtonCell(new ListCell() {
 
             @Override
             protected void updateItem(Object item, boolean empty) {
                 super.updateItem(item, empty);
-                if(!(item==null)){
+                if (!(item == null)) {
                     setStyle("-fx-text-fill: #FFFF8D");
                     setText(item.toString());
                 }
@@ -123,30 +125,28 @@ public class CreateNewEntryFormController {
     public void chooseMainFile(ActionEvent actionEvent) {
         FileChooser fileChooser = new FileChooser();
         File selectedFile = fileChooser.showOpenDialog(null);
-        if(selectedFile!= null){
+        if (selectedFile != null) {
 
-            String str=selectedFile.getPath();
+            String str = selectedFile.getPath();
             listView.getItems().add("Основной файл:");
             listView.getItems().add(str);
             txtCheckBox.setVisible(true);
             xmlCheckBox.setVisible(true);
             dxfCheckBox.setVisible(true);
             extraFilesChooseButton.setVisible(true);
-        }else{
+        } else {
             System.out.println("Неверный файл");
         }
-
     }
 
     public void chooseExtraFiles(ActionEvent actionEvent) {
-        FileChooser fileChooser=new FileChooser();
+        FileChooser fileChooser = new FileChooser();
         List<File> files = fileChooser.showOpenMultipleDialog(null);
 
-        if(files!=null){
+        if (files != null) {
             listView.getItems().add("Доп. файлы:");
             for (File file : files) listView.getItems().add(file.getPath());
-        }
-        else {
+        } else {
             System.out.println("Файлы выбраны неверно!");
         }
 
@@ -158,73 +158,103 @@ public class CreateNewEntryFormController {
     }
 
     public void insertNewModel(ActionEvent actionEvent) throws IOException, SQLException {
+        Task task = new javafx.concurrent.Task<Void>() {
+
+            @Override
+            protected Void call() throws Exception {
+
+
+                ParseFiles parseFiles = new ParseFiles();
+                CreateJson createJson = new CreateJson();
+                FillDataBase fillDataBase = new FillDataBase();
+
+                ApiHelper.buildThreads(parseFiles, createJson, fillDataBase);
+
+                return null;
+
+            }
+
+
+            @Override
+            protected void succeeded() {
+                loading.setVisible(false);
+                createButton.setDisable(false);
+                extraFilesChooseButton.setDisable(false);
+                mainFileChooseButton.setDisable(false);
+                closeButton.setDisable(false);
+                Alert alertComplete = new Alert(Alert.AlertType.INFORMATION);
+                alertComplete.setTitle("Информация о выполнении задачи");
+                alertComplete.setHeaderText("Внесение в базу данных новой записи");
+                alertComplete.setContentText("Новая запись была успешно создана");
+                alertComplete.showAndWait();
+            }
+
+            @Override
+            protected void failed() {
+                loading.setVisible(false);
+                createButton.setDisable(false);
+                extraFilesChooseButton.setDisable(false);
+                mainFileChooseButton.setDisable(false);
+                closeButton.setDisable(false);
+            }
+
+        };
         if (Access.checkAccess(User.getCurrentUser().getAccess(), Access.Right.WRITE)) {
-            loading.setVisible(true);
-            createButton.setDisable(true);
-            extraFilesChooseButton.setDisable(true);
-            mainFileChooseButton.setDisable(true);
-            closeButton.setDisable(true);
-            for (int i = 0; i < listView.getItems().size(); i++) {
-                String row = ((String) listView.getItems().get(i));
-                if (row.contains(File.separator)) {
-                    if ("cc6".equals(row.substring(row.lastIndexOf('.') + 1))) {
-                        pathToMainFile = row;
-                        name = new File(pathToMainFile).getName().split("\\.")[0];
+            try {
+                if ("cc6".equals(((String) listView.getItems().get(1)).substring(((String) listView.getItems().get(1)).lastIndexOf('.') + 1))) {
+                    pathToMainFile = ((String) listView.getItems().get(1));
+                    name = new File(pathToMainFile).getName().split("\\.")[0];
+                } else throw new IllegalArgumentException();
+                int count = 0b000;
+                for (int i = 3; i < listView.getItems().size(); i++) {
+                    String row = ((String) listView.getItems().get(i));
+                    if (row.contains(File.separator)) {
+                        if ("txt".equals(row.substring(row.lastIndexOf('.') + 1))) {
+                            pathToTXT = row;
+                            count |= 0b001;
+                        }
+                        if ("dxf".equals(row.substring(row.lastIndexOf('.') + 1))) {
+                            pathToDXF = row;
+                            count |= 0b010;
+                        }
+                        if ("xml".equals(row.substring(row.lastIndexOf('.') + 1))) {
+                            pathToXML = row;
+                            count |= 0b100;
+                        }
                     }
-                    if ("txt".equals(row.substring(row.lastIndexOf('.') + 1))) pathToTXT = row;
-                    if ("dxf".equals(row.substring(row.lastIndexOf('.') + 1))) pathToDXF = row;
-                    if ("xml".equals(row.substring(row.lastIndexOf('.') + 1))) pathToXML = row;
                 }
-            }
-            typeId = -1;
-            for (ModelType type : types) {
-                if (comboBox.getSelectionModel().getSelectedItem().equals(type.getType())) {
-                    typeId = type.getId();
-                    break;
+
+                if (count != 0b111) throw new IllegalArgumentException();
+
+                typeId = -1;
+                for (ModelType type : types) {
+                    if (comboBox.getSelectionModel().getSelectedItem().equals(type.getType())) {
+                        typeId = type.getId();
+                        break;
+                    }
                 }
+                Thread thread = new Thread(task, "My Task");
+                thread.setDaemon(true);
+                loading.setVisible(true);
+                createButton.setDisable(true);
+                extraFilesChooseButton.setDisable(true);
+                mainFileChooseButton.setDisable(true);
+                closeButton.setDisable(true);
+                thread.start();
+            } catch (IllegalArgumentException e) {
+                Alert alertComplete = new Alert(Alert.AlertType.ERROR);
+                alertComplete.setTitle("Информация о выполнении задачи");
+                alertComplete.setHeaderText("Внесение в базу данных новой записи");
+                alertComplete.setContentText("Ошибка! Неверный формат файла");
+                alertComplete.showAndWait();
             }
-            //new thread
-            ParseFiles parseFiles = new ParseFiles();
-
-//            Parser txtParser = new Parser();
-//            String txtInput = txtParser.parseTxtReport(pathToTXT);
-//            List<MassBalance> massBalance = txtParser.parseMassBalance(txtInput);
-//            List<EnergyBalance> energyBalance = txtParser.parseEnergyBalance(txtInput);
-//            List<Component> components = txtParser.parseComponent(txtInput);
-//            List<StreamsElement> streamsElements = txtParser.parseStreams(txtInput, components);
-            //new thread
-            CreateJson createJson = new CreateJson();
-
-//            JsonManager.createJson(streamsElements, name);
-            //new thread
-            FillDataBase fillDataBase = new FillDataBase();
-
-            ApiHelper.buildThreads(parseFiles, createJson, fillDataBase);
-
-//            DataBaseInsertHelper dataBaseInsertHelper = new DataBaseInsertHelper();
-//
-//            pathToSVG = new Converter().parseFile(pathToDXF);
-//
-//            dataBaseInsertHelper.fillDataBase(typeId, pathToXML, pathToDXF, pathToMainFile, pathToTXT, name, pathToSVG);
-
-            loading.setVisible(false);
-            createButton.setDisable(false);
-            extraFilesChooseButton.setDisable(false);
-            mainFileChooseButton.setDisable(false);
-            closeButton.setDisable(false);
-
-            Alert alertComplete = new Alert(Alert.AlertType.INFORMATION);
-            alertComplete.setTitle("Информация о выполнении задачи");
-            alertComplete.setHeaderText("Внесение в базу данных новой записи");
-            alertComplete.setContentText("Новая запись была успешно создана");
-            alertComplete.showAndWait();
-        }
-        else {
+        } else {
             Alert alertComplete = new Alert(Alert.AlertType.ERROR);
             alertComplete.setTitle("Информация о выполнении задачи");
             alertComplete.setHeaderText("Внесение в базу данных новой записи");
             alertComplete.setContentText("Ошибка! Вы не имеете прав на создание новой записи");
             alertComplete.showAndWait();
         }
+
     }
 }

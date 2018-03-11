@@ -9,6 +9,9 @@ import winApi.MyKernel32;
 
 public class FillDataBase implements Callback {
 
+    /**
+     * Вызывает методы для работы с заполнением базы данных.
+     */
     public void callback(){
         MyKernel32.INSTANCE.EnterCriticalSection(ApiHelper.criticalSection);
         System.out.println("Hi, it's new thread, id: " + MyKernel32.INSTANCE.GetCurrentThreadId());
