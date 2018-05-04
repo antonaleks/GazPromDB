@@ -7,9 +7,12 @@
 <?import com.jfoenix.controls.JFXSpinner?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane onDragDetected="#chooseMainFile" prefHeight="400.0" prefWidth="600.0" stylesheets="@../styles/dark-theme.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CreateNewEntryFormController">
+<AnchorPane onDragDetected="#chooseMainFile" prefHeight="400.0" prefWidth="877.0" stylesheets="@../styles/dark-theme.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CreateNewEntryFormController">
    <JFXCheckBox fx:id="txtCheckBox" layoutX="30.0" layoutY="119.0" text="add TXT File" textFill="#ffd0d0" visible="false" />
    <JFXCheckBox fx:id="dxfCheckBox" layoutX="30.0" layoutY="154.0" text="add DXF File" textFill="#ffd0d0" visible="false" />
    <JFXCheckBox layoutX="30.0" layoutY="189.0" text="add XML File" textFill="#ffd0d0" visible="false" fx:id="xmlCheckBox" />
@@ -19,7 +22,7 @@
          <FontAwesomeIconView glyphName="PLUS" />
       </graphic>
    </JFXButton>
-   <JFXListView fx:id="listView" layoutX="280.0" layoutY="100.0" prefHeight="200.0" prefWidth="264.0" />
+   <JFXListView fx:id="listView" layoutX="528.0" layoutY="100.0" prefHeight="200.0" prefWidth="264.0" />
    <JFXButton fx:id="createButton" layoutX="378.0" layoutY="343.0" onAction="#insertNewModel" styleClass="login-button" text="Создать запись">
       <graphic>
          <FontAwesomeIconView glyphName="CHECK" />
@@ -37,4 +40,11 @@
    </JFXButton>
    <JFXSpinner fx:id="loading" layoutX="327.0" layoutY="343.0" prefHeight="27.0" prefWidth="51.0" visible="false" />
    <Label layoutX="52.0" layoutY="14.0" text="Тип модели" textFill="#dac9c9" />
+   <RadioButton fx:id="rbEvent" layoutX="218.0" layoutY="300.0" mnemonicParsing="false" text="Event" textFill="WHITE">
+      <toggleGroup>
+         <ToggleGroup fx:id="syn" />
+      </toggleGroup></RadioButton>
+   <RadioButton fx:id="rbMutex" layoutX="218.0" layoutY="331.0" mnemonicParsing="false" text="Mutex" textFill="WHITE" toggleGroup="$syn" />
+   <RadioButton fx:id="rbSemaphore" layoutX="218.0" layoutY="361.0" mnemonicParsing="false" text="Semaphore" textFill="WHITE" toggleGroup="$syn" />
+   <ListView fx:id="textLogList" layoutX="287.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0" />
 </AnchorPane>

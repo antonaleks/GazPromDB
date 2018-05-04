@@ -1,6 +1,7 @@
 package winApi.threads;
 
 import com.sun.jna.Callback;
+import com.sun.jna.platform.win32.WinNT;
 import controllers.CreateNewEntryFormController;
 import converters.Converter;
 import db.DataBaseInsertHelper;
@@ -13,9 +14,11 @@ public class FillDataBase implements Callback {
      * Вызывает методы для работы с заполнением базы данных.
      */
     public void callback(){
-        MyKernel32.INSTANCE.EnterCriticalSection(ApiHelper.criticalSection);
+        WinNT.HANDLE handle = ApiHelper.enterMutexOrSemaphore(2);
+        CreateNewEntryFormController.saveLog("Hi, it's new thread, id: " + MyKernel32.INSTANCE.GetCurrentThreadId());
         System.out.println("Hi, it's new thread, id: " + MyKernel32.INSTANCE.GetCurrentThreadId());
         System.out.println("Filling data base...");
+        CreateNewEntryFormController.saveLog("Filling data base...");
         DataBaseInsertHelper dataBaseInsertHelper = new DataBaseInsertHelper();
 
         CreateNewEntryFormController.setPathToSVG(new Converter().parseFile(CreateNewEntryFormController.getPathToDXF()));
@@ -28,7 +31,9 @@ public class FillDataBase implements Callback {
                 CreateNewEntryFormController.getName(),
                 CreateNewEntryFormController.getPathToSVG());
 
+        ApiHelper.leaveMutexOrSemaphore(handle);
+
         System.out.println("Done!");
-        MyKernel32.INSTANCE.LeaveCriticalSection(ApiHelper.criticalSection);
+        CreateNewEntryFormController.saveLog("Done!");
     }
 }

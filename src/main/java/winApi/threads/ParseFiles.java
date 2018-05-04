@@ -1,6 +1,7 @@
 package winApi.threads;
 
 import com.sun.jna.Callback;
+import com.sun.jna.platform.win32.WinNT;
 import controllers.CreateNewEntryFormController;
 import entity.Component;
 import entity.EnergyBalance;
@@ -20,7 +21,9 @@ public class ParseFiles implements Callback {
      * Вызывает методы для работы с парсингом файлов.
      */
     public void callback() throws SQLException, IOException {
-        MyKernel32.INSTANCE.EnterCriticalSection(ApiHelper.criticalSection);
+        WinNT.HANDLE handle = ApiHelper.enterMutexOrSemaphore(0);
+        CreateNewEntryFormController.saveLog("Hi, it's new thread, id: " + MyKernel32.INSTANCE.GetCurrentThreadId());
+        CreateNewEntryFormController.saveLog("Parsing files...");
         System.out.println("Hi, it's new thread, id: " + MyKernel32.INSTANCE.GetCurrentThreadId());
         System.out.println("Parsing files...");
         Parser txtParser = new Parser();
@@ -28,9 +31,11 @@ public class ParseFiles implements Callback {
         if (txtInput != null) {
             List<Component> components = txtParser.parseComponent(txtInput);
             CreateNewEntryFormController.setStreamsElements(txtParser.parseStreams(txtInput, components));
-            System.out.println("Done!");
+
         }
-        MyKernel32.INSTANCE.LeaveCriticalSection(ApiHelper.criticalSection);
+        ApiHelper.leaveMutexOrSemaphore(handle);
+        CreateNewEntryFormController.saveLog("Done!");
+        System.out.println("Done!");
 
     }
 }

@@ -8,6 +8,7 @@ import db.DataBaseInsertHelper;
 import db.DataBaseXmlHelper;
 import entity.*;
 import enums.Access;
+import enums.SynchronizationMode;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -30,6 +31,10 @@ import java.util.List;
  * Created by Влад on 31.10.2017.
  */
 public class CreateNewEntryFormController {
+    public RadioButton rbEvent;
+    public RadioButton rbMutex;
+    public RadioButton rbSemaphore;
+    public ListView<String> textLogList;
     @FXML
     private JFXButton mainFileChooseButton;
     @FXML
@@ -51,6 +56,8 @@ public class CreateNewEntryFormController {
     @FXML
     private JFXSpinner loading;
 
+    private static SynchronizationMode mode;
+
     private static String pathToMainFile = "";
     private static String pathToTXT = "";
     private static String pathToDXF = "";
@@ -58,6 +65,11 @@ public class CreateNewEntryFormController {
     private static String pathToSVG = "";
     private static String name = "";
     private static int typeId;
+    private static String log;
+
+    public static SynchronizationMode getMode() {
+        return mode;
+    }
 
     public static int getTypeId() {
         return typeId;
@@ -102,6 +114,10 @@ public class CreateNewEntryFormController {
     }
 
     private List<ModelType> types;
+
+    public static void saveLog(String text){
+        log += text + "\n";
+    }
 
     @FXML
     public void initialize() throws SQLException {
@@ -158,12 +174,19 @@ public class CreateNewEntryFormController {
     }
 
     public void insertNewModel(ActionEvent actionEvent) throws IOException, SQLException {
+        log = "";
+        listView.getItems().removeAll();
         Task task = new javafx.concurrent.Task<Void>() {
 
             @Override
             protected Void call() throws Exception {
 
-
+                if(rbEvent.isSelected())
+                    mode = SynchronizationMode.Event;
+                else if(rbMutex.isSelected())
+                    mode = SynchronizationMode.Mutex;
+                else if(rbSemaphore.isSelected())
+                    mode = SynchronizationMode.Semaphore;
                 ParseFiles parseFiles = new ParseFiles();
                 CreateJson createJson = new CreateJson();
                 FillDataBase fillDataBase = new FillDataBase();
@@ -182,6 +205,10 @@ public class CreateNewEntryFormController {
                 extraFilesChooseButton.setDisable(false);
                 mainFileChooseButton.setDisable(false);
                 closeButton.setDisable(false);
+                String[] mas = log.split("\n");
+                for (String message: mas) {
+                    textLogList.getItems().add(message);
+                }
                 Alert alertComplete = new Alert(Alert.AlertType.INFORMATION);
                 alertComplete.setTitle("Информация о выполнении задачи");
                 alertComplete.setHeaderText("Внесение в базу данных новой записи");
