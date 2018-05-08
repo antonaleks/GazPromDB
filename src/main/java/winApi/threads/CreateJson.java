@@ -14,15 +14,12 @@ public class CreateJson implements Callback {
      */
     public void callback(){
         WinNT.HANDLE handle = ApiHelper.enterMutexOrSemaphore(1);
-        System.out.println(handle);
-        CreateNewEntryFormController.saveLog("Hi, it's new thread, id: " + MyKernel32.INSTANCE.GetCurrentThreadId());
+         CreateNewEntryFormController.saveLog("Hi, it's new thread, id: " + MyKernel32.INSTANCE.GetCurrentThreadId());
         CreateNewEntryFormController.saveLog("Creating json file...");
-        System.out.println("Hi, it's new thread, id: " + MyKernel32.INSTANCE.GetCurrentThreadId());
-        System.out.println("Creating json file...");
         JsonManager.createJson(CreateNewEntryFormController.getStreamsElements(), CreateNewEntryFormController.getName());
 
         ApiHelper.leaveMutexOrSemaphore(handle);
         CreateNewEntryFormController.saveLog("Done!");
-        System.out.println("Done!");
+
     }
 }

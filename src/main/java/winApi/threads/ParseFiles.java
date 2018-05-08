@@ -24,8 +24,6 @@ public class ParseFiles implements Callback {
         WinNT.HANDLE handle = ApiHelper.enterMutexOrSemaphore(0);
         CreateNewEntryFormController.saveLog("Hi, it's new thread, id: " + MyKernel32.INSTANCE.GetCurrentThreadId());
         CreateNewEntryFormController.saveLog("Parsing files...");
-        System.out.println("Hi, it's new thread, id: " + MyKernel32.INSTANCE.GetCurrentThreadId());
-        System.out.println("Parsing files...");
         Parser txtParser = new Parser();
         String txtInput = txtParser.parseTxtReport(CreateNewEntryFormController.getPathToTXT());
         if (txtInput != null) {
@@ -35,7 +33,7 @@ public class ParseFiles implements Callback {
         }
         ApiHelper.leaveMutexOrSemaphore(handle);
         CreateNewEntryFormController.saveLog("Done!");
-        System.out.println("Done!");
+
 
     }
 }

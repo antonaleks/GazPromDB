@@ -116,6 +116,7 @@ public class CreateNewEntryFormController {
     private List<ModelType> types;
 
     public static void saveLog(String text){
+        System.out.println(text);
         log += text + "\n";
     }
 

@@ -16,8 +16,6 @@ public class FillDataBase implements Callback {
     public void callback(){
         WinNT.HANDLE handle = ApiHelper.enterMutexOrSemaphore(2);
         CreateNewEntryFormController.saveLog("Hi, it's new thread, id: " + MyKernel32.INSTANCE.GetCurrentThreadId());
-        System.out.println("Hi, it's new thread, id: " + MyKernel32.INSTANCE.GetCurrentThreadId());
-        System.out.println("Filling data base...");
         CreateNewEntryFormController.saveLog("Filling data base...");
         DataBaseInsertHelper dataBaseInsertHelper = new DataBaseInsertHelper();
 
@@ -33,7 +31,6 @@ public class FillDataBase implements Callback {
 
         ApiHelper.leaveMutexOrSemaphore(handle);
 
-        System.out.println("Done!");
         CreateNewEntryFormController.saveLog("Done!");
     }
 }

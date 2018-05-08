@@ -5,6 +5,7 @@ import com.sun.jna.platform.win32.Kernel32;
 import com.sun.jna.platform.win32.WinBase;
 import com.sun.jna.platform.win32.WinDef;
 import com.sun.jna.platform.win32.WinNT;
+import com.sun.jna.ptr.IntByReference;
 import com.sun.jna.win32.W32APIOptions;
 
 import java.util.Arrays;
@@ -129,27 +130,27 @@ public interface MyKernel32 extends Kernel32 {
 
     }
 
-//    /**
-//     * Создает или открывает событие.
-//     *
-//     * @param lpEventAttributes
-//     *           указатель наследования возвращенного дескриптора дочерними процессами и указатель,
-//     *           используемого дескриптора защиты. Ставим значение NULL – это означает, что дескриптор не наследуется
-//     *           и используется дескриптор защиты по умолчанию.
-//     * @param bManualReset
-//     *            тип события. Если false – автоматический сброс, true –ручной.
-//     * @param bInitialState
-//     *           начальное состояние события. True – сигнальное.
-//     * @param lpName
-//     *          имя события, которое позволяет обращаться к нему из потоков разных процессов.
-//     *          Это имя хранится в ядре, поэтому можно к нему обращаться. Если имя не задается,
-//     *          то создается безымянное, тогда может использоваться только в рамках одного процесса.
-//     * @return Функция возвращает дескриптор события, иначе NULL. После вызова можно проверить,
-//     *         существовало это событие или нет. Делается это так: If  (GetLastError == ErrorAlreadyExists).
-//
-//     */
-//    HANDLE CreateEvent(WinBase.SECURITY_ATTRIBUTES lpEventAttributes,
-//                       boolean bManualReset, boolean bInitialState, String lpName);
+    /**
+     * Создает или открывает событие.
+     *
+     * @param lpEventAttributes
+     *           указатель наследования возвращенного дескриптора дочерними процессами и указатель,
+     *           используемого дескриптора защиты. Ставим значение NULL – это означает, что дескриптор не наследуется
+     *           и используется дескриптор защиты по умолчанию.
+     * @param bManualReset
+     *            тип события. Если false – автоматический сброс, true –ручной.
+     * @param bInitialState
+     *           начальное состояние события. True – сигнальное.
+     * @param lpName
+     *          имя события, которое позволяет обращаться к нему из потоков разных процессов.
+     *          Это имя хранится в ядре, поэтому можно к нему обращаться. Если имя не задается,
+     *          то создается безымянное, тогда может использоваться только в рамках одного процесса.
+     * @return Функция возвращает дескриптор события, иначе NULL. После вызова можно проверить,
+     *         существовало это событие или нет. Делается это так: If  (GetLastError == ErrorAlreadyExists).
+
+     */
+    HANDLE CreateEvent(WinBase.SECURITY_ATTRIBUTES lpEventAttributes,
+                       boolean bManualReset, boolean bInitialState, String lpName);
 
     /**
      * Переводит событие в сигнальное состояние.
