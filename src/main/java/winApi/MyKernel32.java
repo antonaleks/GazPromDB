@@ -243,89 +243,70 @@ public interface MyKernel32 extends Kernel32 {
     int INFINITE = 0xFFFFFFFF;
 
     /**
-     * Creates an anonymous pipe, and returns handles to the read and write ends
-     * of the pipe.
+     * Функция для создания анонимного пайпа.
      *
      * @param hReadPipe
-     *            A pointer to a variable that receives the read handle for the
-     *            pipe.
+     *            Дескриптор чтения из пайпа.
      * @param hWritePipe
-     *            A pointer to a variable that receives the write handle for the
-     *            pipe.
+     *            Дескриптор записи в пайп.
      * @param lpPipeAttributes
-     *            A pointer to a SECURITY_ATTRIBUTES structure that determines
-     *            whether the returned handle can be inherited by child
-     *            processes.
+     *            Дескриптор безопасности.
      * @param nSize
-     *            The size of the buffer for the pipe, in bytes.
-     * @return If the function succeeds, the return value is nonzero. If the
-     *         function fails, the return value is zero. To get extended error
-     *         information, call GetLastError.
+     *            Размер буфера ввода-вывода в байтах.
+     * @return При успешном завершении функция возвращает TRUE и два дескриптора.
      */
      boolean CreatePipe(HANDLEByReference hReadPipe,
                               HANDLEByReference hWritePipe,
                               WinBase.SECURITY_ATTRIBUTES lpPipeAttributes, int nSize);
 
     /**
-     * Reads data from the specified file or input/output (I/O) device. Reads
-     * occur at the position specified by the file pointer if supported by the
-     * device.
-     *
-     * This function is designed for both synchronous and asynchronous
-     * operations. For a similar function designed solely for asynchronous
-     * operation, see ReadFileEx
+     * Функция ReadFile читает данные из файла, начиная с позиции, обозначенной указателем файла.
+     * После того, как операция чтения была закончена, указатель файла перемещается на число
+     * действительно прочитанных байтов, если дескриптор файла не создан с атрибутом асинхронной операции.
+     * Если дескриптор файла создается для асинхронного ввода - вывода, приложение должно переместить
+     * позицию указателя файла после операции чтения.
      *
      * @param hFile
-     *            A handle to the device (for example, a file, file stream,
-     *            physical disk, volume, console buffer, tape drive, socket,
-     *            communications resource, mailslot, or pipe).
+     *           Дескриптор файла (или пайпа).
      * @param lpBuffer
-     *            A pointer to the buffer that receives the data read from a
-     *            file or device.
+     *           Указатель на буфер данных.
      * @param nNumberOfBytesToRead
-     *            The maximum number of bytes to be read.
+     *           Число байтов для считывания из буфера.
      * @param lpNumberOfBytesRead
-     *            A pointer to the variable that receives the number of bytes
-     *            read when using a synchronous hFile parameter
+     *           (выходной) число считанных байтов
      * @param lpOverlapped
-     *            A pointer to an OVERLAPPED structure is required if the hFile
-     *            parameter was opened with FILE_FLAG_OVERLAPPED, otherwise it
-     *            can be NULL.
-     * @return If the function succeeds, the return value is nonzero (TRUE). If
-     *         the function fails, or is completing asynchronously, the return
-     *         value is zero (FALSE). To get extended error information, call
-     *         the GetLastError function.
-     *
-     *         Note The GetLastError code ERROR_IO_PENDING is not a failure; it
-     *         designates the read operation is pending completion
-     *         asynchronously. For more information, see Remarks.
+     *            предназначен для асинхронного вывода.
+     *            Анонимные пайпы поддерживают только синхронную передачу данных,
+     *            поэтому этот параметр = NULL во всех работах.
+     * @return Функция ReadFile возвращает значение тогда, когда выполнено одно из ниже перечисленных  условий:
+                - операция записи завершается на записывающем конце канала,
+                - затребованное число байтов прочитано,
+                - или происходит ошибка.
+                Если функция завершается успешно, величина возвращаемого значения - не ноль.
+                Если функция завершается с ошибкой, величина возвращаемого значения - ноль.
+                Чтобы получить дополнительные сведения об ошибке, вызовите GetLastError.
      */
     boolean ReadFile(HANDLE hFile, byte[] lpBuffer, int nNumberOfBytesToRead,
                      IntByReference lpNumberOfBytesRead, WinBase.OVERLAPPED lpOverlapped);
 
     /**
-     * Writes data to the specified file or input/output (I/O) device.
+     * Функция WriteFile пишет данные в файл (пайп) с места, обозначенного указателем позиции в файле.
+     * Эта функция предназначена и для синхронной, и для асинхронной операции.
      *
      * @param hFile
-     *            A handle to the file or I/O device (for example, a file, file
-     *            stream, physical disk, volume, console buffer, tape drive,
-     *            socket, communications resource, mailslot, or pipe).
+     *            Дескриптор файла (или пайпа).
      * @param lpBuffer
-     *            A pointer to the buffer containing the data to be written to
-     *            the file or device.
+     *            Указатель на буфер данных.
      * @param nNumberOfBytesToWrite
-     *            The number of bytes to be written to the file or device.
+     *            Число байтов для записи в буфер.
      * @param lpNumberOfBytesWritten
-     *            A pointer to the variable that receives the number of bytes
-     *            written when using a synchronous hFile parameter.
+     *           (выходной) число записанных байтов.
      * @param lpOverlapped
-     *            A pointer to an OVERLAPPED structure is required if the hFile
-     *            parameter was opened with FILE_FLAG_OVERLAPPED, otherwise this
-     *            parameter can be NULL.
-     * @return If the function succeeds, the return value is nonzero (TRUE). If
-     *         the function fails, or is completing asynchronously, the return
-     *         value is zero (FALSE). To get extended error information, call
-     *         the GetLastError function.
+     *           предназначен для асинхронного вывода. Анонимные пайпы поддерживают
+     *           только синхронную передачу данных, поэтому этот параметр = NULL во всех работах.
+     * @return Если функция завершается успешно, величина возвращаемого значения - не ноль.
+     *         Если функция завершается с ошибкой, величина возвращаемого значения - ноль.
+     *         Чтобы получить дополнительные сведения об ошибке, вызовите GetLastError.
      */
     boolean WriteFile(HANDLE hFile, byte[] lpBuffer, int nNumberOfBytesToWrite,
                       IntByReference lpNumberOfBytesWritten,
