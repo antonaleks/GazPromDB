@@ -5,6 +5,7 @@ import com.sun.jna.platform.win32.WinBase;
 import com.sun.jna.platform.win32.WinDef.DWORD;
 import com.sun.jna.platform.win32.WinNT;
 import com.sun.jna.platform.win32.WinNT.HANDLE;
+import com.sun.jna.ptr.IntByReference;
 import controllers.CreateNewEntryFormController;
 import enums.SynchronizationMode;
 import winApi.threads.CreateJson;
@@ -21,6 +22,12 @@ public class ApiHelper {
 
     public static HANDLE semaphoreOrMutexHandle;
     public static HANDLE[] hEvent;
+    public static WinNT.HANDLEByReference pipeInRead = new WinNT.HANDLEByReference(),
+            pipeInWrite = new WinNT.HANDLEByReference(),
+            pipeDataRead = new WinNT.HANDLEByReference(),
+            pipeDataWrite = new WinNT.HANDLEByReference();
+    public static final int SIZE_OF_INT_BYTE = 81;
+    public static final int SIZE_OF_PIPE = 10000;
 
     /**
      * Позволяет получить время работы дочернего процесса по его дескриптору.
@@ -63,7 +70,9 @@ public class ApiHelper {
                 semaphoreOrMutexHandle = MyKernel32.INSTANCE.CreateMutex(null, false, null);
                 break;
         }
-
+        CreateNewEntryFormController.saveLog("Creating pipes");
+        MyKernel32.INSTANCE.CreatePipe(pipeInRead, pipeInWrite, null, 0);
+        MyKernel32.INSTANCE.CreatePipe(pipeDataRead, pipeDataWrite, null, SIZE_OF_PIPE);
 
         CreateNewEntryFormController.saveLog("Creating threads");
         hThreads[0] = MyKernel32.INSTANCE.CreateThread(null, null, parseFiles, null, flag, null);
@@ -93,7 +102,14 @@ public class ApiHelper {
         for (int i = 0; i < 3; i++) {
             MyKernel32.INSTANCE.CloseHandle(hThreads[i]);
         }
+        CreateNewEntryFormController.saveLog("Closing pipes");
+        MyKernel32.INSTANCE.CloseHandle(pipeInWrite.getValue());
+        MyKernel32.INSTANCE.CloseHandle(pipeInRead.getValue());
+        MyKernel32.INSTANCE.CloseHandle(pipeDataWrite.getValue());
+        MyKernel32.INSTANCE.CloseHandle(pipeDataRead.getValue());
+
         CreateNewEntryFormController.saveLog("Threads were removed");
+        CreateNewEntryFormController.saveLog("Pipes were removed");
     }
 
     public static HANDLE enterMutexOrSemaphore(int idEvent) {

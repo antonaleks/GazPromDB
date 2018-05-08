@@ -1,6 +1,8 @@
 package entity;
 
-public class StreamsElement {
+import java.io.Serializable;
+
+public class StreamsElement implements Serializable{
     private double[] values;
     private String name;
 

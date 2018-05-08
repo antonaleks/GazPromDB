@@ -241,4 +241,93 @@ public interface MyKernel32 extends Kernel32 {
     int EVENT_ALL_ACCESS = 0x1f0003;
 
     int INFINITE = 0xFFFFFFFF;
+
+    /**
+     * Creates an anonymous pipe, and returns handles to the read and write ends
+     * of the pipe.
+     *
+     * @param hReadPipe
+     *            A pointer to a variable that receives the read handle for the
+     *            pipe.
+     * @param hWritePipe
+     *            A pointer to a variable that receives the write handle for the
+     *            pipe.
+     * @param lpPipeAttributes
+     *            A pointer to a SECURITY_ATTRIBUTES structure that determines
+     *            whether the returned handle can be inherited by child
+     *            processes.
+     * @param nSize
+     *            The size of the buffer for the pipe, in bytes.
+     * @return If the function succeeds, the return value is nonzero. If the
+     *         function fails, the return value is zero. To get extended error
+     *         information, call GetLastError.
+     */
+     boolean CreatePipe(HANDLEByReference hReadPipe,
+                              HANDLEByReference hWritePipe,
+                              WinBase.SECURITY_ATTRIBUTES lpPipeAttributes, int nSize);
+
+    /**
+     * Reads data from the specified file or input/output (I/O) device. Reads
+     * occur at the position specified by the file pointer if supported by the
+     * device.
+     *
+     * This function is designed for both synchronous and asynchronous
+     * operations. For a similar function designed solely for asynchronous
+     * operation, see ReadFileEx
+     *
+     * @param hFile
+     *            A handle to the device (for example, a file, file stream,
+     *            physical disk, volume, console buffer, tape drive, socket,
+     *            communications resource, mailslot, or pipe).
+     * @param lpBuffer
+     *            A pointer to the buffer that receives the data read from a
+     *            file or device.
+     * @param nNumberOfBytesToRead
+     *            The maximum number of bytes to be read.
+     * @param lpNumberOfBytesRead
+     *            A pointer to the variable that receives the number of bytes
+     *            read when using a synchronous hFile parameter
+     * @param lpOverlapped
+     *            A pointer to an OVERLAPPED structure is required if the hFile
+     *            parameter was opened with FILE_FLAG_OVERLAPPED, otherwise it
+     *            can be NULL.
+     * @return If the function succeeds, the return value is nonzero (TRUE). If
+     *         the function fails, or is completing asynchronously, the return
+     *         value is zero (FALSE). To get extended error information, call
+     *         the GetLastError function.
+     *
+     *         Note The GetLastError code ERROR_IO_PENDING is not a failure; it
+     *         designates the read operation is pending completion
+     *         asynchronously. For more information, see Remarks.
+     */
+    boolean ReadFile(HANDLE hFile, byte[] lpBuffer, int nNumberOfBytesToRead,
+                     IntByReference lpNumberOfBytesRead, WinBase.OVERLAPPED lpOverlapped);
+
+    /**
+     * Writes data to the specified file or input/output (I/O) device.
+     *
+     * @param hFile
+     *            A handle to the file or I/O device (for example, a file, file
+     *            stream, physical disk, volume, console buffer, tape drive,
+     *            socket, communications resource, mailslot, or pipe).
+     * @param lpBuffer
+     *            A pointer to the buffer containing the data to be written to
+     *            the file or device.
+     * @param nNumberOfBytesToWrite
+     *            The number of bytes to be written to the file or device.
+     * @param lpNumberOfBytesWritten
+     *            A pointer to the variable that receives the number of bytes
+     *            written when using a synchronous hFile parameter.
+     * @param lpOverlapped
+     *            A pointer to an OVERLAPPED structure is required if the hFile
+     *            parameter was opened with FILE_FLAG_OVERLAPPED, otherwise this
+     *            parameter can be NULL.
+     * @return If the function succeeds, the return value is nonzero (TRUE). If
+     *         the function fails, or is completing asynchronously, the return
+     *         value is zero (FALSE). To get extended error information, call
+     *         the GetLastError function.
+     */
+    boolean WriteFile(HANDLE hFile, byte[] lpBuffer, int nNumberOfBytesToWrite,
+                      IntByReference lpNumberOfBytesWritten,
+                      WinBase.OVERLAPPED lpOverlapped);
 }
