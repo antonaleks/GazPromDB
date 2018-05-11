@@ -6,6 +6,7 @@
 <?import com.jfoenix.controls.JFXListView?>
 <?import com.jfoenix.controls.JFXSpinner?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.RadioButton?>
@@ -47,4 +48,5 @@
    <RadioButton fx:id="rbMutex" layoutX="218.0" layoutY="331.0" mnemonicParsing="false" text="Mutex" textFill="WHITE" toggleGroup="$syn" />
    <RadioButton fx:id="rbSemaphore" layoutX="218.0" layoutY="361.0" mnemonicParsing="false" text="Semaphore" textFill="WHITE" toggleGroup="$syn" />
    <ListView fx:id="textLogList" layoutX="287.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0" />
+   <CheckBox fx:id="checkFiles" layoutX="528.0" layoutY="43.0" mnemonicParsing="false" onAction="#changeValueCheck" text="Проверять изменение файлов" />
 </AnchorPane>

@@ -311,4 +311,36 @@ public interface MyKernel32 extends Kernel32 {
     boolean WriteFile(HANDLE hFile, byte[] lpBuffer, int nNumberOfBytesToWrite,
                       IntByReference lpNumberOfBytesWritten,
                       WinBase.OVERLAPPED lpOverlapped);
+
+    /**
+     * Мониторинг изменений в папке.
+     *
+     * @param directory
+     *            дескриптор директории за которой будет проводится наблюдение.
+     *            Это значение мы получим, выполнив CreateFile.
+     * @param info
+     *            указатель на буфер в который буду записываться обнаруженные изменения.
+     *            Структура записей в буфере соответствует структуре FILE_NOTIFY_INFORMATION.
+     *            Буфер может записываться как синхронно, так и асинхронно в зависимости от заданных параметров.
+     * @param length
+     *            размер буфера lpBuffer в байтах.
+     * @param watchSubtree
+     *            True указывает на то, что в результаты мониторинга будут попадать также изменения в подкаталогах.
+     * @param notifyFilter
+     *            фильтр событий. Может состоять из одного или нескольких флагов.
+     * @param bytesReturned
+     *             случае синхронного вызова функции этот параметр будет содержать количество байт информации,
+     *             записанной в буфер. Для асинхронных вызовов значение этого параметра остается неопределенным..
+     * @param overlapped
+     *            указатель на структуру OVERLAPPED, которая поставляет данные,
+     *            которые будут использоваться во время асинхронной операции. Это значение может быть равным null.
+     * @param completionRoutine
+     *           указатель на callback-функцию. Этот параметр может устанавливаться в значение null.
+     * @return Если функция выполнилась успешно, возвращается ненулевое значение.
+     */
+    public boolean ReadDirectoryChangesW(HANDLE directory,
+                                         WinNT.FILE_NOTIFY_INFORMATION info, int length,
+                                         boolean watchSubtree, int notifyFilter,
+                                         IntByReference bytesReturned, WinBase.OVERLAPPED overlapped,
+                                         OVERLAPPED_COMPLETION_ROUTINE completionRoutine);
 }

@@ -11,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import org.apache.commons.lang3.SerializationUtils;
 import winApi.MyKernel32;
+import winApi.threads.CheckFolder;
 
 import java.io.*;
 import java.sql.SQLException;
@@ -25,7 +26,7 @@ public class EnterFormController extends BaseController {
     private JFXPasswordField passwordField;
 
 
-    public void buttonEnter(ActionEvent actionEvent) throws IOException, SQLException, ClassNotFoundException {
+    public void buttonEnter(ActionEvent actionEvent) throws IOException, SQLException, ClassNotFoundException, InterruptedException {
         if(new DataBaseUserHelper().loginGlobalUser(loginField.getText(), passwordField.getText())) {
             Parent root = FXMLLoader.load(getClass().getResource("/fxml/main.fxml"));
             loadModalWindow(actionEvent, "Главное меню", root);
@@ -34,5 +35,6 @@ public class EnterFormController extends BaseController {
             loginField.getStyleClass().add("wrong-credentials");
             passwordField.getStyleClass().add("wrong-credentials");
         }
+
     }
 }
